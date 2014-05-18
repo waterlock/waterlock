@@ -1,0 +1,32 @@
+{
+  "name": "waterlock",
+  "preferGlobal": true,
+  "version": "0.0.1",
+  "author": "David Rivera <david.r.rivera193@gmail.com>",
+  "description": "User authentication and api handeling for sails.js",
+  "contributors": [ 
+    {
+      "name": "David Rivera",
+      "email": "david.r.rivera193@gmail.com"
+    } 
+  ],
+  "bin": {
+    "waterlock": "./bin/waterlock"
+  },
+  "keywords": [
+    "waterlock",
+    "sails package",
+    "authentication"
+  ],
+  "dependencies" : {
+    "bcrypt"   :  "*"
+  }, 
+  "devDependencies":{
+    "mocha": "*",
+    "should": "*"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=0.6"
+  }
+}
