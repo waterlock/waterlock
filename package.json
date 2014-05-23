@@ -1,6 +1,5 @@
 {
   "name": "waterlock",
-  "preferGlobal": true,
   "version": "0.0.1",
   "author": "David Rivera <david.r.rivera193@gmail.com>",
   "description": "User authentication and api handeling for sails.js",

@@ -76,4 +76,15 @@ describe('krypt',function(){
       done();
     });
   });
+
+  describe('generateApiKey', function(){
+    it('should exist', function(done){
+      krypt.should.have.property('generateApiKey');
+      done();
+    });
+    it('should generateApiKey', function(done){
+      krypt.generateApiKey().should.be.String
+      done();
+    });
+  });
 });

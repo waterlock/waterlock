@@ -1,0 +1,130 @@
+#!/usr/bin/env node
+var fs = require('fs');
+var path = require('path');
+var readline = require('readline');
+var rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
+
+var BASE_PATH = __dirname;
+var INSTALL_BASE_PATH = path.normalize(BASE_PATH+"/../../../");
+var SPACE = "  ";
+
+if(process.argv.length < 3){
+  usageExit()
+}
+
+switch(process.argv[2]){
+  case 'install':
+    install();
+    break;
+  default:
+    usageExit();
+    break;
+}
+
+function install(){
+  if(process.argv.length < 4){
+    usageExit();
+  }
+
+  switch(process.argv[3]){
+    case 'all':
+      installAll();
+      break;
+    default:
+      usageExit();
+      break;
+  }
+}
+
+function installAll(){
+  tryInstallPolicies();
+}
+function tryInstallPolicies(){
+  var policyFile = "hasApiKey.js";
+  var installPolicyPath = INSTALL_BASE_PATH+"api/policies/"+policyFile
+
+  tryAction(installPolicies, installPolicyPath);    
+}
+
+function tryInstallUserModels(){
+  var userFile = "User.js";
+  var _userPath = BASE_PATH + "/../lib/templates/" + userFile;
+  var userPath = path.normalize(_userPath);
+  var installUserPath = INSTALL_BASE_PATH + "api/models/"+userFile;
+
+  tryAction(installUserModel, installUserPath)
+}
+
+function installUserModel(){
+  console.log(" ");
+  log("installing user model")
+
+  var userFile = "User.js";
+  var _userPath = BASE_PATH + "/../lib/templates/" + userFile;
+  var userPath = path.normalize(_userPath);
+  var installUserPath = INSTALL_BASE_PATH + "api/models/"+userFile;
+  
+  fs.createReadStream(userPath).pipe(fs.createWriteStream(installUserPath));
+}
+
+function tryAction(cb, p){
+  if(fs.existsSync(p)){
+
+    waitForResponse(cb, p);    
+  }else{
+    cb();
+  }
+}
+
+function waitForResponse(cb, p){
+  rl.question("File at "+p+" exists, overwrite? (yN)", function(answer) {
+    switch(answer.toLowerCase()){
+      case 'y':
+          cb();
+        break;
+      case 'n':
+        return;
+      default:
+        waitForResponse(cb,p);
+        return;
+    }
+    
+    rl.close();
+  });
+}
+
+function installPolicies(){
+  console.log(" ");
+  log("installing policies");
+
+  var policyFile = "hasApiKey.js";
+  var _policyPath = BASE_PATH + "/../lib/templates/"+policyFile;
+  var policyPath = path.normalize(_policyPath);
+  var installPolicyPath = INSTALL_BASE_PATH+"api/policies/"+policyFile
+  
+  fs.createReadStream(policyPath).pipe(fs.createWriteStream(installPolicyPath));
+}
+
+function usageExit(){
+  usage();
+  process.exit(1);
+}
+
+function usage(){
+  console.log(" ");
+  log("Usage: waterlock [cmd]");
+  console.log(" ")
+  log("Commands:")
+  console.log(" ")
+  log("  install [all]")
+  console.log(" ")
+}
+
+
+
+function log(msg){
+  console.log(SPACE+msg);
+}
