@@ -18,7 +18,9 @@
     "authentication"
   ],
   "dependencies" : {
-    "bcrypt"   :  "*"
+    "moment": "*",
+    "jade": "*",
+    "nodemailer": "*"
   }, 
   "devDependencies":{
     "mocha": "*",

@@ -1,0 +1,17 @@
+{
+  "baseUrl": "app.example.com",
+  "passwordReset":{
+    "tokens": false,
+    "mail":{
+        "protocol": "SMTP",
+        "options":{},
+        "from": "",
+        "subject": "",
+        "forwardUrl": "somwhere.com"
+    },  
+    "template":{
+      "file": "../views/email.jade",
+      "vars":{}
+    }
+  }
+}
