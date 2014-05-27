@@ -1,7 +1,10 @@
-var should = require('should');
+var testHelper = require('./test_helper');
+var should = testHelper.should;
+var waterlock = testHelper.waterlock;
 
 describe('actions',function(){
-  var action = require('../lib/actions/')({});
+  var action = waterlock.actions.basicAuth({});
+
   it('should have login', function(done){
     action.should.have.property('login');
     done();

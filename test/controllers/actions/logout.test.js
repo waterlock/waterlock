@@ -1,7 +1,7 @@
 var should = require('should');
 
 describe('actions logout',function(){
-  var logout = require('../../lib/actions/logout');
+  var logout = require('../../../lib/controllers/actions/logout');
 
   it('should set session auth', function(done){
     var req = {session:{authenticated: true}}

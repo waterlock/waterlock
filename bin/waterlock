@@ -145,7 +145,7 @@ function installPolicies(){
 
 /** Api model **/
 function tryInstallApiModel(){
-  var userFile = "Api.js";
+  var userFile = "ApiKey.js";
   var installUserPath = INSTALL_BASE_PATH + "api/models/"+userFile;
 
   tryAction(installApiModel, installUserPath)
@@ -221,7 +221,7 @@ function installAuthController(){
   fs.createReadStream(userPath).pipe(fs.createWriteStream(installUserPath));
 
   log("now go place the following in your routes file: ")
-  log("    'post /login': 'AuthController.login'")
+  log("    'post /login': 'AuthController.login'", false)
   log("    'get /logout': 'AuthController.logout'")
 }
 

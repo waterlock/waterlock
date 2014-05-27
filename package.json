@@ -24,7 +24,8 @@
   }, 
   "devDependencies":{
     "mocha": "*",
-    "should": "*"
+    "should": "*",
+    "proxyquire": "*"
   },
   "license": "MIT",
   "engines": {

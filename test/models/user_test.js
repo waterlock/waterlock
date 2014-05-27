@@ -1,7 +1,7 @@
 var should = require('should');
 
 describe('model user',function(){
-  var user = require('../../lib/models/').user;
+  var user = require('../../lib/models/').basicUser;
 
   describe('attributes', function(){
     var attributes = user.attributes({});

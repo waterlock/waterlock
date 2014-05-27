@@ -87,4 +87,15 @@ describe('krypt',function(){
       done();
     });
   });
+
+  describe('generateToken', function(){
+    it('should exist', function(done){
+      krypt.should.have.property('generateToken');
+      done();
+    });
+    it('should generateToken', function(done){
+      krypt.generateToken().should.be.String
+      done();
+    });
+  });
 });

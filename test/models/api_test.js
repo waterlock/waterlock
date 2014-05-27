@@ -1,29 +1,31 @@
-var should = require('should');
+var testHelper = require('../test_helper');
+var should = testHelper.should;
+var waterlock = testHelper.waterlock;
 
-describe('model api',function(){
-  var api = require('../../lib/models/').api;
+describe('model apiKey',function(){
+  var apiKey = waterlock.models.apiKey;
 
   describe('attributes', function(){
-    var attributes = api.attributes({});
+    var attributes = apiKey.attributes({});
     it('should  have a key', function(done){
       attributes.should.have.property('key');
       done();
     });
 
-    it('should have a userId', function(done){
-      attributes.should.have.property('userId');
+    it('should have a owner', function(done){
+      attributes.should.have.property('owner');
       done();
     });
 
     it('should have a new attribute', function(done){
-      var attributes = api.attributes({name: 'string'});
+      var attributes = apiKey.attributes({name: 'string'});
       attributes.should.have.property('name');
       done();
     });
   });
 
   describe('callbacks', function(){
-    var beforeCreate = api.beforeCreate;
+    var beforeCreate = apiKey.beforeCreate;
     it('beforeCreate', function(done){
       beforeCreate({key: "test"}, function(){
         done();
