@@ -9,6 +9,9 @@
       "email": "david.r.rivera193@gmail.com"
     } 
   ],
+  "script":{
+    "test":"mocha --recursive -c"
+  },
   "bin": {
     "waterlock": "./bin/waterlock"
   },
@@ -27,6 +30,7 @@
     "should": "*",
     "proxyquire": "*"
   },
+  "preferGlobal": false,
   "license": "MIT",
   "engines": {
     "node": ">=0.6"
