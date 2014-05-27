@@ -9,7 +9,7 @@
       "email": "david.r.rivera193@gmail.com"
     } 
   ],
-  "script":{
+  "scripts":{
     "test":"mocha --recursive -c"
   },
   "bin": {
