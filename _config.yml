@@ -2,8 +2,8 @@
 title: Waterlock
 email: david.r.rivera193@gmail.com
 description: "Waterlock documentation"
-baseurl: ""
-url: "http://yourdomain.com"
+baseurl: "http://davidrivera.github.io/waterlock/"
+url: "http://davidrivera.github.io/waterlock/"
 
 # Build settings
 markdown: kramdown
@@ -11,3 +11,4 @@ permalink: pretty
 
 sass:
   style: :compress
+  sass_dir: _sass
