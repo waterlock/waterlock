@@ -1,0 +1,70 @@
+---
+---
+@import 'variables/colors';
+@import 'variables/overrides';
+@import 'variables/dimensions';
+@import 'bootstrap/stylesheets/bootstrap';
+
+@import url(http://fonts.googleapis.com/css?family=Lato:300,400,700);
+
+/* Base */
+/* ----------------------------------------------------------*/
+body {
+  & > .container {
+    /*padding: 60px 15px 0;*/
+    padding-bottom: 15px;
+  }
+}
+
+.jumbotron{
+  background-color: $base-color;
+  color:$white;
+  img{
+    width: 400px;
+  }
+}
+
+/* Layout Styles */
+/* ----------------------------------------------------------*/
+
+
+/* Site header */
+
+
+
+/* Page Content styles */
+/* ----------------------------------------------------------*/
+
+
+
+
+/* Home styles */
+/* ----------------------------------------------------------*/
+
+
+/* Utils */
+/* ----------------------------------------------------------*/
+.plain-border{
+  border-color: $base-color;
+}
+
+/* Sticky footer styles */
+/* ----------------------------------------------------------*/
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: $footer-height;
+}
+#footer {
+  padding: 10px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: $footer-height;
+  background-color: $base-color;
+  color: $white;
+}
