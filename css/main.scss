@@ -10,7 +10,6 @@
 /* Base */
 /* ----------------------------------------------------------*/
 body {
-  padding-top: 50px;
   & > .container {
     /*padding: 60px 15px 0;*/
     padding-bottom: 15px;
@@ -46,6 +45,10 @@ body {
 /* ----------------------------------------------------------*/
 .plain-border{
   border-color: $base-color;
+}
+.anchor{
+  padding-top: 50px; 
+  margin-top: -50px;
 }
 
 /* Sticky footer styles */

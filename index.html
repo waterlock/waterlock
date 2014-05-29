@@ -2,102 +2,89 @@
 layout: default
 ---
 <div class="jumbotron">
-  <div class="container">
-    <div class="row">
-    <div class="col-md-6">
-      <img class="avatar" src="{{ "/img/beaver-fever.png" | prepend: site.baseurl }}"/>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <img class="avatar" src="{{ " /img/beaver-fever.png " | prepend: site.baseurl }}"/>
+            </div>
+            <div class="col-md-6">
+                <h1>Waterlock</h1>
+                <p>An all encompassing user authentication/api key management tool for <a href="http://sailsjs.org/#!">Sailsjs</a>
+                </p>
+            </div>
+        </div>
     </div>
-    <div class="col-md-6">
-    <h1>Waterlock</h1>
-    <p> An all encompassing user authentication/api key management tool for <a href="http://sailsjs.org/#!">Sailsjs</a></p>
-    </div>
-
-    
-
-  <!--   <ul class="posts">
-      {% for post in site.posts %}
-        <li>
-          <span class="post-date">{{ post.date | date: "%b %-d, %Y" }}</span>
-          <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-        </li>
-      {% endfor %}
-    </ul>
-
-    <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p> -->
-    </div>
-  </div>
 </div>
 <div class="container">
-<section>
-    <h2>What does it provide</h2>
-    <p>Out of the box waterlock give you the following</p>
-    <ul>
-      <li>user authentication via email/password</li>
-      <li>api key management on a per user bases</li>
-      <li>password reset</li>
-    </ul>
-    <p>
-      it is a great tool if you're looking to grant user access to your api.
-    </p>
-</section>
-<section>
-    <h2>How does it work</h2>
-    <p>Since sails currently has no official support for 3rd party libraries like Rails gems; Waterlock works by hooking into your model and controller files adding the functionality needed. When Sails starts officially supporting 3rd party libraries this might change.</p>
-</section>
-<section>
-    <h2 id="usage">How do I use it</h2>
-    <p>
-  Glad you asked! If you're on a fresh install of a Sails app first run
-  </p>
-<pre>
-  npm install waterlock
-  </pre>
-  then run
-<pre>
-  ./node_modules/bin/waterlock install all
-  </pre>
-  <p>
-  this will install all the necessary components, however you do not have strict access yet! The custom policies are installed via the command above but you will need to go into your <code>config/policies.js</code> file and limit access via the <code>hasApiKey</code> policy.
-  </p>
-</section>
-<section>
-  <h2>How can I customize it?</h2>
-  <p>
-Waterlock by default installs with a default user schema i.e. user authentication with email and password. So you can get up and running fast. We realize this doesn't suite everyones needs so you can change the default installed model or just create your own. If you choose the latter you can remove the AuthController since it probably wont apply. You should also disable password resets if you go this route.</p>
+    <section>
+        <h2>What does it provide</h2>
+        <p>Out of the box waterlock give you the following</p>
+        <ul>
+            <li>user authentication via email/password</li>
+            <li>api key management on a per user bases</li>
+            <li>password reset</li>
+        </ul>
+        <p>
+            it is a great tool if you're looking to grant user access to your api.
+        </p>
+    </section>
+    <section>
+        <h2>How does it work</h2>
+        <p>Since sails currently has no official support for 3rd party libraries like Rails gems; Waterlock works by hooking into your model and controller files adding the functionality needed. When Sails starts officially supporting 3rd party libraries this might change.</p>
+    </section>
+    <section>
+        <h2 id="usage" class="anchor">How do I use it</h2>
+        <p>
+            Glad you asked! If you're on a fresh install of a Sails app first run
+        </p>
+        <pre>
+          npm install waterlock
+        </pre>
+        then run
+        <pre>
+          ./node_modules/bin/waterlock install all
+        </pre>
+        <p>
+            this will install all the necessary components, however you do not have strict access yet! The custom policies are installed via the command above but you will need to go into your <code>config/policies.js</code> file and limit access via the <code>hasApiKey</code> policy.
+        </p>
+    </section>
+    <section>
+        <h2>How can I customize it?</h2>
+        <p>
+            Waterlock by default installs with a default user schema i.e. user authentication with email and password. So you can get up and running fast. We realize this doesn't suite everyones needs so you can change the default installed model or just create your own. If you choose the latter you can remove the AuthController since it probably wont apply. You should also disable password resets if you go this route.</p>
 
-<h3>What does it provide if i disable all of this</h3>
-<p>
-Good question! Api key management, so long as your user model has the following:
-</p>
-<pre>
-apiKeys: {
-    collection: 'apikey',
-    via: 'owner'
-},
-</pre>
-<p>
-this will keep the user association to the ApiKey model and still allow for management of the keys, which is what Waterlock tries to accomplish first and foremost.
-</p>
-</section>
-<section>
+        <h3>What does it provide if i disable all of this</h3>
+        <p>
+            Good question! Api key management, so long as your user model has the following:
+        </p>
+        <pre>
+          apiKeys: {
+              collection: 'apikey',
+              via: 'owner'
+          },
+        </pre>
+        <p>
+            this will keep the user association to the ApiKey model and still allow for management of the keys, which is what Waterlock tries to accomplish first and foremost.
+        </p>
+    </section>
+    <section>
 
-<h2>Config</h2>
-<p>
-Waterlock install a config located at config/waterlock.json this file is currently for user email password resets.
-</p>
+        <h2>Config</h2>
+        <p>
+            Waterlock install a config located at config/waterlock.json this file is currently for user email password resets.
+        </p>
 
-<h3>Password reset</h3>
-<p>
-Waterlock uses nodemailer to send password reset emails. The options in the config file are applied to nodemailer as such
-</p>
-<pre>
-var mail = config.passwordReset.mail;
-nodemailer.createTransport(mail.protocol, mail.options);
-</pre>
-<h2>Template</h2>
-<p>
-You can customize the email template used in the password reset via the template file defined in config/waterlock.json this template file is rendered with the fun and dynamic jade markup, the view var url is generated and passed to it when a user requests and password reset. You can customize this template to your liking and pass any other view vars you wish to it via the vars options in the json file.
-</p>
-
-</section>
+        <h3>Password reset</h3>
+        <p>
+            Waterlock uses nodemailer to send password reset emails. The options in the config file are applied to nodemailer as such
+        </p>
+        <pre>
+          var mail = config.passwordReset.mail;
+          nodemailer.createTransport(mail.protocol, mail.options);
+        </pre>
+        <h2>Template</h2>
+        <p>
+            You can customize the email template used in the password reset via the template file defined in config/waterlock.json this template file is rendered with the fun and dynamic jade markup, the view var url is generated and passed to it when a user requests and password reset. You can customize this template to your liking and pass any other view vars you wish to it via the vars options in the json file.
+        </p>
+    </section>
 </div>
