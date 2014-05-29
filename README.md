@@ -1,5 +1,6 @@
 # Waterlock
-[![Build Status](https://travis-ci.org/davidrivera/waterlock.svg?branch=master)](https://travis-ci.org/davidrivera/waterlock) [![NPM version](https://badge.fury.io/js/waterlock.svg)](http://badge.fury.io/js/waterlock)
+[![Build Status](https://travis-ci.org/davidrivera/waterlock.svg?branch=master)](https://travis-ci.org/davidrivera/waterlock) [![NPM version](https://badge.fury.io/js/waterlock.svg)](http://badge.fury.io/js/waterlock) [![Dependency Status](https://gemnasium.com/davidrivera/waterlock.svg)](https://gemnasium.com/davidrivera/waterlock)
+
 
 Waterlock is an all encompassing user authentication/api key management tool for [Sailsjs](http://sailsjs.com)
 
