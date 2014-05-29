@@ -23,7 +23,7 @@ then run
 ```bash
 ./node_modules/bin/waterlock install all
 ```
-this will install all the necessary components, however you do not have strict access yet! The custom policies are installed via the command above but  
+this will install all the necessary components, however you do not have strict access yet! The custom policies are installed via the command above but not yet applied. To apply policies 
 
 # How can I customize it?
 Waterlock by default installs with a default user schema i.e. user authentication with email and password. So you can get up and running fast. We realize this doesn't suite everyones needs so you can change the default installed model or just create your own. If you choose the latter you can remove the `AuthController` since it probably wont apply. You should also disable password resets if you go this route.
@@ -49,6 +49,10 @@ Waterlock uses `nodemailer` to send password reset emails. The options in the co
 var mail = config.passwordReset.mail;
 nodemailer.createTransport(mail.protocol, mail.options);
 ```
+
+if you choose to go with this option then a user upon visiting the url `/user/reset` with a post param of `email` will receieve an email at that address with the reset url. This url upon clicked with be validated against the server to ensure it's still within the time window allotted for a password reset. If so will set the `resetToken` session variable. After this if you have set a `forwardUrl` in your `waterlock.json` config file the user will be forwarded to this page.
+
+If you want to take advantage of the built in reset itself have the page you sent your user to above `POST` to `/user/reset` with the post param of `password` If all is well a password reset will be issued.
 
 ## Template
 You can customize the email template used in the password reset via the template file defined in `config/waterlock.json` this template file is rendered with the fun and dynamic `jade` markup, the view var `url` is generated and passed to it when a user requests and password reset. You can customize this template to your liking and pass any other view vars you wish to it via the `vars` options in the json file.
