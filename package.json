@@ -17,7 +17,7 @@
     "url": "https://github.com/davidrivera/waterlock/issues"
   },
   "scripts":{
-    "test":"mocha --recursive -c"
+    "test":"mocha --recursive -c -reporter mocha-lcov-reporter | ./node_modules/coveralls/bin/coveralls.js"
   },
   "bin": {
     "waterlock": "./bin/waterlock"
@@ -35,7 +35,9 @@
   "devDependencies":{
     "mocha": "*",
     "should": "*",
-    "proxyquire": "*"
+    "proxyquire": "*",
+    "coveralls": "*",
+    "mocha-lcov-reporter": "*"
   },
   "preferGlobal": false,
   "license": "MIT",
