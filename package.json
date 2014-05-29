@@ -3,6 +3,7 @@
   "version": "0.0.2",
   "author": "David Rivera <david.r.rivera193@gmail.com>",
   "description": "User authentication and api key managment for sails.js",
+  "homepage": "http://davidrivera.github.io/waterlock/",
   "contributors": [ 
     {
       "name": "David Rivera",
