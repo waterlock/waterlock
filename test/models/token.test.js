@@ -2,13 +2,19 @@ var testHelper = require('../test_helper');
 var should = testHelper.should;
 var waterlock = testHelper.waterlock;
 
-describe('model apiKey',function(){
-  var apiKey = waterlock.models.apiKey;
+
+describe('models token', function(){
+  var token = waterlock.models.token;
 
   describe('attributes', function(){
-    var attributes = apiKey.attributes({});
-    it('should  have a key', function(done){
-      attributes.should.have.property('key');
+    var attributes = token.attributes({});
+    it('should  have a resetToken', function(done){
+      attributes.should.have.property('resetToken');
+      done();
+    });
+    
+    it('should have a expiration', function(done){
+      attributes.should.have.property('expiration');
       done();
     });
 
@@ -18,17 +24,17 @@ describe('model apiKey',function(){
     });
 
     it('should have a new attribute', function(done){
-      var attributes = apiKey.attributes({name: 'string'});
+      var attributes = token.attributes({name: 'string'});
       attributes.should.have.property('name');
       done();
     });
-  });
+  }); 
 
   describe('callbacks', function(){
-    var beforeCreate = apiKey.beforeCreate;
+    var beforeCreate = token.beforeCreate;
     describe('beforeCreate', function(){
       it('should exist', function(done){
-        apiKey.should.have.property('beforeCreate');
+        token.should.have.property('beforeCreate');
         done();
       });
       it('beforeCreate', function(done){
@@ -38,18 +44,13 @@ describe('model apiKey',function(){
       });
     });
     
-    var beforeUpdate = apiKey.beforeUpdate;
-    describe('beforeUpdate', function(){
+    var afterCreate = token.afterCreate;
+    describe('afterCreate', function(){
       it('should exist', function(done){
-        apiKey.should.have.property('beforeUpdate');
+        token.should.have.property('afterCreate');
         done();
       });
-      it('beforeUpdate', function(done){
-        beforeUpdate({key: "test"}, function(){
-          done();
-        });
-      });
+
     });
   });
-  
 });

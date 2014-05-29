@@ -46,4 +46,11 @@ describe('utils',function(){
       done()
     });
   });
+
+  describe('mailCallback', function(){
+    it('should exist', function(done){
+      utils.should.have.property('mailCallback');
+      done();
+    });
+  });
 });
