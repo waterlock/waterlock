@@ -1,5 +1,6 @@
 # Site settings
 title: Waterlock
+author: "David Rivera"
 email: david.r.rivera193@gmail.com
 description: "Waterlock documentation"
 baseurl: "http://davidrivera.github.io/waterlock/"
