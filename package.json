@@ -1,6 +1,6 @@
 {
   "name": "waterlock",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "author": "David Rivera <david.r.rivera193@gmail.com>",
   "description": "User authentication and api key managment for sails.js",
   "homepage": "http://davidrivera.github.io/waterlock/",
@@ -18,7 +18,7 @@
     "url": "https://github.com/davidrivera/waterlock/issues"
   },
   "scripts":{
-    "test":"mocha --recursive --colors"
+    "test":"mocha --recursive --colors --reporter spec"
   },
   "bin": {
     "waterlock": "./bin/waterlock"
@@ -29,9 +29,9 @@
     "authentication"
   ],
   "dependencies" : {
-    "moment": "*",
-    "jade": "*",
-    "nodemailer": "*"
+    "moment": "~2.6.0",
+    "jade": "~1.3.1",
+    "nodemailer": "~0.6.5"
   }, 
   "devDependencies":{
     "mocha": "*",
