@@ -63,5 +63,17 @@ You can customize the email template used in the password reset via the template
 # The Future
 We would hope to turn this project into a well oiled api key management tool for users.
 
+## Tests
+
+Tests are run through the wonderful mocha so just clone the library run `npm install` then `npm test`
+
+## Contributing
+
+1. Fork it ( http://github.com/davidrivera/waterlock/fork )
+2. Create your feature branch (`git checkout -b my-new-feature`)
+3. Commit your changes (`git commit -am 'Add some feature'`)
+4. Push to the branch (`git push origin my-new-feature`)
+5. Create new Pull Request
+
 # Legal Stuff
 MIT (see License)
