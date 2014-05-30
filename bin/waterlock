@@ -161,7 +161,24 @@ function installApiModel(){
   fs.createReadStream(userPath).pipe(fs.createWriteStream(installUserPath));
 }
 /*********************/
+/** KeyStat model **/
+function tryInstallAKeyStatModel(){
+  var userFile = "KeyStat.js";
+  var installUserPath = INSTALL_BASE_PATH + "api/models/"+userFile;
 
+  tryAction(installApiModel, installUserPath)
+}
+function installKeyStatModel(){
+  log("installing api model")
+
+  var userFile = "KeyStat.js";
+  var _userPath = BASE_PATH + "/../lib/templates/models/" + userFile;
+  var userPath = path.normalize(_userPath);
+  var installUserPath = INSTALL_BASE_PATH + "api/models/"+userFile;
+  
+  fs.createReadStream(userPath).pipe(fs.createWriteStream(installUserPath));
+}
+/*********************/
 /** Token model **/
 function tryInstallTokenModel(){
   var userFile = "Token.js";
