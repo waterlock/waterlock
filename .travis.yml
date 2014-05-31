@@ -12,10 +12,12 @@ matrix:
 
   include:
     - node_js: "0.10"
+      env: COVERAGE=true
     - node_js: "0.11"
       env: COVERAGE=true
 
   allow_failures:
     - node_js: "0.10"
+      env: COVERAGE=true
     - node_js: "0.11"
       env: COVERAGE=true

@@ -23,6 +23,7 @@ coveralls:
 	@NODE_ENV=test istanbul \
 	cover ./node_modules/mocha/bin/_mocha \
 	--report lcovonly \
+	--recursive \
 	-- -R spec $(TESTS) && \
 	cat ./coverage/lcov.info |\
 	 ./node_modules/coveralls/bin/coveralls.js && \
@@ -38,7 +39,7 @@ clean:
 	@echo "clean..."
 	rm -rf _testapp
 
-coverage: provision test coveralls clean
+coverage: provision base coveralls clean
 
 
 .PHONY: test base coveralls coverage provision
