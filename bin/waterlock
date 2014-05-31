@@ -79,7 +79,8 @@ function installAllModels(trigger){
   INSTALL_CALLBACKS.push(
       tryInstallApiModel,
       tryInstallTokenModel,
-      tryInstallUserModel
+      tryInstallUserModel,
+      tryInstallKeyStatModel
     );
   if(trigger){
     triggerNext();
@@ -162,14 +163,14 @@ function installApiModel(){
 }
 /*********************/
 /** KeyStat model **/
-function tryInstallAKeyStatModel(){
+function tryInstallKeyStatModel(){
   var userFile = "KeyStat.js";
   var installUserPath = INSTALL_BASE_PATH + "api/models/"+userFile;
 
-  tryAction(installApiModel, installUserPath)
+  tryAction(installKeyStatModel, installUserPath)
 }
 function installKeyStatModel(){
-  log("installing api model")
+  log("installing keyStat model")
 
   var userFile = "KeyStat.js";
   var _userPath = BASE_PATH + "/../lib/templates/models/" + userFile;
