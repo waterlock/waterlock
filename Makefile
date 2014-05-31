@@ -3,11 +3,12 @@ TESTS = $(shell find ./tests/* -name "*.test.js")
 MOCHA = ./node_modules/.bin/mocha
 SAILS = ./node_modules/.bin/sails
 WATERLOCK = ./node_modules/.bin/waterlock
+JSHINT = ./node_modules/.bin/jshint
 
 ifeq (true,$(COVERAGE))
-test: coverage
+test: jshint coverage
 else
-test: provision base clean
+test: jshint provision base clean
 endif
 
 base:
@@ -34,7 +35,10 @@ provision:
 	@echo "provisioning..."
 	$(SAILS) new _testapp
 	cd _testapp && pwd && npm install ../ && $(WATERLOCK) install all
-	
+
+jshint:
+	@echo "running lint..."
+	$(JSHINT) lib	
 
 clean:
 	@echo "clean..."

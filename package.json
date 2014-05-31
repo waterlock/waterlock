@@ -39,7 +39,8 @@
     "proxyquire": "*",
     "coveralls": "*",
     "istanbul": "*",
-    "sails": "*"
+    "sails": "*",
+    "jshint": "*"
   },
   "preferGlobal": false,
   "license": "MIT",
