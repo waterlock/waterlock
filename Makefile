@@ -23,7 +23,7 @@ coveralls:
 	@NODE_ENV=test istanbul \
 	cover ./node_modules/mocha/bin/_mocha \
 	--report lcovonly \
-	-- -R spec 
+	-- -R spec \
 	--recursive \
 	$(TESTS) && \
 	cat ./coverage/lcov.info |\
