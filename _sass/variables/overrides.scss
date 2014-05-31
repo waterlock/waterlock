@@ -5,12 +5,13 @@ $font-family-sans-serif: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
 
 /* Colors */
 /******************************************/
-$brand-primary: $base-color;
-$link-color: $link-color; //for the sake of clarity 
-$body-bg: $background-color; 
+$brand-primary: $blue;
+$brand-warning: $yellow;
+$link-color: $green; //for the sake of clarity 
+$body-bg: $gray; 
 
 /* Navbar */
 /******************************************/
-$navbar-default-bg: $base-color;
+$navbar-default-bg: $blue;
 $navbar-default-color: $white;
 $navbar-default-link-color: $white;
