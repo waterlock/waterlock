@@ -1,0 +1,37 @@
+REPORTER = spec
+TESTS = $(shell find ./tests/* -name "*.test.js")
+MOCHA = ./node_modules/.bin/mocha
+SAILS = ./node_modules/.bin/sails
+
+ifeq (true,$(COVERAGE))
+test: coverage
+else
+test: provision base teardown
+endif
+
+base:
+	@NODE_ENV=test $(MOCHA) \
+	--colors \
+    --reporter $(REPORTER) \
+	$(TESTS) 
+	@echo "Running mocha tests..."
+
+coveralls:
+	@NODE_ENV=test istanbul \
+	cover ./node_modules/mocha/bin/_mocha \
+	--report lcovonly \
+	-- -R spec && \
+	cat ./coverage/lcov.info |\
+	 ./node_modules/coveralls/bin/coveralls.js && \
+	 rm -rf ./coverage
+
+provision:
+	$(SAILS) new _testapp
+
+teardown:
+	rm -rf _test
+
+coverage: provision test coveralls teardown
+
+
+.PHONY: test base coveralls coverage provision

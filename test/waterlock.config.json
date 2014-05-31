@@ -1,7 +1,7 @@
 {
   "baseUrl": "app.example.com",
   "passwordReset":{
-    "tokens": false,
+    "tokens": true,
     "mail":{
         "protocol": "SMTP",
         "options":{},
