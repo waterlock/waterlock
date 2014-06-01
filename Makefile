@@ -3,6 +3,7 @@ MOCHA = ./node_modules/.bin/mocha
 SAILS = ./node_modules/.bin/sails
 WATERLOCK = ./node_modules/.bin/waterlock
 JSHINT = ./node_modules/.bin/jshint
+ISTANBUL = ./node_modules/.bin/istanbul
 TESTAPP = _testapp
 
 ifeq (true,$(COVERAGE))
@@ -21,7 +22,7 @@ base:
 	
 coveralls:
 	@echo "running mocha tests with coveralls..."
-	@NODE_ENV=test istanbul \
+	@NODE_ENV=test $(ISTANBUL) \
 	cover ./node_modules/mocha/bin/_mocha \
 	--report lcovonly \
 	-- -R $(REPORTER) \
