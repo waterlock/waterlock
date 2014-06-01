@@ -1,9 +1,9 @@
 REPORTER = spec
-TESTS = $(shell find ./tests/* -name "*.test.js")
 MOCHA = ./node_modules/.bin/mocha
 SAILS = ./node_modules/.bin/sails
 WATERLOCK = ./node_modules/.bin/waterlock
 JSHINT = ./node_modules/.bin/jshint
+TESTAPP = _testapp
 
 ifeq (true,$(COVERAGE))
 test: jshint coverage
@@ -17,24 +17,24 @@ base:
 	--colors \
     --reporter $(REPORTER) \
     --recursive \
-	$(TESTS) 
+	tests
 	
 coveralls:
 	@echo "running mocha tests with coveralls..."
 	@NODE_ENV=test istanbul \
 	cover ./node_modules/mocha/bin/_mocha \
 	--report lcovonly \
-	-- -R spec \
+	-- -R $(REPORTER) \
 	--recursive \
-	$(TESTS) && \
+	tests && \
 	cat ./coverage/lcov.info |\
 	 ./node_modules/coveralls/bin/coveralls.js && \
 	 rm -rf ./coverage
 
 provision:
 	@echo "provisioning..."
-	$(SAILS) new _testapp
-	cd _testapp && \
+	$(SAILS) new $(TESTAPP)
+	cd $(TESTAPP) && \
 	pwd && \
 	npm install ../ && \
 	npm install git+https://git@github.com/davidrivera/waterlock-local-auth.git  && \
@@ -49,7 +49,7 @@ jshint:
 
 clean:
 	@echo "clean..."
-	rm -rf _testapp
+	rm -rf $(TESTAPP)
 
 coverage: provision coveralls clean
 
