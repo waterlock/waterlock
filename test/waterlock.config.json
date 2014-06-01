@@ -1,5 +1,6 @@
 {
   "baseUrl": "app.example.com",
+  "authMethod": "waterlock-local-auth",
   "passwordReset":{
     "tokens": true,
     "mail":{

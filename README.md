@@ -5,11 +5,12 @@
 Waterlock is an all encompassing user authentication/api key management tool for [Sailsjs](http://sailsjs.com)
 
 # What does it provide
-Out of the box waterlock give you the following
+Waterlock provides predefined routes and models for user authentication and api key management/tracking on a per user bases. Password resets are also handeled but we'll cover that below.
+Authentication is handeled via methods. The current supported methods are:
 
-* user authentication via email/password
-* api key management on a per user bases
-* password reset
+| Method | Libaray |
+| ------------- | ------------- |
+| Local Auth | [waterlock-local-auth](https://github.com/davidrivera/waterlock-local-auth) |
 
 it is a great tool if you're looking to grant user access to your api.
 

@@ -25,7 +25,7 @@ describe('model user',function(){
   describe('callbacks', function(){
     var beforeCreate = user.beforeCreate;
     it('beforeCreate', function(done){
-      beforeCreate({key: "test"}, function(){
+      beforeCreate({password: "test"}, function(){
         done();
       });
     });

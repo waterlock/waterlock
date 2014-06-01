@@ -2,7 +2,7 @@ var testHelper = require('../../test_helper');
 var should = testHelper.should;
 var waterlock = testHelper.waterlock;
 
-var auth = waterlock.actions.basicAuth({});
+var auth = waterlock.actions.waterlocked({});
 
 describe('actions logout',function(){
   var logout = auth.logout;

@@ -34,7 +34,14 @@ coveralls:
 provision:
 	@echo "provisioning..."
 	$(SAILS) new _testapp
-	cd _testapp && pwd && npm install ../ && $(WATERLOCK) install all
+	cd _testapp && \
+	pwd && \
+	npm install ../ && \
+	npm install git+https://git@github.com/davidrivera/waterlock-local-auth.git  && \
+	$(WATERLOCK) install all
+
+localauth:
+	npm install git@github.com:davidrivera/waterlock-local-auth.git 
 
 jshint:
 	@echo "running lint..."

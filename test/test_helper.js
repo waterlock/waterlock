@@ -9,6 +9,23 @@ var pathStub = {
   }
 }
 
-exports.waterlock = proxyquire('../lib/waterlock', { 'path': pathStub });
+var methodStub = {
+  actions:{
+    login: function(req, res, next){
+      res.json({}, 200);
+    },
+    logout: function(req, res, next){
+      req.session.authenticated = false;
+      res.json({}, 200);
+    }
+  }
+}
+
+exports.waterlock = proxyquire('../lib/waterlock', 
+  { 
+    'path': pathStub, 
+    '../../waterlock-local-auth': methodStub
+  });
+
 exports.proxyquire = proxyquire;
 exports.should = should;

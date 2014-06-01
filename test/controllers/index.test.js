@@ -5,9 +5,9 @@ var waterlock = testHelper.waterlock;
 var actions = waterlock.actions;
 
 describe('actions index', function(){
-  describe('basicAuth', function(){
+  describe('waterlocked', function(){
     it('should exist', function(done){
-      actions.should.have.property('basicAuth');
+      actions.should.have.property('waterlocked');
       done();
     });
   });
