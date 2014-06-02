@@ -11,11 +11,4 @@ describe('controller', function(){
       done();
     });
   });
-  var user = proxyquire('../lib/templates/controllers/UserController.js',{'waterlock': waterlock});
-  describe('user', function(){
-    it('should exist', function(done){
-      user.should.be.Object;
-      done();
-    });
-  });
 });

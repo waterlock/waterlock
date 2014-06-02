@@ -21,7 +21,7 @@ var methodStub = {
   }
 }
 
-exports.waterlock = proxyquire('../lib/waterlock', 
+exports.waterlock = proxyquire.noCallThru().load('../lib/waterlock', 
   { 
     'path': pathStub, 
     '../../waterlock-local-auth': methodStub
