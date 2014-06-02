@@ -18,16 +18,15 @@ base:
 	--colors \
     --reporter $(REPORTER) \
     --recursive \
-	tests
 	
 coveralls:
+	pwd
 	@echo "running mocha tests with coveralls..."
 	@NODE_ENV=test $(ISTANBUL) \
 	cover ./node_modules/mocha/bin/_mocha \
 	--report lcovonly \
 	-- -R $(REPORTER) \
-	--recursive \
-	tests && \
+	--recursive && \
 	cat ./coverage/lcov.info |\
 	 ./node_modules/coveralls/bin/coveralls.js && \
 	 rm -rf ./coverage
