@@ -80,7 +80,8 @@ function installAllModels(trigger){
       tryInstallApiModel,
       tryInstallTokenModel,
       tryInstallUserModel,
-      tryInstallKeyStatModel
+      tryInstallKeyStatModel,
+      tryInstallAttemptModel
     );
   if(trigger){
     triggerNext();
@@ -173,6 +174,24 @@ function installKeyStatModel(){
   log("installing keyStat model")
 
   var userFile = "KeyStat.js";
+  var _userPath = BASE_PATH + "/../lib/templates/models/" + userFile;
+  var userPath = path.normalize(_userPath);
+  var installUserPath = INSTALL_BASE_PATH + "api/models/"+userFile;
+  
+  fs.createReadStream(userPath).pipe(fs.createWriteStream(installUserPath));
+}
+/*********************/
+/** Attempt model **/
+function tryInstallAttemptModel(){
+  var userFile = "Attempt.js";
+  var installUserPath = INSTALL_BASE_PATH + "api/models/"+userFile;
+
+  tryAction(installAttemptModel, installUserPath)
+}
+function installAttemptModel(){
+  log("installing attempt model")
+
+  var userFile = "Attempt.js";
   var _userPath = BASE_PATH + "/../lib/templates/models/" + userFile;
   var userPath = path.normalize(_userPath);
   var installUserPath = INSTALL_BASE_PATH + "api/models/"+userFile;
