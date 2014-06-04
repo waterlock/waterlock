@@ -50,6 +50,7 @@ jshint:
 clean:
 	@echo "clean..."
 	rm -rf $(TESTAPP)
+	rm -rf coverage
 
 coverage: provision coveralls clean
 
