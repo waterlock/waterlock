@@ -72,8 +72,8 @@ Waterlock install a config located at `config/waterlock.json` this file is used 
 * `autheMethod` - the npm package name for the chosen authentication method
 * `passwordReset` - object containing information regarding password resets
 	* `tokens` - boolean if set to false password resets will be disabled
-	*`mail` - object containing information about your smtp server, see nodemailer
-		*`protocol` - the transport protocol
+	* `mail` - object containing information about your smtp server, see nodemailer
+		* `protocol` - the transport protocol
 		* `options` - how it is use te transport method, see nodemailer
 		* `from` - the from address 
 		* `subject` - the email subject for password reset emails
