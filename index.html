@@ -24,75 +24,171 @@ layout: default
     </div>
 </div>
 <div class="container">
-    <section>
-        <h2>What does it provide</h2>
-        <p>Out of the box waterlock give you the following</p>
-        <ul>
-            <li>user authentication via email/password</li>
-            <li>api key management on a per user bases</li>
-            <li>password reset</li>
-        </ul>
-        <p>
-            it is a great tool if you're looking to grant user access to your api.
-        </p>
-    </section>
-    <section>
-        <h2>How does it work</h2>
-        <p>Since sails currently has no official support for 3rd party libraries like Rails gems; Waterlock works by hooking into your model and controller files adding the functionality needed. When Sails starts officially supporting 3rd party libraries this might change.</p>
-    </section>
-    <section>
-        <h2 id="usage" class="anchor">How do I use it</h2>
-        <p>
-            Glad you asked! If you're on a fresh install of a Sails app first run
-        </p>
-        <pre>
-          npm install waterlock
-        </pre>
-        then run
-        <pre>
-          ./node_modules/bin/waterlock install all
-        </pre>
-        <p>
-            this will install all the necessary components, however you do not have strict access yet! The custom policies are installed via the command above but you will need to go into your <code>config/policies.js</code> file and limit access via the <code>hasApiKey</code> policy.
-        </p>
-    </section>
-    <section>
-        <h2>How can I customize it?</h2>
-        <p>
-            Waterlock by default installs with a default user schema i.e. user authentication with email and password. So you can get up and running fast. We realize this doesn't suite everyones needs so you can change the default installed model or just create your own. If you choose the latter you can remove the AuthController since it probably wont apply. You should also disable password resets if you go this route.</p>
+   <article class="markdown-body entry-content" itemprop="mainContentOfPage"><h1>
+<a name="user-content-waterlock" class="anchor" href="#waterlock"><span class="octicon octicon-link"></span></a>Waterlock</h1>
 
-        <h3>What does it provide if i disable all of this</h3>
-        <p>
-            Good question! Api key management, so long as your user model has the following:
-        </p>
-        <pre>
-          apiKeys: {
-              collection: 'apikey',
-              via: 'owner'
-          },
-        </pre>
-        <p>
-            this will keep the user association to the ApiKey model and still allow for management of the keys, which is what Waterlock tries to accomplish first and foremost.
-        </p>
-    </section>
-    <section>
+<p><a href="https://travis-ci.org/davidrivera/waterlock"><img src="https://camo.githubusercontent.com/43a33d5accf2bcd2a9cde931252aebbb983aad9b/68747470733a2f2f7472617669732d63692e6f72672f64617669647269766572612f77617465726c6f636b2e7376673f6272616e63683d6d6173746572" alt="Build Status" data-canonical-src="https://travis-ci.org/davidrivera/waterlock.svg?branch=master" style="max-width:100%;"></a> <a href="http://badge.fury.io/js/waterlock"><img src="https://camo.githubusercontent.com/3231c1473e198ae80567c31bc3709a3a5773d836/68747470733a2f2f62616467652e667572792e696f2f6a732f77617465726c6f636b2e737667" alt="NPM version" data-canonical-src="https://badge.fury.io/js/waterlock.svg" style="max-width:100%;"></a> <a href="https://gemnasium.com/davidrivera/waterlock"><img src="https://camo.githubusercontent.com/0534c508700a80e48ffb5277d0df850f0cc5cb24/68747470733a2f2f67656d6e617369756d2e636f6d2f64617669647269766572612f77617465726c6f636b2e737667" alt="Dependency Status" data-canonical-src="https://gemnasium.com/davidrivera/waterlock.svg" style="max-width:100%;"></a> <a href="https://coveralls.io/r/davidrivera/waterlock?branch=master"><img src="https://camo.githubusercontent.com/be247bfb9e1f66747203e1b2033159f6edfd1cd4/68747470733a2f2f636f766572616c6c732e696f2f7265706f732f64617669647269766572612f77617465726c6f636b2f62616467652e706e673f6272616e63683d6d6173746572" alt="Coverage Status" data-canonical-src="https://coveralls.io/repos/davidrivera/waterlock/badge.png?branch=master" style="max-width:100%;"></a></p>
 
-        <h2>Config</h2>
-        <p>
-            Waterlock install a config located at config/waterlock.json this file is currently for user email password resets.
-        </p>
+<p>Waterlock is an all encompassing user authentication/api key management tool for <a href="http://sailsjs.com">Sailsjs</a> <code>version 0.10</code></p>
 
-        <h3>Password reset</h3>
-        <p>
-            Waterlock uses nodemailer to send password reset emails. The options in the config file are applied to nodemailer as such
-        </p>
-        <pre>
-          var mail = config.passwordReset.mail;
-          nodemailer.createTransport(mail.protocol, mail.options);
-        </pre>
-        <h2>Template</h2>
-        <p>
-            You can customize the email template used in the password reset via the template file defined in config/waterlock.json this template file is rendered with the fun and dynamic jade markup, the view var url is generated and passed to it when a user requests and password reset. You can customize this template to your liking and pass any other view vars you wish to it via the vars options in the json file.
-        </p>
-    </section>
+<h1>
+<a name="user-content-what-does-it-provide" class="anchor" href="#what-does-it-provide"><span class="octicon octicon-link"></span></a>What does it provide</h1>
+
+<p>Waterlock provides predefined routes and models for user authentication and api key management/tracking on a per user bases. Password resets are also handeled but we'll cover that below.
+Authentication is handeled via methods. The current supported methods are:</p>
+
+<table class="table">
+<thead><tr>
+<th>Method</th>
+<th>Libaray</th>
+</tr></thead>
+<tbody><tr>
+<td>Local Auth</td>
+<td><a href="https://github.com/davidrivera/waterlock-local-auth">waterlock-local-auth</a></td>
+</tr></tbody>
+</table><p>it is a great tool if you're looking to grant user access to your api.</p>
+
+<h1>
+<a name="user-content-how-does-it-work" class="anchor" href="#how-does-it-work"><span class="octicon octicon-link"></span></a>How does it work</h1>
+
+<p>Since sails currently has no official support for 3rd party libraries like Rails gems; Waterlock works by hooking into your model and controller files adding the functionality needed. When Sails starts officially supporting 3rd party libraries this might change.</p>
+
+<h1 class="anchor" id="usage">How do I use it</h1>
+
+<p>Glad you asked! If you're on a fresh install of a Sails app first run</p>
+
+<div class="highlight highlight-bash"><pre>npm install waterlock
+npm install waterlock-local-auth
+</pre></div>
+
+<p>then run</p>
+
+<div class="highlight highlight-bash"><pre>./node_modules/bin/waterlock install all
+</pre></div>
+
+<p>this will install all the necessary components, however you do not have strict access yet! The custom policies are installed via the command above but not yet applied. To apply policies crack open your <code>config/policies.js</code> file and add someting like the following:</p>
+
+<div class="highlight highlight-js"><pre><span class="nx">MyController</span><span class="o">:</span><span class="p">{</span>
+    <span class="s1">'*'</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s1">'myApiAction'</span><span class="o">:</span> <span class="p">[</span><span class="s1">'hasApiKey'</span><span class="p">],</span>
+    <span class="s1">'mySessionAction'</span><span class="o">:</span> <span class="p">[</span><span class="s1">'sessionAuth'</span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>now with your policies applied to your custom controller you're good to go! (given you've actually implemented some login in them e.g. <code>res.view()</code>)</p>
+
+<h1>
+<a name="user-content-how-can-i-customize-it" class="anchor" href="#how-can-i-customize-it"><span class="octicon octicon-link"></span></a>How can I customize it?</h1>
+
+<p>Waterlock wraps around models and controllers so you can override any of the actions and definition that are predefined. After running <code>waterlock install all</code> open up the <code>User.js</code> file you'll see this:</p>
+
+<div class="highlight highlight-js"><pre>  <span class="nx">attributes</span><span class="o">:</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'waterlock'</span><span class="p">).</span><span class="nx">models</span><span class="p">.</span><span class="nx">basicUser</span><span class="p">.</span><span class="nx">attributes</span><span class="p">({</span>
+
+    <span class="cm">/* e.g.</span>
+<span class="cm">    nickname: 'string'</span>
+<span class="cm">    */</span>
+
+  <span class="p">}),</span>
+</pre></div>
+
+<p>you can add any custom attributes you wish to your user model by just dropping them in like normal.</p>
+
+<h2>
+<a name="user-content-what-if-i-want-to-control-my-own-user-model" class="anchor" href="#what-if-i-want-to-control-my-own-user-model"><span class="octicon octicon-link"></span></a>What if I want to control my own User model</h2>
+
+<p>Good question! If for whatever reason be it we haven't implemented a certain authentication method or your case it exceptionally complex. You can still take advantage of Waterlocks api key management, so long as your user model has the following:</p>
+
+<div class="highlight highlight-js"><pre><span class="nx">apiKeys</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">collection</span><span class="o">:</span> <span class="s1">'apikey'</span><span class="p">,</span>
+    <span class="nx">via</span><span class="o">:</span> <span class="s1">'owner'</span>
+<span class="p">},</span>
+</pre></div>
+
+<p>this will keep the user association to the ApiKey model and still allow for management of the keys, which is what Waterlock tries to accomplish first and foremost.</p>
+
+<h1>
+<a name="user-content-config" class="anchor" href="#config"><span class="octicon octicon-link"></span></a>Config</h1>
+
+<p>Waterlock install a config located at <code>config/waterlock.json</code> this file is used to set various options</p>
+
+<ul class="task-list">
+<li>
+<code>baseUrl</code> - this is the URL your app resides at, used in password reset urls</li>
+<li>
+<code>autheMethod</code> - the npm package name for the chosen authentication method</li>
+<li>
+<code>passwordReset</code> - object containing information regarding password resets
+
+<ul class="task-list">
+<li>
+<code>tokens</code> - boolean if set to false password resets will be disabled</li>
+<li>
+<code>mail</code> - object containing information about your smtp server, see nodemailer
+
+<ul class="task-list">
+<li>
+<code>protocol</code> - the transport protocol</li>
+<li>
+<code>options</code> - how it is use te transport method, see nodemailer</li>
+<li>
+<code>from</code> - the from address </li>
+<li>
+<code>subject</code> - the email subject for password reset emails</li>
+<li>
+<code>forwardUrl</code> - the url to send the user to after they have clicked the password reset link in their inbox (e.g. a form on your site which POST to <code>/user/reset</code>)</li>
+</ul>
+</li>
+<li>
+<code>template</code> - object containing template information for the reset emails
+
+<ul class="task-list">
+<li>
+<code>file</code> - the relative path to the <code>jade</code> template for the reset emails</li>
+<li>
+<code>vars</code> - object containing any vars you want passed to the template for rendering</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul><h2>
+<a name="user-content-password-reset" class="anchor" href="#password-reset"><span class="octicon octicon-link"></span></a>Password reset</h2>
+
+<p>Waterlock uses <code>nodemailer</code> to send password reset emails. The options in the config file are applied to nodemailer as such</p>
+
+<div class="highlight highlight-js"><pre><span class="kd">var</span> <span class="nx">mail</span> <span class="o">=</span> <span class="nx">config</span><span class="p">.</span><span class="nx">passwordReset</span><span class="p">.</span><span class="nx">mail</span><span class="p">;</span>
+<span class="nx">nodemailer</span><span class="p">.</span><span class="nx">createTransport</span><span class="p">(</span><span class="nx">mail</span><span class="p">.</span><span class="nx">protocol</span><span class="p">,</span> <span class="nx">mail</span><span class="p">.</span><span class="nx">options</span><span class="p">);</span>
+</pre></div>
+
+<p>if you choose to go with this option then a user upon visiting the url <code>/user/reset</code> with a post param of <code>email</code> will receieve an email at that address with the reset url. This url upon clicked with be validated against the server to ensure it's still within the time window allotted for a password reset. If so will set the <code>resetToken</code> session variable. After this if you have set a <code>forwardUrl</code> in your <code>waterlock.json</code> config file the user will be forwarded to this page.</p>
+
+<p>If you want to take advantage of the built in reset itself have the page you sent your user to above <code>POST</code> to <code>/user/reset</code> with the post param of <code>password</code> If all is well a password reset will be issued.</p>
+
+<h2>
+<a name="user-content-template" class="anchor" href="#template"><span class="octicon octicon-link"></span></a>Template</h2>
+
+<p>You can customize the email template used in the password reset via the template file defined in <code>config/waterlock.json</code> this template file is rendered with the fun and dynamic <code>jade</code> markup, the view var <code>url</code> is generated and passed to it when a user requests and password reset. You can customize this template to your liking and pass any other view vars you wish to it via the <code>vars</code> options in the json file.</p>
+
+<h1>
+<a name="user-content-the-future" class="anchor" href="#the-future"><span class="octicon octicon-link"></span></a>The Future</h1>
+
+<p>We would hope to turn this project into a well oiled api key management tool for users.</p>
+
+<h2>
+<a name="user-content-tests" class="anchor" href="#tests"><span class="octicon octicon-link"></span></a>Tests</h2>
+
+<p>Tests are run through the wonderful mocha so just clone the library run <code>npm install</code> then <code>npm test</code></p>
+
+<h2>
+<a name="user-content-contributing" class="anchor" href="#contributing"><span class="octicon octicon-link"></span></a>Contributing</h2>
+
+<ol class="task-list">
+<li>Fork it ( <a href="http://github.com/davidrivera/waterlock/fork">http://github.com/davidrivera/waterlock/fork</a> )</li>
+<li>Create your feature branch (<code>git checkout -b my-new-feature</code>)</li>
+<li>Commit your changes (<code>git commit -am 'Add some feature'</code>)</li>
+<li>Push to the branch (<code>git push origin my-new-feature</code>)</li>
+<li>Create new Pull Request</li>
+</ol><h1>
+<a name="user-content-legal-stuff" class="anchor" href="#legal-stuff"><span class="octicon octicon-link"></span></a>Legal Stuff</h1>
+
+<p>MIT (see License)</p></article>
 </div>
