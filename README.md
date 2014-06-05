@@ -68,19 +68,19 @@ this will keep the user association to the ApiKey model and still allow for mana
 # Config
 Waterlock install a config located at `config/waterlock.json` this file is used to set various options
 
-* `baseUrl`			- this is the URL your app resides at, used in password reset urls
-* `autheMethod`		- the npm package name for the chosen authentication method
-* `passwordReset`	- object containing information regarding password resets
-* 	`tokens`	- boolean if set to false password resets will be disabled
-* 	`mail`		- object containing information about your smtp server, see nodemailer
-* 		`protocol`		- the transport protocol
-* 		`options`		- how it is use te transport method, see nodemailer
-* 		`from`			- the from address 
-* 		`subject`		- the email subject for password reset emails
-* 		`forwardUrl`	- the url to send the user to after they have clicked the password reset link in their inbox (e.g. a form on your site which POST to `/user/reset`)
-* 	`template`	- object containing template information for the reset emails
-* 		`file`	- the relative path to the `jade` template for the reset emails
-* 		`vars`	- object containing any vars you want passed to the template for rendering
+* `baseUrl` - this is the URL your app resides at, used in password reset urls
+* `autheMethod` - the npm package name for the chosen authentication method
+* `passwordReset` - object containing information regarding password resets
+	* `tokens` - boolean if set to false password resets will be disabled
+	*`mail` - object containing information about your smtp server, see nodemailer
+		*`protocol` - the transport protocol
+		* `options` - how it is use te transport method, see nodemailer
+		* `from` - the from address 
+		* `subject` - the email subject for password reset emails
+		* `forwardUrl` - the url to send the user to after they have clicked the password reset link in their inbox (e.g. a form on your site which POST to `/user/reset`)
+	* `template` - object containing template information for the reset emails
+		* `file` - the relative path to the `jade` template for the reset emails
+		* `vars` - object containing any vars you want passed to the template for rendering
 
 ## Password reset
 Waterlock uses `nodemailer` to send password reset emails. The options in the config file are applied to nodemailer as such
