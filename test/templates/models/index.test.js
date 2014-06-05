@@ -29,10 +29,10 @@ describe('installed models', function(){
     });
   });
 
-  var keyStat = proxyquire('../_testapp/api/models/KeyStat.js', waterStub);
-  describe('keyStat', function(){
+  var use = proxyquire('../_testapp/api/models/Use.js', waterStub);
+  describe('use', function(){
     it('should exist', function(done){
-      keyStat.should.be.Object;
+      use.should.be.Object;
       done();
     });
   });

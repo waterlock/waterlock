@@ -23,9 +23,9 @@ describe('models index', function(){
       done();
     });
   });
-  describe('keyStat', function(){
+  describe('use', function(){
     it('should exist', function(done){
-      models.should.have.property('keyStat');
+      models.should.have.property('use');
       done();
     });
   });
