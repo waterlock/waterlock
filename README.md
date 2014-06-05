@@ -2,7 +2,7 @@
 [![Build Status](https://travis-ci.org/davidrivera/waterlock.svg?branch=master)](https://travis-ci.org/davidrivera/waterlock) [![NPM version](https://badge.fury.io/js/waterlock.svg)](http://badge.fury.io/js/waterlock) [![Dependency Status](https://gemnasium.com/davidrivera/waterlock.svg)](https://gemnasium.com/davidrivera/waterlock) [![Coverage Status](https://coveralls.io/repos/davidrivera/waterlock/badge.png?branch=master)](https://coveralls.io/r/davidrivera/waterlock?branch=master)
 
 
-Waterlock is an all encompassing user authentication/api key management tool for [Sailsjs](http://sailsjs.com)
+Waterlock is an all encompassing user authentication/api key management tool for [Sailsjs](http://sailsjs.com) `version 0.10`
 
 # What does it provide
 Waterlock provides predefined routes and models for user authentication and api key management/tracking on a per user bases. Password resets are also handeled but we'll cover that below.
@@ -20,20 +20,41 @@ Since sails currently has no official support for 3rd party libraries like Rails
 # How do I use it
 Glad you asked! If you're on a fresh install of a Sails app first run
 ```bash
-npm install Waterlock
+npm install waterlock
+npm install waterlock-local-auth
 ```
 
 then run
 ```bash
 ./node_modules/bin/waterlock install all
 ```
-this will install all the necessary components, however you do not have strict access yet! The custom policies are installed via the command above but not yet applied. To apply policies 
+this will install all the necessary components, however you do not have strict access yet! The custom policies are installed via the command above but not yet applied. To apply policies crack open your `config/policies.js` file and add someting like the following:
+
+```js
+MyController:{
+	'*': true,
+	'myApiAction': ['hasApiKey'],
+	'mySessionAction': ['sessionAuth']
+}
+```
+
+now with your policies applied to your custom controller you're good to go! (given you've actually implemented some login in them e.g. `res.view()`)
 
 # How can I customize it?
-Waterlock by default installs with a default user schema i.e. user authentication with email and password. So you can get up and running fast. We realize this doesn't suite everyones needs so you can change the default installed model or just create your own. If you choose the latter you can remove the `AuthController` since it probably wont apply. You should also disable password resets if you go this route.
+Waterlock wraps around models and controllers so you can override any of the actions and definition that are predefined. After running `waterlock install all` open up the `User.js` file you'll see this:
+```js
+  attributes: require('waterlock').models.basicUser.attributes({
+    
+    /* e.g.
+    nickname: 'string'
+    */
+    
+  }),
+```
+you can add any custom attributes you wish to your user model by just dropping them in like normal.
 
-## What does it provide if i disable all of this
-Good question! Api key management, so long as your user model has the following:
+## What if I want to control my own User model
+Good question! If for whatever reason be it we haven't implemented a certain authentication method or your case it exceptionally complex. You can still take advantage of Waterlocks api key management, so long as your user model has the following:
 
 ```js
 apiKeys: {
@@ -45,7 +66,21 @@ apiKeys: {
 this will keep the user association to the ApiKey model and still allow for management of the keys, which is what Waterlock tries to accomplish first and foremost.
 
 # Config
-Waterlock install a config located at `config/waterlock.json` this file is currently for user email password resets. 
+Waterlock install a config located at `config/waterlock.json` this file is used to set various options
+
+* `baseUrl`			- this is the URL your app resides at, used in password reset urls
+* `autheMethod`		- the npm package name for the chosen authentication method
+* `passwordReset`	- object containing information regarding password resets
+* 	`tokens`	- boolean if set to false password resets will be disabled
+* 	`mail`		- object containing information about your smtp server, see nodemailer
+* 		`protocol`		- the transport protocol
+* 		`options`		- how it is use te transport method, see nodemailer
+* 		`from`			- the from address 
+* 		`subject`		- the email subject for password reset emails
+* 		`forwardUrl`	- the url to send the user to after they have clicked the password reset link in their inbox (e.g. a form on your site which POST to `/user/reset`)
+* 	`template`	- object containing template information for the reset emails
+* 		`file`	- the relative path to the `jade` template for the reset emails
+* 		`vars`	- object containing any vars you want passed to the template for rendering
 
 ## Password reset
 Waterlock uses `nodemailer` to send password reset emails. The options in the config file are applied to nodemailer as such
