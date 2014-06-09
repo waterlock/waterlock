@@ -7,31 +7,19 @@ var rl = readline.createInterface({
   output: process.stdout
 });
 
-var BASE_PATH = __dirname;
-var INSTALL_BASE_PATH = path.normalize(BASE_PATH+"/../../../");
-var SPACE = "  ";
 
-var INSTALL_CALLBACKS = [];
 
-if(process.argv.length < 3){
-  usageExit()
-}
+module.exports = function(){
+  var args = Array.prototype.slice.call(arguments);
+  var meta = args.pop();
+  var task = args.shift();
 
-switch(process.argv[2]){
-  case 'install':
-    install();
-    break;
-  default:
-    usageExit();
-    break;
-}
-
-function install(){
-  if(process.argv.length < 4){
-    usageExit();
+  var raw = false;
+  if(typeof meta.raw !== 'undefined' && meta.raw){
+    raw = meta.raw;
   }
 
-  switch(process.argv[3]){
+  switch(task){
     case 'all':
       installAll();
       break;
@@ -55,6 +43,55 @@ function install(){
       break;
   }
 }
+
+var BASE_PATH = __dirname;
+var INSTALL_BASE_PATH = path.normalize(BASE_PATH+"/../../../");
+var SPACE = "  ";
+
+var INSTALL_CALLBACKS = [];
+
+// if(process.argv.length < 3){
+//   usageExit()
+// }
+
+// switch(process.argv[2]){
+//   case 'install':
+//     install();
+//     break;
+//   default:
+//     usageExit();
+//     break;
+// }
+
+// function install(){
+//   if(process.argv.length < 4){
+//     usageExit();
+//   }
+
+//   switch(process.argv[3]){
+//     case 'all':
+//       installAll();
+//       break;
+//     case 'models':
+//       installAllModels(true);
+//       break;
+//     case 'controllers':
+//       installAllControllers(true);
+//       break;
+//     case 'config':
+//       installAllConfigs(true);
+//       break;
+//     case 'email':
+//       installAllEmailTemplates(true);
+//       break;
+//     case 'policy':
+//       installAllPolicies(true);
+//       break;
+//     default:
+//       usageExit();
+//       break;
+//   }
+// }
 
 function installAll(){
   installAllPolicies(false);
@@ -353,15 +390,15 @@ function usageExit(){
 }
 
 function usage(){
-  log("Usage: waterlock [cmd]");
-  log("Commands:")
-  log("  install [option]")
-  log("    all          - installs all components", false)
-  log("    models       - installs all models", false)
-  log("    controllers  - installs all controllers", false)
-  log("    config       - installs default waterlock config", false)
-  log("    email        - installs default email template", false)
-  log("    policy       - installs default hasApiKey policy")
+  console.log("")
+  log("Usage: generate [resource]");
+  log("Resources:")
+  log("  all                    generates all components", false);
+  log("  models                 generates all models", false);
+  log("  controllers            generates all controllers", false);
+  log("  config                 generates default config", false);
+  log("  email                  generates default email template", false);
+  log("  policies               generates all policies");
 }
 
 function log(msg, br){

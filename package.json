@@ -21,7 +21,7 @@
     "test":"make test"
   },
   "bin": {
-    "waterlock": "./bin/waterlock"
+    "waterlock": "./bin/waterlock.js"
   },
   "keywords": [
     "waterlock",
@@ -32,7 +32,9 @@
     "moment": "~2.6.0",
     "jade": "~1.3.1",
     "nodemailer": "~0.6.5",
-    "bcrypt": "~0.7.8"
+    "bcrypt": "~0.7.8",
+    "commander": "~2.2.0",
+    "lodash": "~2.4.1"
   }, 
   "devDependencies":{
     "mocha": "*",
