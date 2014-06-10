@@ -28,7 +28,7 @@ then run
 ```bash
 ./node_modules/bin/waterlock generate all
 ```
-this will generate all the necessary components, however you do not have strict access yet! The custom policies are installed via the command above but not yet applied. To apply policies crack open your `config/policies.js` file and add someting like the following:
+this will generate all the necessary components, however you do not have strict access yet! The custom policies are generated via the command above but not yet applied. To apply policies crack open your `config/policies.js` file and add someting like the following:
 
 ```js
 MyController:{
@@ -41,7 +41,7 @@ MyController:{
 now with your policies applied to your custom controller you're good to go! (given you've actually implemented some login in them e.g. `res.view()`)
 
 # How can I customize it?
-Waterlock wraps around models and controllers so you can override any of the actions and definition that are predefined. After running `waterlock install all` open up the `User.js` file you'll see this:
+Waterlock wraps around models and controllers so you can override any of the actions and definition that are predefined. After running `waterlock generate all` open up the `User.js` file you'll see this:
 ```js
   attributes: require('waterlock').models.basicUser.attributes({
     
@@ -66,7 +66,7 @@ apiKeys: {
 this will keep the user association to the ApiKey model and still allow for management of the keys, which is what Waterlock tries to accomplish first and foremost.
 
 # Config
-Waterlock install a config located at `config/waterlock.json` this file is used to set various options
+Waterlock generates a config located at `config/waterlock.json` this file is used to set various options
 
 * `baseUrl` - this is the URL your app resides at, used in password reset urls
 * `autheMethod` - the npm package name for the chosen authentication method
@@ -83,7 +83,7 @@ Waterlock install a config located at `config/waterlock.json` this file is used 
 		* `vars` - object containing any vars you want passed to the template for rendering
 
 ## Password reset
-Waterlock uses `nodemailer` to send password reset emails. The options in the config file are applied to nodemailer as such
+Waterlock uses [nodemailer](http://www.nodemailer.com/) to send password reset emails. The options in the config file are applied to nodemailer as such
 ```js
 var mail = config.passwordReset.mail;
 nodemailer.createTransport(mail.protocol, mail.options);
