@@ -1,5 +1,5 @@
 # Waterlock
-[![Build Status](https://travis-ci.org/davidrivera/waterlock.svg?branch=master)](https://travis-ci.org/davidrivera/waterlock) [![NPM version](https://badge.fury.io/js/waterlock.svg)](http://badge.fury.io/js/waterlock) [![Dependency Status](https://gemnasium.com/davidrivera/waterlock.svg)](https://gemnasium.com/davidrivera/waterlock) [![Coverage Status](https://coveralls.io/repos/davidrivera/waterlock/badge.png?branch=master)](https://coveralls.io/r/davidrivera/waterlock?branch=master)
+[![Build Status](http://img.shields.io/travis/davidrivera/waterlock.svg?style=flat)](https://travis-ci.org/davidrivera/waterlock) [![NPM version](http://img.shields.io/npm/v/waterlock.svg?style=flat)](http://badge.fury.io/js/waterlock) [![Dependency Status](http://img.shields.io/gemnasium/davidrivera/waterlock.svg?style=flat)](https://gemnasium.com/davidrivera/waterlock) [![Coverage Status](http://img.shields.io/coveralls/davidrivera/waterlock/master.svg?style=flat)](https://coveralls.io/r/davidrivera/waterlock?branch=master)
 
 
 Waterlock is an all encompassing user authentication/api key management tool for [Sailsjs](http://sailsjs.com) `version 0.10`
@@ -26,9 +26,9 @@ npm install waterlock-local-auth
 
 then run
 ```bash
-./node_modules/bin/waterlock install all
+./node_modules/bin/waterlock generate all
 ```
-this will install all the necessary components, however you do not have strict access yet! The custom policies are installed via the command above but not yet applied. To apply policies crack open your `config/policies.js` file and add someting like the following:
+this will generate all the necessary components, however you do not have strict access yet! The custom policies are installed via the command above but not yet applied. To apply policies crack open your `config/policies.js` file and add someting like the following:
 
 ```js
 MyController:{
