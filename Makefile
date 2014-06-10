@@ -38,7 +38,7 @@ provision:
 	pwd && \
 	npm install ../ && \
 	npm install git+https://git@github.com/davidrivera/waterlock-local-auth.git  && \
-	$(WATERLOCK) install all
+	$(WATERLOCK) generate all
 
 localauth:
 	npm install git@github.com:davidrivera/waterlock-local-auth.git 
