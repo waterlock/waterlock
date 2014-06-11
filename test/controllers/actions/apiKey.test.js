@@ -2,11 +2,11 @@ var testHelper = require('../../test_helper');
 var should = testHelper.should;
 var waterlock = testHelper.waterlock;
 
-var reset = waterlock.actions.user({}).reset;
+var apiKey = waterlock.actions.user({}).apiKey;
 
-describe('email reset action', function(){
+describe('apiKey action', function(){
   it('should exist', function(done){
-    reset.should.be.Function;
+    apiKey.should.be.Function;
     done();
   });
 
@@ -16,6 +16,6 @@ describe('email reset action', function(){
       code.should.equal(404);
       done();
     }};
-    reset(req, res);
+    apiKey(req, res);
   });
 });
