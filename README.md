@@ -1,4 +1,4 @@
-[![Waterlock](https://lh4.googleusercontent.com/-_dZ8AFaiOn4/U5e9qgpMb4I/AAAAAAAAH8k/Era96Hh9zU0/w611-h144-no/waterlock-header.png)](http://davidrivera.github.io/waterlock/)
+[![Waterlock](https://lh3.googleusercontent.com/-aThk1tYLSh0/U5fAM6NyB5I/AAAAAAAAH84/FKmmmQ80XWY/w611-h144-no/waterlock-header.png)](http://davidrivera.github.io/waterlock/)
 -----------------------------------------------
 [![Build Status](http://img.shields.io/travis/davidrivera/waterlock.svg?style=flat)](https://travis-ci.org/davidrivera/waterlock) [![NPM version](http://img.shields.io/npm/v/waterlock.svg?style=flat)](http://badge.fury.io/js/waterlock) [![Dependency Status](http://img.shields.io/gemnasium/davidrivera/waterlock.svg?style=flat)](https://gemnasium.com/davidrivera/waterlock) [![Coverage Status](http://img.shields.io/coveralls/davidrivera/waterlock/master.svg?style=flat)](https://coveralls.io/r/davidrivera/waterlock?branch=master) [![Gittip](http://img.shields.io/gittip/davidrivera.svg?style=flat)](https://www.gittip.com/davidrivera/)
 
