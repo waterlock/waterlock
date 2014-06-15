@@ -18,7 +18,8 @@ var methodStub = {
       req.session.authenticated = false;
       res.json({}, 200);
     }
-  }
+  },
+  model:{}
 }
 
 exports.waterlock = proxyquire.noCallThru().load('../lib/waterlock', 
