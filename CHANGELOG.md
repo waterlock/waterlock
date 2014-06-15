@@ -1,3 +1,7 @@
+# v0.0.6
+* [FEATURE] authMethod can now accept an object or string for different methods
+* [FEATURE] user model now defined more dynamically by authMethod
+
 # v0.0.5
 * [FEATURE] refactored reset action
 * [FEATURE] refactored cli script

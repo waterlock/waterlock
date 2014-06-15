@@ -12,6 +12,7 @@ Authentication is handeled via methods. The current supported methods are:
 | Method | Libaray |
 | ------------- | ------------- |
 | Local Auth | [waterlock-local-auth](https://github.com/davidrivera/waterlock-local-auth) |
+| Twitter Auth | [waterlock-twitter-auth](https://github.com/davidrivera/waterlock-twitter-auth) |
 
 it is a great tool if you're looking to grant user access to your api.
 
