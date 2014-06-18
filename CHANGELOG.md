@@ -1,3 +1,6 @@
+# v0.0.7
+* [BUG] user might not always have password
+
 # v0.0.6
 * [FEATURE] authMethod can now accept an object or string for different methods
 * [FEATURE] user model now defined more dynamically by authMethod

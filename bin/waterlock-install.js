@@ -50,49 +50,6 @@ var SPACE = "  ";
 
 var INSTALL_CALLBACKS = [];
 
-// if(process.argv.length < 3){
-//   usageExit()
-// }
-
-// switch(process.argv[2]){
-//   case 'install':
-//     install();
-//     break;
-//   default:
-//     usageExit();
-//     break;
-// }
-
-// function install(){
-//   if(process.argv.length < 4){
-//     usageExit();
-//   }
-
-//   switch(process.argv[3]){
-//     case 'all':
-//       installAll();
-//       break;
-//     case 'models':
-//       installAllModels(true);
-//       break;
-//     case 'controllers':
-//       installAllControllers(true);
-//       break;
-//     case 'config':
-//       installAllConfigs(true);
-//       break;
-//     case 'email':
-//       installAllEmailTemplates(true);
-//       break;
-//     case 'policy':
-//       installAllPolicies(true);
-//       break;
-//     default:
-//       usageExit();
-//       break;
-//   }
-// }
-
 function installAll(){
   installAllPolicies(false);
   installAllModels(false);
