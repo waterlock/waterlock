@@ -9,10 +9,11 @@ Waterlock is an all encompassing user authentication/api key management tool for
 Waterlock provides predefined routes and models for user authentication and api key management/tracking on a per user bases. Password resets are also handeled but we'll cover that below.
 Authentication is handeled via methods. The current supported methods are:
 
-| Method | Libaray |
+| Method | Library |
 | ------------- | ------------- |
 | Local Auth | [waterlock-local-auth](https://github.com/davidrivera/waterlock-local-auth) |
 | Twitter Auth | [waterlock-twitter-auth](https://github.com/davidrivera/waterlock-twitter-auth) |
+| Facebook Auth | [waterlock-facebook-auth](https://github.com/davidrivera/waterlock-facebook-auth) |
 
 it is a great tool if you're looking to grant user access to your api.
 
