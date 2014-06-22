@@ -14,7 +14,6 @@
 	"unused": true,
 	"indent":2,
 	"bitwise":false,
-	"camelcase":true,
 	"freeze":true,
 	"newcap":true,
 	"node":true,
@@ -23,5 +22,5 @@
 	"strict":true,
 	"laxbreak":true,
   	"laxcomma":true,
-	"predef":["User", "Token", "ApiKey", "Use"]
+	"predef":["User", "ResetToken", "ApiKey", "Use", "Jwt"]
 }

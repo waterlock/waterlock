@@ -20,5 +20,14 @@
       "file": "../views/email.jade",
       "vars":{}
     }
+  },
+  "jsonWebTokens":{
+    "secret": "this is my secret",
+    "expiry":{
+      "unit": "days",
+      "length": "7"
+    },
+    "audience": "app name",
+    "principal": "subject"
   }
 }

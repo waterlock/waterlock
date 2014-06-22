@@ -4,10 +4,10 @@ var waterlock = testHelper.waterlock;
 var proxyquire = testHelper.proxyquire;
 
 describe('models', function(){
-  var apiKey = proxyquire('../lib/templates/models/ApiKey.js',{'waterlock': waterlock});
-  describe('apiKey', function(){
+  var token = proxyquire('../lib/templates/models/ResetToken.js', {'waterlock': waterlock});
+  describe('token', function(){
     it('should exist', function(done){
-      apiKey.should.be.Object;
+      token.should.be.Object;
       done();
     });
   });

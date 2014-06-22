@@ -25,6 +25,8 @@ var methodStub = {
 exports.waterlock = proxyquire.noCallThru().load('../lib/waterlock', 
   { 
     'path': pathStub, 
+    'jwt-simple': {},
+    'node-uuid': {},
     '../../waterlock-local-auth': methodStub
   });
 

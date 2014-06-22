@@ -5,10 +5,10 @@ var waterStub = {'waterlock': waterlock};
 var proxyquire = testHelper.proxyquire;
 
 describe('installed models', function(){
-  var apiKey = proxyquire('../_testapp/api/models/ApiKey.js', waterStub);
-  describe('apiKey', function(){
+  var jwt = proxyquire('../_testapp/api/models/Jwt.js', waterStub);
+  describe('jwt', function(){
     it('should exsit', function(done){
-      apiKey.should.be.Object;
+      jwt.should.be.Object;
       done();
     });
   });
@@ -21,10 +21,10 @@ describe('installed models', function(){
     });
   });
 
-  var token = proxyquire('../_testapp/api/models/Token.js', waterStub);
-  describe('token', function(){
+  var resetToken = proxyquire('../_testapp/api/models/ResetToken.js', waterStub);
+  describe('resetToken', function(){
     it('should exist', function(done){
-      token.should.be.Object;
+      resetToken.should.be.Object;
       done();
     });
   });

@@ -1,7 +1,12 @@
+var path = require('path');
 var testHelper = require('../../test_helper');
 var should = testHelper.should;
 var waterlock = testHelper.waterlock;
-var policies = require('../../../lib/templates/policies/hasApiKey.js');
+var proxyquire = testHelper.proxyquire;
+var _module = path.normalize(__dirname + '/../../../lib/templates/policies/hasJsonWebToken.js');
+var policies = proxyquire.noCallThru().load(_module,{
+  'waterlock':waterlock
+});
 
 describe('policies', function(){
   it('should exist', function(done){
@@ -10,7 +15,7 @@ describe('policies', function(){
   });
 
   it('should be forbidden', function(done){
-    var req = {headers:{}};
+    var req = {query:{}, params:{all: function(){return {foo:'bar'};}}};
     var res = {forbidden: function(str){
       str.should.be.String;
       done();

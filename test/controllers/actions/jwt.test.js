@@ -2,20 +2,20 @@ var testHelper = require('../../test_helper');
 var should = testHelper.should;
 var waterlock = testHelper.waterlock;
 
-var apiKey = waterlock.actions.user({}).apiKey;
+var jwt = waterlock.actions.user({}).jwt;
 
-describe('apiKey action', function(){
+describe('jwt action', function(){
   it('should exist', function(done){
-    apiKey.should.be.Function;
+    jwt.should.be.Function;
     done();
   });
 
   it('should respond with 404', function(done){
-    var req = {method: 'PUT'};
+    var req = {method: 'PUT', session:{authenticated: false}};
     var res = {json: function(code){
       code.should.equal(404);
       done();
     }};
-    apiKey(req, res);
+    jwt(req, res);
   });
 });

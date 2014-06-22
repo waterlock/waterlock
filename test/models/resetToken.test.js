@@ -3,13 +3,13 @@ var should = testHelper.should;
 var waterlock = testHelper.waterlock;
 
 
-describe('models token', function(){
-  var token = waterlock.models.token;
+describe('models resetToken', function(){
+  var resetToken = waterlock.models.resetToken;
 
   describe('attributes', function(){
-    var attributes = token.attributes({});
+    var attributes = resetToken.attributes({});
     it('should  have a resetToken', function(done){
-      attributes.should.have.property('resetToken');
+      attributes.should.have.property('token');
       done();
     });
     
@@ -24,17 +24,17 @@ describe('models token', function(){
     });
 
     it('should have a new attribute', function(done){
-      var attributes = token.attributes({name: 'string'});
+      var attributes = resetToken.attributes({name: 'string'});
       attributes.should.have.property('name');
       done();
     });
   }); 
 
   describe('callbacks', function(){
-    var beforeCreate = token.beforeCreate;
+    var beforeCreate = resetToken.beforeCreate;
     describe('beforeCreate', function(){
       it('should exist', function(done){
-        token.should.have.property('beforeCreate');
+        resetToken.should.have.property('beforeCreate');
         done();
       });
       it('beforeCreate', function(done){
@@ -44,10 +44,10 @@ describe('models token', function(){
       });
     });
     
-    var afterCreate = token.afterCreate;
+    var afterCreate = resetToken.afterCreate;
     describe('afterCreate', function(){
       it('should exist', function(done){
-        token.should.have.property('afterCreate');
+        resetToken.should.have.property('afterCreate');
         done();
       });
 

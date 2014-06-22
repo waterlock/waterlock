@@ -11,15 +11,15 @@ describe('models index', function(){
       done();
     });
   });
-  describe('apiKey', function(){
+  describe('jwt', function(){
     it('should exist', function(done){
-      models.should.have.property('apiKey');
+      models.should.have.property('jwt');
       done();
     });
   });
-  describe('token', function(){
+  describe('resetToken', function(){
     it('should exist', function(done){
-      models.should.have.property('token');
+      models.should.have.property('resetToken');
       done();
     });
   });

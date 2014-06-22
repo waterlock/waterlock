@@ -71,8 +71,8 @@ describe('krypt',function(){
       done();
     });
 
-    it('should generate random number', function(done){
-      krypt.random(10).length.should.equal(10)
+    it('should generate random string', function(done){
+      krypt.random(10).should.be.String
       done();
     });
   });

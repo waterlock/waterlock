@@ -12,8 +12,8 @@ describe('model use',function(){
       done();
     });
 
-    it('should have a apiKey', function(done){
-      attributes.should.have.property('apiKey');
+    it('should have a jsonWebToken', function(done){
+      attributes.should.have.property('jsonWebToken');
       done();
     });
 

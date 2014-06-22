@@ -35,7 +35,7 @@ module.exports = function(){
     case 'email':
       installAllEmailTemplates(true);
       break;
-    case 'policy':
+    case 'policies':
       installAllPolicies(true);
       break;
     default:
@@ -71,8 +71,8 @@ function installAllPolicies(trigger){
 
 function installAllModels(trigger){
   INSTALL_CALLBACKS.push(
-      tryInstallApiModel,
-      tryInstallTokenModel,
+      tryInstallJwtModel,
+      tryInstallResetTokenModel,
       tryInstallUserModel,
       tryInstallUseModel,
       tryInstallAttemptModel
@@ -121,7 +121,7 @@ function triggerNext(){
 
 /** Policies **/
 function tryInstallPolicies(){
-  var policyFile = "hasApiKey.js";
+  var policyFile = "hasJsonWebToken.js";
   var installPolicyPath = INSTALL_BASE_PATH+"api/policies/"+policyFile
 
   tryAction(installPolicies, installPolicyPath);    
@@ -130,7 +130,7 @@ function tryInstallPolicies(){
 function installPolicies(){
   log("installing policies");
 
-  var policyFile = "hasApiKey.js";
+  var policyFile = "hasJsonWebToken.js";
   var _policyPath = BASE_PATH + "/../lib/templates/policies/"+policyFile;
   var policyPath = path.normalize(_policyPath);
   var installPolicyPath = INSTALL_BASE_PATH+"api/policies/"+policyFile
@@ -139,17 +139,17 @@ function installPolicies(){
 }
 /*********************/
 
-/** Api model **/
-function tryInstallApiModel(){
-  var userFile = "ApiKey.js";
+/** JWT model **/
+function tryInstallJwtModel(){
+  var userFile = "Jwt.js";
   var installUserPath = INSTALL_BASE_PATH + "api/models/"+userFile;
 
-  tryAction(installApiModel, installUserPath)
+  tryAction(installJwtModel, installUserPath)
 }
-function installApiModel(){
-  log("installing api model")
+function installJwtModel(){
+  log("installing jwt model")
 
-  var userFile = "ApiKey.js";
+  var userFile = "Jwt.js";
   var _userPath = BASE_PATH + "/../lib/templates/models/" + userFile;
   var userPath = path.normalize(_userPath);
   var installUserPath = INSTALL_BASE_PATH + "api/models/"+userFile;
@@ -193,17 +193,17 @@ function installAttemptModel(){
   fs.createReadStream(userPath).pipe(fs.createWriteStream(installUserPath));
 }
 /*********************/
-/** Token model **/
-function tryInstallTokenModel(){
-  var userFile = "Token.js";
+/** ResetToken model */
+function tryInstallResetTokenModel(){
+  var userFile = "ResetToken.js";
   var installUserPath = INSTALL_BASE_PATH + "api/models/"+userFile;
 
-  tryAction(installTokenModel, installUserPath)
+  tryAction(installResetTokenModel, installUserPath)
 }
-function installTokenModel(){
-  log("installing token model")
+function installResetTokenModel(){
+  log("installing resetToken model")
 
-  var userFile = "Token.js";
+  var userFile = "ResetToken.js";
   var _userPath = BASE_PATH + "/../lib/templates/models/" + userFile;
   var userPath = path.normalize(_userPath);
   var installUserPath = INSTALL_BASE_PATH + "api/models/"+userFile;

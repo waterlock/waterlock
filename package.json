@@ -34,7 +34,9 @@
     "nodemailer": "~0.6.5",
     "bcrypt": "~0.7.8",
     "commander": "~2.2.0",
-    "lodash": "~2.4.1"
+    "lodash": "~2.4.1",
+    "jwt-simple": "~0.2.0",
+    "node-uuid": "~1.4.1"
   }, 
   "devDependencies":{
     "mocha": "*",
