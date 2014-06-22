@@ -1,3 +1,7 @@
+# v0.0.8
+* [FEATURE] dropped ApiKey support in favor of Json Web Tokens
+* [BUG] fixed waterlock policy generator
+
 # v0.0.7
 * [BUG] user might not always have password
 

@@ -1,8 +1,8 @@
 {
   "name": "waterlock",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "author": "David Rivera <david.r.rivera193@gmail.com>",
-  "description": "User authentication and api key managment for sails.js",
+  "description": "User authentication and Json Web Tokens for sails.js",
   "homepage": "http://davidrivera.github.io/waterlock/",
   "contributors": [ 
     {
@@ -26,7 +26,9 @@
   "keywords": [
     "waterlock",
     "sails package",
-    "authentication"
+    "authentication",
+    "json web tokens",
+    "jwt"
   ],
   "dependencies" : {
     "moment": "~2.7.0",

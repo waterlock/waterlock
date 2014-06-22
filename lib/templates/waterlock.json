@@ -28,6 +28,6 @@
       "length": "7"
     },
     "audience": "app name",
-    "principal": "subject"
+    "subject": "subject"
   }
 }

@@ -3,10 +3,10 @@
 [![Build Status](http://img.shields.io/travis/davidrivera/waterlock.svg?style=flat)](https://travis-ci.org/davidrivera/waterlock) [![NPM version](http://img.shields.io/npm/v/waterlock.svg?style=flat)](http://badge.fury.io/js/waterlock) [![Dependency Status](http://img.shields.io/gemnasium/davidrivera/waterlock.svg?style=flat)](https://gemnasium.com/davidrivera/waterlock) [![Coverage Status](http://img.shields.io/coveralls/davidrivera/waterlock/master.svg?style=flat)](https://coveralls.io/r/davidrivera/waterlock?branch=master) [![Gittip](http://img.shields.io/gittip/davidrivera.svg?style=flat)](https://www.gittip.com/davidrivera/)
 
 
-Waterlock is an all encompassing user authentication/api key management tool for [Sailsjs](http://sailsjs.com) `version 0.10`
+Waterlock is an all encompassing user authentication/json web token management tool for [Sailsjs](http://sailsjs.com) `version 0.10`
 
 # What does it provide
-Waterlock provides predefined routes and models for user authentication and api key management/tracking on a per user bases. Password resets are also handeled but we'll cover that below.
+Waterlock provides predefined routes and models for user authentication and json web token management. Password resets are also handeled but we'll cover that below.
 Authentication is handeled via methods. The current supported methods are:
 
 | Method | Library |
@@ -36,7 +36,7 @@ this will generate all the necessary components, however you do not have strict 
 ```js
 MyController:{
 	'*': true,
-	'myApiAction': ['hasApiKey'],
+	'myApiAction': ['hasJsonWebToken'],
 	'mySessionAction': ['sessionAuth']
 }
 ```
@@ -57,16 +57,16 @@ Waterlock wraps around models and controllers so you can override any of the act
 you can add any custom attributes you wish to your user model by just dropping them in like normal.
 
 ## What if I want to control my own User model
-Good question! If for whatever reason be it we haven't implemented a certain authentication method or your case it exceptionally complex. You can still take advantage of Waterlocks api key management, so long as your user model has the following:
+Good question! If for whatever reason be it we haven't implemented a certain authentication method or your case it exceptionally complex. You can still take advantage of Waterlocks json web token management, so long as your user model has the following:
 
 ```js
-apiKeys: {
-	collection: 'apikey',
-    via: 'owner'
-},
+    jsonWebTokens: {
+      collection: 'jwt',
+      via: 'owner'
+    },
 ```
 
-this will keep the user association to the ApiKey model and still allow for management of the keys, which is what Waterlock tries to accomplish first and foremost.
+this will keep the user association to the Jwt model and still allow for management of the tokens, which is what Waterlock tries to accomplish first and foremost.
 
 # Config
 Waterlock generates a config located at `config/waterlock.json` this file is used to set various options
@@ -84,6 +84,13 @@ Waterlock generates a config located at `config/waterlock.json` this file is use
 	* `template` - object containing template information for the reset emails
 		* `file` - the relative path to the `jade` template for the reset emails
 		* `vars` - object containing any vars you want passed to the template for rendering
+* `jsonWebTokens` - object containing information on how the jwt's should be constructed
+	* `secret` - the secret used to encrypt the token, CHANGE THIS VALUE!
+	* `expiry` - object containing information on expiry these are passed to moment.js [add](http://momentjs.com/docs/#/manipulating/add/) function
+		* `unit` - [y,M,w,d,h,m,s,ms](http://momentjs.com/docs/#/manipulating/add/)
+		* `length` - length of time
+	* `audience` - the jwt [aud claim](http://tools.ietf.org/html/draft-ietf-oauth-json-web-token-23#section-4.1.3) a good choice is the name of your app
+	* `subject` - the jwt [sub claim](http://tools.ietf.org/html/draft-ietf-oauth-json-web-token-23#section-4.1.2)
 
 ## Password reset
 Waterlock uses [nodemailer](http://www.nodemailer.com/) to send password reset emails. The options in the config file are applied to nodemailer as such
@@ -100,7 +107,7 @@ If you want to take advantage of the built in reset itself have the page you sen
 You can customize the email template used in the password reset via the template file defined in `config/waterlock.json` this template file is rendered with the fun and dynamic `jade` markup, the view var `url` is generated and passed to it when a user requests and password reset. You can customize this template to your liking and pass any other view vars you wish to it via the `vars` options in the json file.
 
 # The Future
-We would hope to turn this project into a well oiled api key management tool for users.
+We would hope to turn this project into a well oiled jwt management tool for users.
 
 ## Tests
 
