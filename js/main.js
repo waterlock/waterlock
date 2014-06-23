@@ -10,4 +10,14 @@ $(function(){
       $('.navbar').removeClass('plain-border');
     }
   });
+
+
+  $('.showcase > .fa').mouseover(function(e){
+    $(e.target).closest('.fa').stop().animate({"margin-top":"-20px"}, 200);
+  });
+  $('.showcase > .fa').mouseout(function(e){
+    $(e.target).closest('.fa').stop().animate({"margin-top":"0px"}, 200);
+  });
 });
+
+hljs.initHighlightingOnLoad();

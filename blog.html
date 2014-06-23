@@ -1,0 +1,18 @@
+---
+layout: default
+---
+<div id="blog-posts" class="container">
+  <ul class="posts list-unstyled">
+    {% for post in site.posts %}
+      <li>
+      	<h3>
+      		<a href="{{ post.url | prepend: site.baseurl }}">
+	      		{{post.title}}
+	      	</a>	
+	      	<small>{{ post.date | date: "%b %-d, %Y" }}</small>
+      	</h3>
+      	<p>{{post.description}}</p>
+      </li>
+    {% endfor %}
+  </ul>
+  </div>
