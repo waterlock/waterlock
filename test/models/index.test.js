@@ -5,21 +5,15 @@ var waterlock = testHelper.waterlock;
 var models = waterlock.models;
 
 describe('models index', function(){
-  describe('basicUser', function(){
+  describe('user', function(){
     it('should exist', function(done){
-      models.should.have.property('basicUser');
+      models.should.have.property('user');
       done();
     });
   });
   describe('jwt', function(){
     it('should exist', function(done){
       models.should.have.property('jwt');
-      done();
-    });
-  });
-  describe('resetToken', function(){
-    it('should exist', function(done){
-      models.should.have.property('resetToken');
       done();
     });
   });

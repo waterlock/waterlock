@@ -10,22 +10,5 @@ describe('utils',function(){
       return __dirname+"/email.test.jade";
     }}});
 
-  describe('getHtmlEmail', function(){
-    it('should exist', function(done){
-      utils.should.have.property('getHtmlEmail');
-      done();
-    });
 
-    it('should return html', function(done){
-      utils.getHtmlEmail({owner: "test", resetToken: "token"}).should.be.String
-      done()
-    });
-  });
-
-  describe('mailCallback', function(){
-    it('should exist', function(done){
-      utils.should.have.property('mailCallback');
-      done();
-    });
-  });
 });

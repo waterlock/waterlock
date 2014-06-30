@@ -1,3 +1,10 @@
+# v0.0.9
+* [FEATURE] now supports multiple auth methods at once
+* [REFACTORING] removed reset tokens and put it in the local-auth module
+* [REFACTORING] removed reset route and put it in the local-auth module
+* [REFACTORING] made binary script more dynamic
+* [REFACTORING] removed krypt, instead using bcrypt, jwt, and crypto
+
 # v0.0.8
 * [FEATURE] dropped ApiKey support in favor of Json Web Tokens
 * [BUG] fixed waterlock policy generator

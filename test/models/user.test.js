@@ -1,7 +1,7 @@
 var should = require('should');
 
 describe('model user',function(){
-  var user = require('../../lib/models/').basicUser;
+  var user = require('../../lib/models/')().user;
 
   describe('attributes', function(){
     var attributes = user.attributes({});
@@ -12,14 +12,4 @@ describe('model user',function(){
       done();
     });
   });
-
-  describe('callbacks', function(){
-    var beforeCreate = user.beforeCreate;
-    it('beforeCreate', function(done){
-      beforeCreate({password: "test"}, function(){
-        done();
-      });
-    });
-  });
-  
 });

@@ -22,5 +22,5 @@
 	"strict":true,
 	"laxbreak":true,
   	"laxcomma":true,
-	"predef":["User", "ResetToken", "ApiKey", "Use", "Jwt"]
+	"predef":["User", "ResetToken", "ApiKey", "Use", "Jwt", "sails"]
 }

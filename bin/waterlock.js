@@ -19,7 +19,7 @@ var cmd;
 cmd = program.command('generate');
 cmd.option('-r, --raw', 'generates the raw templates')
 cmd.description('generate various components');
-cmd.action(require('./waterlock-install'));
+cmd.action(require('./waterlock-generate'));
 
 program.parse(process.argv);
 

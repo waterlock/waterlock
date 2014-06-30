@@ -21,14 +21,6 @@ describe('installed models', function(){
     });
   });
 
-  var resetToken = proxyquire('../_testapp/api/models/ResetToken.js', waterStub);
-  describe('resetToken', function(){
-    it('should exist', function(done){
-      resetToken.should.be.Object;
-      done();
-    });
-  });
-
   var use = proxyquire('../_testapp/api/models/Use.js', waterStub);
   describe('use', function(){
     it('should exist', function(done){
