@@ -4,6 +4,7 @@
 * [REFACTORING] removed reset route and put it in the local-auth module
 * [REFACTORING] made binary script more dynamic
 * [REFACTORING] removed krypt, instead using bcrypt, jwt, and crypto
+* [BUG] #2 `.done` is now deprecated using `.exec`
 
 # v0.0.8
 * [FEATURE] dropped ApiKey support in favor of Json Web Tokens
