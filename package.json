@@ -1,9 +1,9 @@
 {
   "name": "waterlock",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "author": "David Rivera <david.r.rivera193@gmail.com>",
   "description": "User authentication and Json Web Tokens for sails.js",
-  "homepage": "http://davidrivera.github.io/waterlock/",
+  "homepage": "http://waterlock.ninja/",
   "contributors": [ 
     {
       "name": "David Rivera",
@@ -32,7 +32,6 @@
   ],
   "dependencies" : {
     "moment": "~2.7.0",
-    "bcrypt": "~0.7.8",
     "commander": "~2.2.0",
     "lodash": "~2.4.1",
     "jwt-simple": "~0.2.0",
