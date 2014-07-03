@@ -1,0 +1,52 @@
+<h2 class="section-header">Basic Setup</h2>
+<p>For bare bones waterlock on a fresh installation of Sails, simply run the following</p>
+<div>
+  <pre>
+    <code class="bash">
+npm install waterlock
+npm install waterlock-local-auth
+./node_modules/.bin/waterlock generate all
+sails lift
+     </code>
+  </pre>
+</div>
+<h2 class="section-header">Generators</h2>
+<p>
+  After running <code>npm install waterlock</code>, to get up and running fast we've provided you some nice generators to create the necessary files needed that make Waterlock work. The executable script provided with Waterlock <code>./node_modules/.bin/waterlock</code> gives you all the power you need to generate the different components of Waterlock. To skip the boring stuff and get going simply run the command <code>waterlock generate all</code>.
+</p>
+<h2 class="section-header">Config</h2>
+<p>Waterlock generates a config file at <code>/config/waterlock.js</code> this file is used to set up many options and features in Waterlock. Here is a brief overview on the options.
+</p> 
+<ul class="task-list">
+  <li>
+    <code>baseUrl</code> - this is the URL your app resides at, used in password reset urls
+  </li>
+  <li>
+    <code>autheMethod</code> - the npm package name for the chosen authentication method or an array of methods
+  </li>
+  <li>
+    <code>jsonWebTokens</code> - object containing information on how the jwt's should be constructed
+    <ul class="task-list">
+        <li>
+            <code>secret</code> - the secret used to encrypt the token, CHANGE THIS VALUE!
+        </li>
+        <li>
+            <code>expiry</code> - object containing information on expiry these are passed to moment.js <a href="http://momentjs.com/docs/#/manipulating/add/">add</a> function
+
+            <ul class="task-list">
+                <li>
+                    <code>unit</code> - <a href="http://momentjs.com/docs/#/manipulating/add/">y,M,w,d,h,m,s,ms</a>
+                </li>
+                <li>
+                    <code>length</code> - length of time
+                </li>
+            </ul>
+        </li>
+        <li>
+            <code>audience</code> - the jwt <a href="http://tools.ietf.org/html/draft-ietf-oauth-json-web-token-23#section-4.1.3">aud claim</a> a good choice is the name of your app</li>
+        <li>
+            <code>subject</code> - the jwt <a href="http://tools.ietf.org/html/draft-ietf-oauth-json-web-token-23#section-4.1.2">sub claim</a>
+        </li>
+    </ul>
+  </li>
+</ul>

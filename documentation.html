@@ -2,253 +2,108 @@
 layout: default
 ---
 <div class="doc-header">
-	<div class="container">
-		<img src="{{ "/img/peekaboo-beaver.png" | prepend: site.baseurl }}" class="peek"/> 
-		<h1 id="doc-h-installation" class="doc-h visible">Installation</h1>
-		<h1 id="doc-h-authentication" class="doc-h hidden">Authentication</h1>
-		<h1 id="doc-h-json-web-tokens" class="doc-h hidden">JSON Web Tokens</h1>
-		<h1 id="doc-h-customization" class="doc-h hidden">Customization</h1>
-	</div>
+  <div class="container">
+    <img src="{{ "/img/peekaboo-beaver.png" | prepend: site.baseurl }}" class="peek"/> 
+    <h1 id="doc-h-installation" class="doc-h visible">Installation</h1>
+    <h1 id="doc-h-models" class="doc-h hidden">Models</h1>
+    <h1 id="doc-h-authentication" class="doc-h hidden">Authentication</h1>
+    <h1 id="doc-h-json-web-tokens" class="doc-h hidden">JSON Web Tokens</h1>
+    <h1 id="doc-h-customization" class="doc-h hidden">Customization</h1>
+  </div>
 </div>
 <div id="documentation" class="container">
-	<div class="row">
-		<div class="col-md-2">
-			<ul class="nav nav-pills nav-stacked">
-			 	<li class="active">
-			 		<a href="#installation" data-toggle="tab">
-			 			Installation
-			 		</a>
-			 	</li>
-			 	<li>
-			 		<a href="#authentication" data-toggle="tab">
-			 			Authentication
-			 		</a>
-			 	</li>
-			 	<li>
-			 		<a href="#json-web-tokens" data-toggle="tab">
-			 			Json Web Tokens
-			 		</a>
-			 	</li>
-			 	<li>
-			 		<a href="#customization" data-toggle="tab">
-			 			Customization
-			 		</a>
-			 	</li>
-			</ul>
-		</div>
-		<div class="col-md-10">
-			<div class="tab-content">
-				<div class="tab-pane fade in active" id="installation">
-					<h2 class="section-header">Basic Setup</h2>
-					<p>For bare bones waterlock on a fresh installation of Sails, simply run the following</p>
-					<pre>
-						<code class="bash">
-npm install waterlock
-npm install waterlock-local-auth
-./node_modules/.bin/waterlock generate all
-sails lift
-						</code>
-					</pre>
-					<h2 class="section-header">Generators</h2>
-					<p>
-						After running <code>npm install waterlock</code>, to get up and running fast we've provided you some nice generators to create the necessary files needed that make Waterlock work. The executable script provided with Waterlock <code>./node_modules/.bin/waterlock</code> gives you all the power you need to generate the different components of Waterlock. To skip the boring stuff and get going simply run the command <code>waterlock generate all</code>.
-					</p>
-					<h2 class="section-header">Config</h2>
-					<p>Waterlock generates a config file at <code>/models/waterlock.json</code> this file is used to set up many options and features in Waterlock. Here is a brief overview on the options.
-					</p> 
-					<ul class="task-list">
-					    <li>
-					        <code>baseUrl</code> - this is the URL your app resides at, used in password reset urls</li>
-					    <li>
-					        <code>autheMethod</code> - the npm package name for the chosen authentication method</li>
-					    <li>
-					        <code>passwordReset</code> - object containing information regarding password resets
+  <div class="row">
+    <div class="col-md-2">
+      <ul class="nav nav-pills nav-stacked">
+        <li class="active">
+          <a href="#installation" data-toggle="tab">
+            Installation
+          </a>
+        </li>
+        <li>
+          <a href="#models" data-toggle="tab">
+            Models
+          </a>
+        </li>
+        <li>
+          <a href="#authentication" data-toggle="tab">
+            Authentication
+          </a>
+        </li>
+        <li>
+          <a href="#json-web-tokens" data-toggle="tab">
+            Json Web Tokens
+          </a>
+        </li>
+        <li>
+          <a href="#customization" data-toggle="tab">
+            Customization
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="col-md-10">
+      <div class="tab-content">
+        <div class="tab-pane fade in active" id="installation">
+          {% include docs/installation.html %}
+        </div>
+        <div class="tab-pane fade" id="models">
+          {% include docs/models.html %}
+        </div>
+        <div class="tab-pane fade" id="authentication">
+          {% include docs/authentication.html %}
+        </div>
 
-					        <ul class="task-list">
-					            <li>
-					                <code>tokens</code> - boolean if set to false password resets will be disabled</li>
-					            <li>
-					                <code>mail</code> - object containing information about your smtp server, see <a href="https://github.com/andris9/Nodemailer">nodemailer</a>
+        <div class="tab-pane fade" id="json-web-tokens">
+          {% include docs/json_web_tokens.html %}
+        </div>
 
-					                <ul class="task-list">
-					                    <li>
-					                        <code>protocol</code> - the transport protocol</li>
-					                    <li>
-					                        <code>options</code> - how it is use te transport method, see nodemailer</li>
-					                    <li>
-					                        <code>from</code> - the from address</li>
-					                    <li>
-					                        <code>subject</code> - the email subject for password reset emails</li>
-					                    <li>
-					                        <code>forwardUrl</code> - the url to send the user to after they have clicked the password reset link in their inbox (e.g. a form on your site which POST to <code>/user/reset</code>)</li>
-					                </ul>
-					            </li>
-					            <li>
-					                <code>template</code> - object containing template information for the reset emails
+        <div class="tab-pane fade" id="customization">
+          {% include docs/customization.html %}
+        </div>
 
-					                <ul class="task-list">
-					                    <li>
-					                        <code>file</code> - the relative path to the <code>jade</code> template for the reset emails</li>
-					                    <li>
-					                        <code>vars</code> - object containing any vars you want passed to the template for rendering</li>
-					                </ul>
-					            </li>
-					        </ul>
-					    </li>
-					    <li>
-					        <code>jsonWebTokens</code> - object containing information on how the jwt's should be constructed
-
-					        <ul class="task-list">
-					            <li>
-					                <code>secret</code> - the secret used to encrypt the token, CHANGE THIS VALUE!</li>
-					            <li>
-					                <code>expiry</code> - object containing information on expiry these are passed to moment.js <a href="http://momentjs.com/docs/#/manipulating/add/">add</a> function
-
-					                <ul class="task-list">
-					                    <li>
-					                        <code>unit</code> - <a href="http://momentjs.com/docs/#/manipulating/add/">y,M,w,d,h,m,s,ms</a>
-					                    </li>
-					                    <li>
-					                        <code>length</code> - length of time</li>
-					                </ul>
-					            </li>
-					            <li>
-					                <code>audience</code> - the jwt <a href="http://tools.ietf.org/html/draft-ietf-oauth-json-web-token-23#section-4.1.3">aud claim</a> a good choice is the name of your app</li>
-					            <li>
-					                <code>subject</code> - the jwt <a href="http://tools.ietf.org/html/draft-ietf-oauth-json-web-token-23#section-4.1.2">sub claim</a>
-					            </li>
-					        </ul>
-					    </li>
-					</ul>
-
-				</div>
-				<div class="tab-pane fade" id="authentication">
-					<h2 class="section-header">The Session</h2>					
-					Waterlock uses the <code>req.session</code> express object to hold various information about the user.
-					<h3><code>req.session.authenticated</code></h3>
-					<p>This is a boolean value, used to indicate if this user has successfully authenticated</p>
-					<h3><code>req.session.user</code></h3>
-					<p>This is the authenticated user object.</p>
-
-					<h2 class="section-header">Methods</h2>
-					<p>Authentication itself is handled via modular libraries, making Waterlock more lightweight. The current auth libraries are listed below.</p>
-					<table class="table">
-						<thead>
-							<tr>
-								<th>Method</th>
-								<th>Library</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>Local Auth</td>
-								<td><a href="https://github.com/davidrivera/waterlock-local-auth">waterlock-local-auth</a></td>
-							</tr>
-							<tr>
-								<td>Twitter Auth</td>
-								<td><a href="https://github.com/davidrivera/waterlock-twitter-auth">waterlock-twitter-auth</a></td>
-							</tr>
-							<tr>
-								<td>Facebook Auth</td>
-								<td><a href="https://github.com/davidrivera/waterlock-facebook-auth">waterlock-facebook-auth</a></td>
-							</tr>
-						</tbody>
-					</table>
-					<h3>That's cool but how do i use them?</h3>
-					<p>Glad you asked, simply run npm install with the chosen library then configure it in your <code>waterlock.json</code> file. As to the indvidual configurations see the README file of the chosen library. If your use case isn't solved by the libraries above please open a <a href="https://github.com/davidrivera/waterlock/issues">bug report</a> and request it!</p>
-				</div>
-
-				<div class="tab-pane fade" id="json-web-tokens">
-					<h2 class="section-header">Configuration</h2>
-					<p>Before diving in and using your Jwt's you'll need to configure them. This is done via the <code>waterlock.json</code> file located in your Sails config folder. If you used the Waterlock generator then you'll already have that file along with default values. You will still need to modify them so crack it open and you should see the following.</p>
-					<pre>
-						<code class="json">
-"jsonWebTokens":{
-	"secret": "this is my secret",
-	"expiry":{
-  		"unit": "days",
-  		"length": "7"
-	},
-	"audience": "app name",
-	"subject": "subject"
-}
-						</code>
-					</pre>
-					<h3>Secret</h3>
-					<p>This is the value used to encrypt the Jwt's</p>
-					<h3>Exipry</h3>
-					<p>This is an object containing information on when the tokens should be expired after they are issued. These values are passed to the Moment.js <a href="http://momentjs.com/docs/#/manipulating/add/">add</a> function.
-					<h3>Audience</h3>
-					<p>This is the <code>aud claim</code> of the Jwt. Typically this can simply be the name of your app.</p>
-					<h3>Subject</h3>
-					<p>This is the <code>sub claim</code> of the Jwt.
-
-					<h2 class="section-header">Requesting Tokens</h2>
-					<p>Your user can request tokens, once they are authenticated, by navagating to the following URI <code>/user/jwt</code>. This will return a JSON response containing the JSON Web Token and it's expiration date, (which is configurable as shown above.) If the user does not have an authenticated session open a token will not be created and instead the server will respond with <code>res.forbidden</code>.
-
-					<h2 class="section-header">Token Policy</h2>
-					<p>So you have your tokens configured and you can request them, but they aren't doing any actual securing of resources yet. To do this you can use the <code>hasJsonWebToken.js</code> policy that was generated by using the Waterlock script. This is a simple policy that allows your user to request access to a resource by providing the <code>access_token</code> (the jwt) attribute either as a <code>GET</code> or <code>POST</code> parameter. This is applied just like any other <a href="http://sailsjs.org/#!documentation/policies">Sails policy</a>. So you can check out their documentation to learn more.
-				</div>
-
-				<div class="tab-pane fade" id="customization">
-					<h2 class="section-header">How does it work?</h2>
-					<p>Since sails currently has no official support for 3rd party libraries like Rails gems; Waterlock works by hooking into your model and controller files adding the functionality needed. When Sails starts officially supporting 3rd party libraries this might change. This allows you still have access and override the Models/Controllers Waterlock uses to work without having to dive into the module.</p>
-
-					<h2 class="section-header">Override</h2>
-					<p>You can override or add to any of the default attributes/actions Waterlock uses just by dropping them in as if Waterlock was not there.</p>
-					<pre>
-						<code class="javascript">
-/* /model/User.js */
-attributes: require('waterlock').models.basicUser.attributes({
-
-    /* e.g.
-    nickname: 'string'
-    */
-
-  }),
-  						</code>
-					</pre>
-					<p>This allows you to keep control of your model/controller.</p>
-				</div>
-
-			</div>
-		</div>
-	</div>
+      </div>
+    </div>
+  </div>
 </div>
 <script type="text/javascript">
 $(function(){
-	$('#documentation  ul.nav  li  a').click(function(e){
-		// save the link click in the url
-		location.hash = $(e.target).attr('href').split('#')[1];
+  $('#documentation  ul.nav  li  a').click(function(e){
+    // save the link click in the url
+    location.hash = $(e.target).attr('href').split('#')[1];
 
-		// hide all the headers
-		$('.doc-h').removeClass('visible').addClass('hidden');
-		// animate all of the tabs closed
-		$('#documentation ul.nav li a').not(e.target).stop().animate({'border-left-width': "0px"},200);
+    // hide all the headers
+    $('.doc-h').removeClass('visible').addClass('hidden');
+    // animate all of the tabs closed
+    $('#documentation ul.nav li a').not(e.target).stop().animate({'border-left-width': "0px"},200);
 
-		var id = $(e.target).attr('href');
-		var docId = '#doc-h-'+id.substr(1, id.length);
-		$(docId).removeClass('hidden').addClass('visible');
-		
-		//idk
-		$(window).scrollTop(0);
-	});
+    var id = $(e.target).attr('href');
+    var docId = '#doc-h-'+id.substr(1, id.length);
+    $(docId).removeClass('hidden').addClass('visible');
+    
+    //idk
+    $(window).scrollTop(0);
+  });
 
-	$('#documentation ul.nav li a').mouseover(function(e){
-		if(!$(e.target).parent().hasClass('active')){
-			$(e.target).stop().animate({"border-left-width": "10px"},200);
-		}
-	});
-	$('#documentation ul.nav li a').mouseout(function(e){
-		if(!$(e.target).parent().hasClass('active')){
-			$(e.target).stop().animate({"border-left-width": "0px"},200);
-		}
-	});
+  $('#documentation ul.nav li a').mouseover(function(e){
+    if(!$(e.target).parent().hasClass('active')){
+      $(e.target).stop().animate({"border-left-width": "10px"},200);
+    }
+  });
+  $('#documentation ul.nav li a').mouseout(function(e){
+    if(!$(e.target).parent().hasClass('active')){
+      $(e.target).stop().animate({"border-left-width": "0px"},200);
+    }
+  });
 
-	if(location.hash.length != 0){
-		setTimeout(function(){
-			$('[href="'+location.hash+'"]').click();
-		}, 500);
-	}
+  if(location.hash.length != 0){
+    setTimeout(function(){
+      $('[href="'+location.hash+'"]').click();
+    }, 500);
+  }
+
+  $('.source-toggle').click(function(e){
+    $(e.target).closest('.source-section').find('.source').slideToggle();
+  });
 });
 </script>

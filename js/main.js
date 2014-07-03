@@ -11,12 +11,16 @@ $(function(){
     }
   });
 
-
+  var magicNumber = 977; // yea so what!
   $('.showcase > .fa').mouseover(function(e){
-    $(e.target).closest('.fa').stop().animate({"margin-top":"-20px"}, 200);
+    if($(window).width() >= magicNumber){
+      $(e.target).closest('.fa').stop().animate({"margin-top":"-20px"}, 200);  
+    }
   });
   $('.showcase > .fa').mouseout(function(e){
-    $(e.target).closest('.fa').stop().animate({"margin-top":"0px"}, 200);
+    if($(window).width() >= magicNumber){
+      $(e.target).closest('.fa').stop().animate({"margin-top":"0px"}, 200);
+    }
   });
 });
 

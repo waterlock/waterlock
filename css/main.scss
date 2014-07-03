@@ -16,6 +16,14 @@ body {
     /*padding: 60px 15px 0;*/
     padding-bottom: 15px;
   }
+  min-width: 500px !important;
+
+  .navbar{
+    min-width: 500px !important;    
+  }
+  #footer{
+    min-width: 500px !important;
+  }
 }
 
 .jumbotron{
@@ -73,6 +81,18 @@ pre{
 #usage{
   background-color: lighten($brand-primary, 10%);
   color: $white;
+
+  pre{
+    border: none;
+    -webkit-box-shadow: inset 0px 0px 5px 0px rgba(50, 50, 50, 1);
+    -moz-box-shadow:    inset 0px 0px 5px 0px rgba(50, 50, 50, 1);
+    box-shadow:         inset 0px 0px 5px 0px rgba(50, 50, 50, 1);
+  }
+  p{
+    font-size: 20pt;
+    font-weight: lighter;
+    line-height: 1.45em;
+  }
 }
 
 #opening{
@@ -110,6 +130,9 @@ pre{
 
   .nav-pills{
     position: fixed;
+    @media(max-width: $screen-md){
+      position: relative;
+    }
     li.active{
       a{
         background-color: transparent;
@@ -179,7 +202,7 @@ html {
 body {
   /* Margin bottom by footer height */
   margin-bottom: $footer-height;
-  background: white url("/waterlock/img/texture.png");
+  background: white url("/img/texture.png");
 }
 #footer {
   padding: 20px;
@@ -207,5 +230,18 @@ body {
   }
   p{
     font-size: 2em;
+  }
+}
+.source-section{
+  a{
+    text-decoration: none;
+    &:hover{
+      cursor: pointer;
+      .fa{
+        -webkit-transform:rotate(-90deg);
+        -moz-transform:rotate(-90deg);
+        -o-transform:rotate(-90deg);
+      }
+    }
   }
 }

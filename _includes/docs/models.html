@@ -1,0 +1,164 @@
+<h2 class="section-header">Attempt</h2>
+<div>
+  <p>
+    The Attempt model tracks user login attempts.
+  </p>
+  <dl class="dl-horizontal">
+    <dt>user</dt>
+      <dd><code>user</code> belongsTo relation, the user account that was trying to be accessed.</dd>
+      <dt>successful</dt>
+      <dd><code>boolean</code> if the attempt allowed a user to login.</dd>
+      <dt>ip</dt>
+      <dd><code>string</code> the ip address the attempt came from.</dd>
+  </dl>
+  <div class="source-section">
+    <div class="source-button">
+      <a class="source-toggle">
+      <i class="fa fa-chevron-down"></i> toggle source code.</a>
+    </div>
+    <pre class="source" style="display: none;">
+      <code class="js">
+user:{
+  model: 'user'
+},
+successful:{
+  type: 'boolean',
+  defaultsTo: false
+},
+ip:{
+  type: 'string'
+}
+      </code>
+    </pre>
+  </div>
+</div>
+<h2 class="section-header">Auth</h2>
+<div>
+  <p>
+    The Auth model is used to hold all information needed for the chosen auth method. The base Auth model looks like the following.
+  </p>
+  <dl class="dl-horizontal">
+    <dt>user</dt>
+      <dd><code>user</code> belongsTo relation, user that owns this Auth object.</dd>
+      <dt>method</dt>
+      <dd><code>string</code> the auth method to use.</dd>
+  </dl>
+  <div class="source-section">
+    <div class="source-button">
+      <a class="source-toggle">
+      <i class="fa fa-chevron-down"></i> toggle source code.</a>
+    </div>
+    <pre class="source" style="display: none;">
+      <code class="js">
+user:{
+  model: 'user'
+},
+method:{
+  type: 'string',
+  defaultsTo: false
+},
+      </code>
+    </pre>
+  </div>
+</div>
+<h2 class="section-header">Jwt</h2>
+<div>
+  <p>
+    The Jwt model tracks the tokens that have been distributed, how many times the given token was used, and if it has been manually revoked.
+  </p>
+  <dl class="dl-horizontal">
+      <dt>token</dt>
+      <dd><code>string</code> the encrypted json web token.</dd>
+      <dt>uses</dt>
+      <dd><code>use</code> hasMany relation describing how many times this json web token was used.</dd>
+      <dt>owner</dt>
+      <dd><code>user</code> belongsTo relation describing which user this token was issued to.</dd>
+      <dt>revoked</dt>
+      <dd><code>boolean</code> if this Jwt has been manually revoked.</dd>
+  </dl>
+  <div class="source-section">
+    <div class="source-button">
+      <a class="source-toggle">
+      <i class="fa fa-chevron-down"></i> toggle source code.</a>
+    </div>
+    <pre class="source" style="display: none;">
+      <code class="js">
+token: 'string',
+uses: {
+  collection: 'use',
+  via: 'jsonWebToken'
+},
+owner: {
+  model: 'user'
+},
+revoked: {
+  type: 'boolean',
+  defaultsTo: false 
+}
+      </code>
+    </pre>
+  </div>
+</div>
+<h2 class="section-header">Use</h2>
+<div>
+  <p>
+    The Use model described how many times a Jwt was used.
+  </p>
+  <dl class="dl-horizontal">
+      <dt>remoteAddress</dt>
+      <dd><code>string</code> the ip address the from which the token was used from.</dd>
+      <dt>jsonWebToken</dt>
+      <dd><code>jwt</code> belongsTo relation, the Jwt that was used.</dd>
+  </dl>
+  <div class="source-section">
+    <div class="source-button">
+      <a class="source-toggle">
+      <i class="fa fa-chevron-down"></i> toggle source code.</a>
+    </div>
+    <pre class="source" style="display: none;">
+      <code class="js">
+remoteAddress: {
+  type: 'string'
+},
+jsonWebToken: {
+  model: 'jwt'
+},
+      </code>
+    </pre>
+  </div>
+</div>
+<h2 class="section-header">User</h2>
+<div>
+  <p>
+    The User model
+  </p>
+  <dl class="dl-horizontal">
+      <dt>attempts</dt>
+      <dd><code>attempt</code> hasMany relation, tracks login attempts.</dd>
+      <dt>jsonWebTokens</dt>
+      <dd><code>jwt</code> hasMany relation, the Jwt's issued to this user.</dd>
+      <dt>auth</dt>
+      <dd><code>auth</code> hasOne relation, the auth object for this user.</dd>
+  </dl>
+  <div class="source-section">
+    <div class="source-button">
+      <a class="source-toggle">
+      <i class="fa fa-chevron-down"></i> toggle source code.</a>
+    </div>
+    <pre class="source" style="display: none;">
+      <code class="js">
+attempts: {
+  collection: 'attempt',
+  via: 'user'
+},
+jsonWebTokens: {
+  collection: 'jwt',
+  via: 'owner'
+},
+auth:{
+  model: 'auth'
+}
+      </code>
+    </pre>
+  </div>
+</div>

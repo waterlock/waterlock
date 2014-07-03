@@ -1,0 +1,20 @@
+<h2 class="section-header">How does it work?</h2>
+<p>Since sails currently has no official support for 3rd party libraries like Rails gems; Waterlock works by hooking into your model and controller files adding the functionality needed. When Sails starts officially supporting 3rd party libraries this might change. This allows you still have access and override the Models/Controllers Waterlock uses to work without having to dive into the module.</p>
+
+<h2 class="section-header">Override</h2>
+<p>You can override or add to any of the default attributes/actions Waterlock uses just by dropping them in as if Waterlock was not there.</p>
+<div>
+  <pre>
+    <code class="javascript">
+/* /model/User.js */
+attributes: require('waterlock').models.user.attributes({
+
+  /* e.g.
+  nickname: 'string'
+  */
+
+}),
+    </code>
+  </pre>
+</div>
+<p>This allows you to keep control of your model/controller.</p>

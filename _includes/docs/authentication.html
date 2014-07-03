@@ -1,0 +1,33 @@
+<h2 class="section-header">The Session</h2>         
+Waterlock uses the <code>req.session</code> express object to hold various information about the user.
+<h3><code>req.session.authenticated</code></h3>
+<p>This is a boolean value, used to indicate if this user has successfully authenticated</p>
+<h3><code>req.session.user</code></h3>
+<p>This is the authenticated user object.</p>
+
+<h2 class="section-header">Methods</h2>
+<p>Authentication itself is handled via modular libraries, making Waterlock more lightweight. The current auth libraries are listed below.</p>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Method</th>
+      <th>Library</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Local Auth</td>
+      <td><a href="https://github.com/davidrivera/waterlock-local-auth">waterlock-local-auth</a></td>
+    </tr>
+    <tr>
+      <td>Twitter Auth</td>
+      <td><a href="https://github.com/davidrivera/waterlock-twitter-auth">waterlock-twitter-auth</a></td>
+    </tr>
+    <tr>
+      <td>Facebook Auth</td>
+      <td><a href="https://github.com/davidrivera/waterlock-facebook-auth">waterlock-facebook-auth</a></td>
+    </tr>
+  </tbody>
+</table>
+<h3>That's cool but how do i use them?</h3>
+<p>Glad you asked, simply run npm install with the chosen library then configure it in your <code>waterlock.js</code> file. As to the individual configurations see the README file of the chosen library. If your use case isn't solved by the libraries above please open a <a href="https://github.com/davidrivera/waterlock/issues">bug report</a> and request it!</p>
