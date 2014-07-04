@@ -40,8 +40,6 @@ ip:{
   <dl class="dl-horizontal">
     <dt>user</dt>
       <dd><code>user</code> belongsTo relation, user that owns this Auth object.</dd>
-      <dt>method</dt>
-      <dd><code>string</code> the auth method to use.</dd>
   </dl>
   <div class="source-section">
     <div class="source-button">
@@ -52,11 +50,7 @@ ip:{
       <code class="js">
 user:{
   model: 'user'
-},
-method:{
-  type: 'string',
-  defaultsTo: false
-},
+}
       </code>
     </pre>
   </div>
