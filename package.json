@@ -33,9 +33,10 @@
   "dependencies" : {
     "moment": "~2.7.0",
     "commander": "~2.2.0",
-    "lodash": "~2.4.1",
+    "lodash": "2.4.1",
     "jwt-simple": "~0.2.0",
-    "node-uuid": "~1.4.1"
+    "node-uuid": "~1.4.1",
+    "winston": "0.7.3"
   }, 
   "devDependencies":{
     "mocha": "*",

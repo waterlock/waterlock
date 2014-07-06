@@ -1,3 +1,8 @@
+# v0.1.0 //idk
+* [BUG] [#6](https://github.com/davidrivera/waterlock/issues/6) fixed remote address on socket
+* [REFACTORING] added in a debug logger
+* [FEATURE] now tracking port on attempt
+
 # v0.0.9
 * [FEATURE] now supports multiple auth methods at once
 * [REFACTORING] removed reset tokens and put it in the local-auth module
