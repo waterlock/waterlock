@@ -5,7 +5,7 @@ var mocha = require('mocha');
 var config = proxyquire.noCallThru().load('../../lib/config', {
   'path': {
     normalize: function(){
-      return '../test/waterlock.config';
+      return '../test/fixtures/waterlock.config';
     }
   }
 })();

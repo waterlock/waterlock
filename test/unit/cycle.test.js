@@ -1,7 +1,7 @@
 var proxyquire = require('proxyquire');
 var should = require('should');
 var mocha = require('mocha');
-var config = require('../waterlock.config').waterlock;
+var config = require('../fixtures/waterlock.config').waterlock;
 
 var wl = {
   logger:{debug:function(){}},
@@ -16,7 +16,7 @@ var wl = {
   },
   config: config
 };
-var cycle = require('../../lib/cycle').bind(wl)();
+var cycle = require('../../lib/cycle').apply(wl);
 
 describe('cycle', function(){
   describe('#loginSuccess()', function(){
@@ -48,7 +48,7 @@ describe('cycle', function(){
 
     it('should preform a redirect if given a postResponse uri', function(done){
       wl.config.postActions.login.success = 'http://google.com';
-      var cycle = require('../../lib/cycle').bind(wl)();
+      var cycle = require('../../lib/cycle').apply(wl);
       var req = {
         connection:{
           remoteAddress: '0.0.0.0', 
@@ -90,7 +90,7 @@ describe('cycle', function(){
 
     it('should preform a redirect if given a postResponse uri', function(done){
       wl.config.postActions.login.failure = 'http://google.com';
-      var cycle = require('../../lib/cycle').bind(wl)();
+      var cycle = require('../../lib/cycle').apply(wl);
       var req = {
         connection:{
           remoteAddress: '0.0.0.0', 
@@ -109,13 +109,9 @@ describe('cycle', function(){
     });
   });
 
-  describe('#logout', function(){
+  describe('#logout()', function(){
     it('should delete the session user', function(done){
       var req = {
-        connection:{
-          remoteAddress: '0.0.0.0', 
-          port:'80'
-        },
         session: {authenticated: true, user: {}}
       };
       var res = {
@@ -126,6 +122,233 @@ describe('cycle', function(){
       };
       var user = {};
       cycle.logout(req, res);
+    });
+
+    it('should trigger #logoutSuccess', function(done){
+      var req = {
+        session: {authenticated: true, user: {}}
+      };
+      var res = {};
+      var context = {
+        logoutSuccess: function(req, res){
+          req.session.authenticated.should.be.true;
+          done();
+        }
+      };
+      cycle.logout.apply(context, [req,res]);
+    });
+
+    it('should trigger #logoutFailure', function(done){
+      var req = {
+        session: {authenticated: false, user: {}}
+      };
+      var res = {};
+      var context = {
+        logoutFailure: function(req, res){
+          req.session.authenticated.should.be.false;
+          done();
+        }
+      };
+      cycle.logout.apply(context, [req,res]);
+    });
+  });
+
+  describe('#logoutSuccess()', function(){
+    it('should redirect to logout.success postAction', function(done){
+      var req = {
+        session: {authenticated: false, user: {}}
+      };
+      var res = {
+        redirect: function(str){
+          str.should.eql('http://google.com');
+          done();
+        }
+      };
+
+      var context = {
+        _resolvePostAction: function(str){
+          return 'http://google.com';
+        },
+        _isURI: function(str){
+          return true;
+        }
+      };
+      cycle.logoutSuccess.apply(context, [req, res]);
+    });
+
+    it('should unauthenticate the session', function(done){
+      var req = {
+        session: {authenticated: true, user: {}}
+      };
+      var res = {
+        redirect: function(str){
+          req.session.authenticated.should.be.false;
+          done();
+        }
+      };
+
+      var context = {
+        _resolvePostAction: function(str){
+          return 'http://google.com';
+        },
+        _isURI: function(str){
+          return true;
+        }
+      };
+      cycle.logoutSuccess.apply(context, [req, res]);
+    });
+
+    it('should have a default response', function(done){
+      var req = {
+        session: {authenticated: true, user: {}}
+      };
+      var res = {
+        ok: function(str){
+          str.should.be.String;
+          done();
+        }
+      };
+
+      var context = {
+        _resolvePostAction: function(str, def){
+          return def;
+        },
+        _isURI: function(str){
+          return false;
+        }
+      };
+      cycle.logoutSuccess.apply(context, [req, res]);
+    });
+  });
+
+  describe('#logoutFailure', function(){
+    it('should redirect to logout failure postAction', function(done){
+      var req = {};
+      var res = {
+        redirect: function(str){
+          str.should.eql('http://google.com');
+          done();
+        }
+      };
+
+      var context = {
+        _resolvePostAction: function(str){
+          return 'http://google.com';
+        },
+        _isURI: function(str){
+          return true;
+        }
+      };
+      cycle.logoutFailure.apply(context, [req, res]);
+    });
+
+    it('should respond with default message', function(done){
+      var req = {};
+      var res = {
+        ok: function(str){
+          str.should.be.String;
+          done();
+        }
+      };
+
+      var context = {
+        _resolvePostAction: function(str){
+          return 'http://google.com';
+        },
+        _isURI: function(str){
+          return false;
+        }
+      };
+      cycle.logoutFailure.apply(context, [req, res]);
+    });
+  });
+
+  describe('#_isURI()', function(){
+    it('should return true if given string is a url', function(done){
+      var isURI = cycle._isURI('http://google.com');
+      isURI.should.be.true;
+      done();
+    });
+    it('should return true if given string is a relative path', function(done){
+      var isURI = cycle._isURI('/my/action');
+      isURI.should.be.true;
+      done();
+    });
+    it('should return false if given string is a no a url', function(done){
+      var isURI = cycle._isURI('hello');
+      isURI.should.be.false;
+      done();
+    });
+  });
+
+  describe('#_addressFromRequest', function(){
+    it('should return a transport address object if given a req.connection object', function(done){
+      var req = {
+        connection:{
+          remoteAddress: '0.0.0.0',
+          remotePort: '80'
+        }
+      };
+      var obj = cycle._addressFromRequest(req);
+
+      obj.should.have.property('ip');
+      obj.should.have.property('port');
+      done();
+    });
+    it('should return a transport address object if given a req.socket object', function(done){
+      var req = {
+        socket:{
+          remoteAddress: '0.0.0.0',
+          remotePort: '80'
+        }
+      };
+      var obj = cycle._addressFromRequest(req);
+
+      obj.should.have.property('ip');
+      obj.should.have.property('port');
+      done();
+    });
+  });
+  
+  describe('#_resolvePostAction()', function(){
+    it('should return the given default value if mix is default', function(done){
+      var results = cycle._resolvePostAction('default', 'butts');
+      results.should.eql('butts');
+      done();
+    });
+    it('should return relative path if object is given', function(done){
+      var context = {
+        _relativePathFromObj: function(){
+          return '/some/path';
+        }
+      };
+      var results = cycle._resolvePostAction.apply(context, [{}, 'butts']);
+      results.should.eql('/some/path');
+      done();
+    });
+    it('should return mix', function(done){
+      var results = cycle._resolvePostAction('butts');
+      results.should.eql('butts');
+      done();
+    });
+  });
+
+  describe('#_relativePathFromObj()', function(){
+    it('should convert an object containing controller/action properties to a path', function(done){
+      var obj = {controller: 'hello', action: 'world'};
+      var results = cycle._relativePathFromObj(obj);
+      results.should.eql('/hello/world');
+      done();
+    });
+
+    it('should throw error if given object does not contain a controller or an action', function(done){
+      var obj = {};
+      try{
+        var results = cycle._relativePathFromObj(obj);
+      }catch(e){
+        e.should.be.ok;
+        done();
+      }
     });
   });
 });
