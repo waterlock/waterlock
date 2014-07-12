@@ -19,7 +19,7 @@ describe('waterlock', function(){
     done();
   });
 
-  describe('#constructor', function(){
+  describe('#constructor()', function(){
     it('should return a waterlock object', function(done){
       global.sails = {};
       Waterlock.bind(this);

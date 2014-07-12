@@ -221,7 +221,7 @@ describe('cycle', function(){
     });
   });
 
-  describe('#logoutFailure', function(){
+  describe('#logoutFailure()', function(){
     it('should redirect to logout failure postAction', function(done){
       var req = {};
       var res = {
@@ -281,7 +281,7 @@ describe('cycle', function(){
     });
   });
 
-  describe('#_addressFromRequest', function(){
+  describe('#_addressFromRequest()', function(){
     it('should return a transport address object if given a req.connection object', function(done){
       var req = {
         connection:{

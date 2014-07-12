@@ -4,7 +4,7 @@ var mocha = require('mocha');
 
 describe('engine', function(){
   describe('#findAuth()', function(){
-    it('should find an auth record with user', function(done){
+    it('should find a user record with auth', function(done){
       var scope = {
         Auth: {
           findOne: function(){
@@ -13,7 +13,7 @@ describe('engine', function(){
                 return this;
               },
               exec: function(cb){
-                cb(null);
+                cb(null, {user:""});
               }
             }
           }
@@ -66,6 +66,32 @@ describe('engine', function(){
               },
               exec: function(cb){
                 cb(null, {user: {}});
+              }
+            }
+          }
+        }
+      };
+      var engine = require('../../lib/engine').apply(scope);
+      engine.findOrCreateAuth({},{}, function(err, user){
+        user.should.be.type('object');
+        done();
+      });
+    });
+
+    it('should run the findOrCreateAuth again if population didnt work', function(done){
+      var called = false;
+      var scope = {
+        Auth:{
+          findOrCreate: function(){
+            return {
+              populate: function(){
+                return this;
+              },
+              exec: function(cb){
+                if(!called){
+                  called = true;
+                  cb(null, {user: 1});
+                }else{ cb(null, {user: {}}) }
               }
             }
           }
@@ -130,6 +156,15 @@ describe('engine', function(){
         r.should.be.type('object');
         done();
       });
+    });
+  });
+  describe('#_invertAuth()', function(){
+    it('should invert the given auth/user object', function(done){
+      var engine = require('../../lib/engine')();
+      var auth = {user:{name:'foo'}};
+      var user = engine._invertAuth(auth);
+      user.should.have.property('auth');
+      done();
     });
   });
 });

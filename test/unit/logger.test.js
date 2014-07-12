@@ -11,7 +11,7 @@ var logger = proxyquire('../../lib/logger', {
 });
 
 describe('logger', function(){
-  describe('#log', function(){
+  describe('#log()', function(){
     it('should exist', function(done){
       logger.should.have.property('log');
       done();
