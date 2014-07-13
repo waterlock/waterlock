@@ -38,6 +38,13 @@ describe('engine', function(){
                 cb(null, {});
               }
             }
+          },
+          update: function(){
+            return {
+              exec: function(cb){
+                cb(null, {})
+              }
+            }
           }
         },
         User:{
