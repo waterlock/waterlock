@@ -83,6 +83,22 @@ describe('methods', function(){
       results.should.be.type('object');
       done();
     });
+
+    it('should require auth method', function(done){
+      var scope = {
+        config: {
+          authMethod: [{name: 'some-auth-module'}]
+        }
+      };
+      var methods =  proxyquire.noCallThru().load('../../lib/methods',
+        {
+          '../../some-auth-module': {shake:'bake', authType: 'magic-man'}
+        })();
+      
+      var results = methods._handleObjects(scope.config.authMethod);
+      results.should.have.property('magic-man');
+      done();
+    });
   });
 
   describe('#_handleObject()', function(){
@@ -104,6 +120,21 @@ describe('methods', function(){
       results.should.be.type('object');
       done();
     });
+    it('should require auth method', function(done){
+      var scope = {
+        config: {
+          authMethod: {name: 'some-auth-module'}
+        }
+      };
+      var methods =  proxyquire.noCallThru().load('../../lib/methods',
+        {
+          '../../some-auth-module': {shake:'bake', authType: 'magic-man'}
+        })();
+      
+      var results = methods._handleObject(scope.config.authMethod);
+      results.should.have.property('magic-man');
+      done();
+    });
   });
 
   describe('#_handleName()', function(){
@@ -123,6 +154,21 @@ describe('methods', function(){
 
       var results = methods._handleName.apply(context, [scope.config.authMethod]);
       results.should.be.type('object');
+      done();
+    });
+    it('should require auth method', function(done){
+      var scope = {
+        config: {
+          authMethod: 'some-auth-module'
+        }
+      };
+      var methods =  proxyquire.noCallThru().load('../../lib/methods',
+        {
+          '../../some-auth-module': {shake:'bake', authType: 'magic-man'}
+        })();
+      
+      var results = methods._handleName(scope.config.authMethod);
+      results.should.have.property('magic-man');
       done();
     });
   });
