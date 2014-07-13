@@ -23,4 +23,20 @@ describe('config', function(){
   it('should have a postActions object', function(){
     config.postActions.should.be.type('object');
   });
+  it('should throw an error if config file not defined', function(done){
+    var config = proxyquire.noCallThru().load('../../lib/config', {
+      'path': {
+        normalize: function(){
+          return 'NOPE';
+        }
+      }
+    });
+
+    try{
+      config();
+    }catch(e){
+      e.should.be.ok;
+      done();
+    }
+  });
 });

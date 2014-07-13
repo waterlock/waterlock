@@ -36,6 +36,25 @@ describe('controllers', function(){
       results.should.have.property('foo');
       done();
     });
+
+    it('should merge any extras from waterlock.*.methods', function(done){
+      var waterlock = {
+        logger: {verbose: function(){}},
+        methods: {
+          shake: {
+            actions:{
+              extras: {
+                shake: 'bake'
+              }
+            }
+          }
+        }
+      };
+      var controllers = Controllers.apply(waterlock);
+      var results = controllers.waterlocked({});
+      results.should.have.property('shake');
+      done();
+    });
   });
   describe('#user()', function(){
      var Controllers = proxyquire.noCallThru().load('../../../lib/controllers',{
