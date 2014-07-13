@@ -21,6 +21,40 @@ var cycle = require('../../lib/cycle').apply(wl);
 describe('cycle', function(){
   describe('#loginSuccess()', function(){
 
+    it('should log error if any while creating Attempt', function(done){
+      var wl = {
+        Attempt:{
+          create: function(){
+            return {
+              exec: function(cb){
+                cb("NOPE");
+              }
+            }
+          }
+        },
+        config: config,
+        logger: {
+          debug: function(msg){
+            if(msg === "NOPE"){
+              done();
+            }
+          }
+        }
+      };
+      var cycle = require('../../lib/cycle').apply(wl);
+      var req = {
+        connection:{
+          remoteAddress: '0.0.0.0', 
+          port:'80'
+        },
+        session: {}
+      };
+      var res = {ok: function(){}};
+      var user = {};
+
+      cycle.loginSuccess(req, res, user);
+    });
+
     it('should trigger a serverError on null user', function(done){
       cycle.loginSuccess(null, {serverError: function(){
         done();
@@ -68,7 +102,40 @@ describe('cycle', function(){
     });
   });
   describe('#loginFailure()', function(){
+    it('should log error if any while creating Attempt', function(done){
+      var wl = {
+        Attempt:{
+          create: function(){
+            return {
+              exec: function(cb){
+                cb("NOPE");
+              }
+            }
+          }
+        },
+        config: config,
+        logger: {
+          debug: function(msg){
+            if(msg === "NOPE"){
+              done();
+            }
+          }
+        }
+      };
+      var cycle = require('../../lib/cycle').apply(wl);
 
+      var req = {
+        connection:{
+          remoteAddress: '0.0.0.0', 
+          port:'80'
+        },
+        session: {authenticated: true}
+      };
+      var res = {forbidden: function(){}};
+      var user = {};
+
+      cycle.loginFailure(req, res, user);
+    });
     it('should unauthenticate the session', function(done){
       var req = {
         connection:{
