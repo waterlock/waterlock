@@ -103,6 +103,31 @@ describe('engine', function(){
         done();
       });
     });
+    it('should fail if findOrCreateAuth is run more than twice', function(done){
+      var called = false;
+      var scope = {
+        Auth:{
+          findOrCreate: function(){
+            return {
+              populate: function(){
+                return this;
+              },
+              exec: function(cb){
+                if(!called){
+                  called = true;
+                  cb(null, {user: 1});
+                }else{ cb(null, {user: 1}) }
+              }
+            }
+          }
+        }
+      };
+      var engine = require('../../lib/engine').apply(scope);
+      engine.findOrCreateAuth({},{}, function(err, user){
+        err.should.be.type('string');
+        done();
+      });
+    });
   });
   describe('#attachAuthToUser()', function(){
     it('should create auth if user does not have one', function(done){

@@ -19,6 +19,25 @@ describe('Auth', function(){
       done();
     });
 
+    it('should pass attributes to any defined waterlock.methods.*.model.auth functions', function(done){
+      global.waterlock = {
+        methods:{
+          shake:{
+            model:{
+              auth:{
+                attributes: function(attr){
+                  attr['shake'] = 'bake';
+                }
+              }
+            }
+          }
+        }
+      };
+      var a = attributes.apply(this, [{}]);
+      a.should.have.property('shake');
+      done();
+    });
+
     describe('template attributes', function(){
       global.waterlock = {
         methods:{

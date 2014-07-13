@@ -1,7 +1,9 @@
-# v0.1.0 //idk
+# v0.1.0
 * [BUG] [#6](https://github.com/davidrivera/waterlock/issues/6) fixed remote address on socket
 * [REFACTORING] added in a debug logger
 * [FEATURE] now tracking port on attempt
+* [FEATURE] added in postActions addresses issue [#7](https://github.com/davidrivera/waterlock/issues/7)
+* [REFACTORING] major overhaul of waterlock core
 
 # v0.0.9
 * [FEATURE] now supports multiple auth methods at once

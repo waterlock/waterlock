@@ -308,6 +308,14 @@ describe('cycle', function(){
       obj.should.have.property('port');
       done();
     });
+    it('should return default transport address object if req is not well formated', function(done){
+      var req = {};
+      var obj = cycle._addressFromRequest(req);
+
+      obj.should.have.property('ip');
+      obj.should.have.property('port');
+      done();
+    });
   });
   
   describe('#_resolvePostAction()', function(){
