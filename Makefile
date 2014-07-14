@@ -20,7 +20,6 @@ base:
     --recursive \
 	
 coveralls:
-	pwd
 	@echo "running mocha tests with coveralls..."
 	@NODE_ENV=test $(ISTANBUL) \
 	cover ./node_modules/mocha/bin/_mocha \
@@ -35,7 +34,6 @@ provision:
 	@echo "provisioning..."
 	$(SAILS) new $(TESTAPP)
 	cd $(TESTAPP) && \
-	pwd && \
 	npm install ../ && \
 	npm install git+https://git@github.com/davidrivera/waterlock-local-auth.git  && \
 	$(WATERLOCK) generate all
@@ -45,7 +43,7 @@ localauth:
 
 jshint:
 	@echo "running lint..."
-	$(JSHINT) lib	
+	$(JSHINT) lib bin	
 
 clean:
 	@echo "clean..."

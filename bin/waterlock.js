@@ -1,15 +1,17 @@
 #!/usr/bin/env node
 
-var package = require('../package.json');
+'use strict';
+
+var pkg = require('../package.json');
 var program = require('commander');
 
-program.version(package.version, '-v, --version');
+program.version(pkg.version, '-v, --version');
 
 program.usage('[command]');
 
 var cmd;
 cmd = program.command('generate');
-cmd.option('-r, --raw', 'generates the raw templates')
+cmd.option('-r, --raw', 'generates the raw templates');
 cmd.description('generate various components');
 cmd.action(require('./waterlock-generate'));
 

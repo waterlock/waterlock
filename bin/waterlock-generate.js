@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 
+'use strict';
+
 module.exports = function(){
   var args = Array.prototype.slice.call(arguments);
   var meta = args.pop();
@@ -11,4 +13,4 @@ module.exports = function(){
   }
   var auth = require('./waterlock-auth-methods')();
   auth.install(task);  
-}
+};

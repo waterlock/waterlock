@@ -1,7 +1,9 @@
 #!/usr/bin/env node
 
-var path = require("path"); 
-var fs = require("fs"); 
+'use strict';
+
+var path = require('path'); 
+var fs = require('fs'); 
 var readline = require('readline'); 
 var rl = readline.createInterface({
   input: process.stdin, 
@@ -9,7 +11,7 @@ var rl = readline.createInterface({
 }); 
 
 module.exports = function(){
-  var self = this;
+  var self = this || {};
   self.waterlockPlugins = [];
 
   self.logger = require('../lib/logger');
@@ -74,7 +76,7 @@ module.exports = function(){
      * @param  {String} target the resource to collect from waterlock module
      */
     collect: function(target){
-      for(var i = 0;  i < waterlockPlugins.length; i++){
+      for(var i = 0;  i < self.waterlockPlugins.length; i++){
         var arr = this.readdirSyncComplete(self.waterlockPlugins[i] + '/' + target);
         this.installArray = this.installArray.concat(arr);
       }
@@ -123,15 +125,15 @@ module.exports = function(){
      * Shows the script usage
      */
     usage: function(){
-      console.log("")
-      this.log("Usage: generate [resource]");
-      this.log("Resources:")
-      this.log("  all                    generates all components", false);
-      this.log("  models                 generates all models", false);
-      this.log("  controllers            generates all controllers", false);
-      this.log("  configs                generates default configs", false);
-      this.log("  views                  generates default view templates", false);
-      this.log("  policies               generates all policies");
+      console.log('');
+      this.log('Usage: generate [resource]');
+      this.log('Resources:');
+      this.log('  all                    generates all components', false);
+      this.log('  models                 generates all models', false);
+      this.log('  controllers            generates all controllers', false);
+      this.log('  configs                generates default configs', false);
+      this.log('  views                  generates default view templates', false);
+      this.log('  policies               generates all policies');
     },
 
     /**
@@ -141,10 +143,11 @@ module.exports = function(){
      * @param  {Boolean} br  if true or undefined preforms line break after mmsg
      */
     log: function(msg, br){
-      console.log("  "+msg);
+      console.log('  '+msg);
 
-      if(typeof br === 'undefined' || br)
-        console.log(" "); 
+      if(typeof br === 'undefined' || br){
+        console.log(' '); 
+      }
     },
 
     /**
@@ -166,7 +169,7 @@ module.exports = function(){
         }
          
       }else{
-        this.log("all done, get ready to rock!  (╯°□°）╯︵ ┻━┻");
+        this.log('all done, get ready to rock!  (╯°□°）╯︵ ┻━┻');
         rl.close(); 
       }
     },
@@ -217,7 +220,7 @@ module.exports = function(){
      * @param  {String} dest the destination file
      */
     copy: function(src, dest){
-      self.logger.info("generating "+dest); 
+      self.logger.info('generating '+dest); 
       fs.createReadStream(src).pipe(fs.createWriteStream(dest)); 
     },
 
@@ -228,9 +231,9 @@ module.exports = function(){
      * @param  {String} dest the destination file
      */
     waitForResponse: function(src, dest){
-      self.logger.warn("File at "+dest+" exists, overwrite?");
+      self.logger.warn('File at '+dest+' exists, overwrite?');
       
-      rl.question("(yN) ", function(answer){
+      rl.question('(yN) ', function(answer){
         switch(answer.toLowerCase()){
           case 'y':
             this.copy(src, dest); 
@@ -245,5 +248,5 @@ module.exports = function(){
         }
       }.bind(this)); 
     }
-  }
-}
+  };
+};
