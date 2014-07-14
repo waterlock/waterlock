@@ -4,6 +4,7 @@
 * [FEATURE] now tracking port on attempt
 * [FEATURE] added in postActions addresses issue [#7](https://github.com/davidrivera/waterlock/issues/7)
 * [REFACTORING] major overhaul of waterlock core
+* [REFACTORING] removed email.jade 
 
 # v0.0.9
 * [FEATURE] now supports multiple auth methods at once

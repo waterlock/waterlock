@@ -1,15 +1,7 @@
 #!/usr/bin/env node
-var fs = require('fs');
-var path = require('path');
-var readline = require('readline');
-var rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout
-});
 
 var package = require('../package.json');
 var program = require('commander');
-var _ = require('lodash');
 
 program.version(package.version, '-v, --version');
 
