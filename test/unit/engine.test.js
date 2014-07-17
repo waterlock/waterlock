@@ -163,7 +163,7 @@ describe('engine', function(){
                 return this;
               },
               exec: function(cb){
-                cb(null, {user: {}});
+                cb(null, {user: {auth:{}}});
               }
             }
           }
@@ -174,6 +174,33 @@ describe('engine', function(){
         user.should.be.type('object');
         done();
       });
+    });
+    it('should return and update user object', function(done){
+      var scope = {
+        Auth:{
+          findOrCreate: function(){
+            return {
+              populate: function(){
+                return this;
+              },
+              exec: function(cb){
+                cb(null, {user: {}});
+              }
+            }
+          }
+        },
+        User: {
+          update: function(){
+            return {
+              exec: function(){
+                done();
+              }
+            };
+          }
+        }
+      };
+      var engine = require('../../lib/engine').apply(scope);
+      engine.findOrCreateAuth({},{}, function(){});
     });
 
     it('should run the findOrCreateAuth again if population didnt work', function(done){
@@ -189,7 +216,7 @@ describe('engine', function(){
                 if(!called){
                   called = true;
                   cb(null, {user: 1});
-                }else{ cb(null, {user: {}}) }
+                }else{ cb(null, {user: {auth:{}}}) }
               }
             }
           }
@@ -346,6 +373,13 @@ describe('engine', function(){
       var auth = {user:{name:'foo'}};
       var user = engine._invertAuth(auth);
       user.should.have.property('auth');
+      done();
+    });
+    it('should return original auth if undefined or no user', function(done){
+      var engine = require('../../lib/engine')();
+      var auth = {foo:'bar'};
+      var user = engine._invertAuth(auth);
+      user.should.have.property('foo');
       done();
     });
   });
