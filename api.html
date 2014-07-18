@@ -1,0 +1,99 @@
+---
+layout: default
+---
+
+<div class="doc-header">
+  <div class="container">
+    <img src="{{ "/img/peekaboo-beaver.png" | prepend: site.baseurl }}" class="peek"/> 
+    <h1 id="doc-h-waterlock" class="doc-h visible">waterlock</h1>
+    <h1 id="doc-h-cycle" class="doc-h hidden">cycle</h1>
+    <h1 id="doc-h-engine" class="doc-h hidden">engine</h1>
+    <h1 id="doc-h-utils" class="doc-h hidden">utils</h1>
+  </div>
+</div>
+
+<div id="api" class="container">
+  <div class="row">
+    <div class="col-md-10">
+      <div class="tab-content">
+        <div class="tab-pane fade in active" id="waterlock">
+          {% include api/waterlock.html %}
+        </div>
+        <div class="tab-pane fade" id="cycle">
+          {% include api/cycle.html %}
+        </div>
+        <div class="tab-pane fade" id="engine">
+          {% include api/engine.html %}
+        </div>
+        <div class="tab-pane fade" id="utils">
+          {% include api/utils.html %}
+        </div>
+      </div>
+    </div>
+    <div class="col-md-2">
+      <ul class="nav nav-pills nav-stacked">
+        <li class="active">
+          <a href="#waterlock" data-toggle="tab">
+            waterlock
+          </a>
+        </li>
+        <li>
+          <a href="#cycle" data-toggle="tab">
+            cycle
+          </a>
+        </li>
+        <li>
+          <a href="#engine" data-toggle="tab">
+            engine
+          </a>
+        </li>
+        <li>
+          <a href="#utils" data-toggle="tab">
+            utils
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){
+  $('#api  ul.nav  li  a').click(function(e){
+    // save the link click in the url
+    location.hash = $(e.target).attr('href').split('#')[1];
+
+    // hide all the headers
+    $('.doc-h').removeClass('visible').addClass('hidden');
+    // animate all of the tabs closed
+    $('#api ul.nav li a').not(e.target).stop().animate({'border-left-width': "0px"},200);
+
+    var id = $(e.target).attr('href');
+    var docId = '#doc-h-'+id.substr(1, id.length);
+    $(docId).removeClass('hidden').addClass('visible');
+    
+    //idk
+    $(window).scrollTop(0);
+  });
+
+  $('#api ul.nav li a').mouseover(function(e){
+    if(!$(e.target).parent().hasClass('active')){
+      $(e.target).stop().animate({"border-left-width": "10px"},200);
+    }
+  });
+  $('#api ul.nav li a').mouseout(function(e){
+    if(!$(e.target).parent().hasClass('active')){
+      $(e.target).stop().animate({"border-left-width": "0px"},200);
+    }
+  });
+
+  if(location.hash.length != 0){
+    setTimeout(function(){
+      $('[href="'+location.hash+'"]').click();
+    }, 500);
+  }
+
+  $('.source-toggle').click(function(e){
+    $(e.target).closest('.source-section').find('.source').slideToggle();
+  });
+});
+</script>

@@ -1,0 +1,86 @@
+<div class="container">
+	<div class="api-class">
+		<div class="api">
+			<div class="api-header">
+				<div class="api-call">
+					#findAuth(criteria, cb)
+				</div>
+				<div class="api-description">
+					Simple wrapper for Auth find/populate method 
+				</div>
+			</div>
+			<div class="api-body">
+				<div class="api-param">
+					<h4>criteria</h4>
+					<p><strong>Type:</strong> <code>Object</code> or <code>String</code></p>
+					<p>should be id to find the auth by</p>
+				</div>
+				<div class="api-param">
+					<h4>cb</h4>
+					<p><strong>Type:</strong> <code>Function</code>(<code>String</code> err, <code>Object</code> user)</p>
+					<p>function to be called when the auth has been found or an error has occurred</p>
+				</div>
+			</div>
+		</div>
+
+		<div class="api">
+			<div class="api-header">
+				<div class="api-call">
+					#findOrCreateAuth(criteria, attributes, cb)
+				</div>
+				<div class="api-description">
+					This will create a user and auth object if one is not found
+				</div>
+			</div>
+			<div class="api-body">
+				<div class="api-param">
+					<h4>criteria</h4>
+					<p><strong>Type:</strong> <code>Object</code> or <code>String</code></p>
+					<p>should be id to find the auth by</p>
+				</div>
+
+				<div class="api-param">
+					<h4>attributes</h4>
+					<p><strong>Type:</strong> <code>Object</code></p>
+					<p>auth attributes</p>
+				</div>
+
+				<div class="api-param">
+					<h4>cb</h4>
+					<p><strong>Type:</strong> <code>Function</code>(<code>String</code> err, <code>Object</code> user)</p>
+					<p>function to be called when the auth has been found or an error has occurred</p>
+				</div>
+			</div>
+		</div>
+
+		<div class="api">
+			<div class="api-header">
+				<div class="api-call">
+					#attachAuthToUser(attributes, user, cb)
+				</div>
+				<div class="api-description">
+					Attach given auth attributes to user 
+				</div>
+			</div>
+			<div class="api-body">
+				<div class="api-param">
+					<h4>attributes</h4>
+					<p><strong>Type:</strong> <code>Object</code></p>
+					<p>auth attributes</p>
+				</div>
+
+				<div class="api-param">
+					<h4>user</h4>
+					<p><strong>Type:</strong> <code>Object</code></p>
+					<p>user instance</p>
+				</div>
+
+				<div class="api-param">
+					<h4>cb</h4>
+					<p><strong>Type:</strong> <code>Function</code>(<code>String</code> err, <code>Object</code> user)</p>
+					<p>function to be called when the auth has been attached or an error has occurred</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

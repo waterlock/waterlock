@@ -28,7 +28,7 @@ sails lift
     <code>jsonWebTokens</code> - object containing information on how the jwt's should be constructed
     <ul class="task-list">
         <li>
-            <code>secret</code> - the secret used to encrypt the token, CHANGE THIS VALUE!
+            <code>secret</code> - the secret used to encrypt the token, <strong>CHANGE THIS VALUE!</strong>
         </li>
         <li>
             <code>expiry</code> - object containing information on expiry these are passed to moment.js <a href="http://momentjs.com/docs/#/manipulating/add/">add</a> function
@@ -47,6 +47,33 @@ sails lift
         <li>
             <code>subject</code> - the jwt <a href="http://tools.ietf.org/html/draft-ietf-oauth-json-web-token-23#section-4.1.2">sub claim</a>
         </li>
+    </ul>
+  </li>
+  <li>
+    <code>postActions</code> - Lets waterlock know how to handle different login/logout attempt outcomes.
+    <ul class="task-list">
+      <li>
+        <code>login</code> - post login event
+          <ul clas="task-list">
+            <li>
+              <code>success</code> - custom DSL on how to route the successful request see <a href="https://github.com/davidrivera/waterlock/blob/master/lib/templates/configs/waterlock.js#L69">config template</a> for more details
+            </li>
+            <li>
+              <code>failure</code> - custom DSL on how to route the failure request see <a href="https://github.com/davidrivera/waterlock/blob/master/lib/templates/configs/waterlock.js#L69">config template</a> for more details
+            </li>
+          </ul>
+      </li>
+      <li>
+        <code>logout</code> - post logout event
+          <ul clas="task-list">
+            <li>
+              <code>success</code> - custom DSL on how to route the successful request see <a href="https://github.com/davidrivera/waterlock/blob/master/lib/templates/configs/waterlock.js#L69">config template</a> for more details
+            </li>
+            <li>
+              <code>failure</code> - custom DSL on how to route the failure request see <a href="https://github.com/davidrivera/waterlock/blob/master/lib/templates/configs/waterlock.js#L69">config template</a> for more details
+            </li>
+          </ul>
+      </li>
     </ul>
   </li>
 </ul>

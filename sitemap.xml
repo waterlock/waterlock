@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+
+<url>
+  <loc>http://waterlock.ninja/</loc>
+  <lastmod>2014-07-04T17:38:48+00:00</lastmod>
+</url>
+<url>
+  <loc>http://waterlock.ninja/documentation/</loc>
+  <lastmod>2014-07-04T17:38:48+00:00</lastmod>
+</url>
+<url>
+  <loc>http://waterlock.ninja/api/</loc>
+  <lastmod>2014-07-04T17:38:48+00:00</lastmod>
+</url>
+<url>
+  <loc>http://waterlock.ninja/blog/</loc>
+  <lastmod>2014-07-04T17:38:48+00:00</lastmod>
+</url>
+<url>
+  <loc>http://waterlock.ninja/waterlock/update/2014/07/04/waterlock_update/</loc>
+  <lastmod>2014-07-04T17:38:48+00:00</lastmod>
+</url>
+<url>
+  <loc>http://waterlock.ninja/waterlock/update/2014/06/22/waterlock-json-web-tokens/</loc>
+  <lastmod>2014-07-04T17:38:48+00:00</lastmod>
+</url>
+</urlset>

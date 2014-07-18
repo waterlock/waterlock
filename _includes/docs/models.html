@@ -10,6 +10,8 @@
       <dd><code>boolean</code> if the attempt allowed a user to login.</dd>
       <dt>ip</dt>
       <dd><code>string</code> the ip address the attempt came from.</dd>
+      <dt>port</dt>
+      <dd><code>string</code> the port the attempt came from.</dd>
   </dl>
   <div class="source-section">
     <div class="source-button">
@@ -26,6 +28,9 @@ successful:{
   defaultsTo: false
 },
 ip:{
+  type: 'string'
+},
+port:{
   type: 'string'
 }
       </code>

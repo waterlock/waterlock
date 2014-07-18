@@ -43,7 +43,21 @@ section{
 /* Layout Styles */
 /* ----------------------------------------------------------*/
 
-
+/* 404 Styles */
+/* ----------------------------------------------------------*/
+#not-found{
+    background:none;
+  background-color: $brand-primary;
+  .container{
+    margin-top: 10%;
+  }
+  .centered{
+    text-align: center;
+    color: white;
+    font-size: 2em;
+    font-weight: 300;
+  }
+}
 /* Site header */
 
 
@@ -84,9 +98,7 @@ pre{
 
   pre{
     border: none;
-    -webkit-box-shadow: inset 0px 0px 5px 0px rgba(50, 50, 50, 1);
-    -moz-box-shadow:    inset 0px 0px 5px 0px rgba(50, 50, 50, 1);
-    box-shadow:         inset 0px 0px 5px 0px rgba(50, 50, 50, 1);
+    @include box-shado(0px, 0px, 5px, 0px, rgba(50, 50, 50, 1))
   }
   p{
     font-size: 20pt;
@@ -122,7 +134,7 @@ pre{
 .show-left-border{
   border-left-width: 10px;
 }
-#documentation{
+#documentation, #api{
   padding-top:10px;
   a{
     color:$brand-primary
@@ -146,6 +158,11 @@ pre{
       }
     } 
   }
+
+  section{
+    padding: 0;
+    box-shadow: none;
+  }
 }
 .doc-h{
   float: right;
@@ -166,6 +183,39 @@ pre{
   }
 }
 
+/* Api style */
+/* ----------------------------------------------------------*/
+.api-class{
+  width: 80%;
+  .api{
+    background-color: $white;
+    margin: 10px;
+-webkit-box-shadow: 0px -1px 10px rgba(0, 0, 0, 0.4);
+-moz-box-shadow:    0px -1px 10px rgba(0, 0, 0, 0.4);
+box-shadow:         0px -1px 10px rgba(0, 0, 0, 0.4);
+    .api-call{
+      font-size: 2em;
+    }
+    .api-param{
+      h4{
+        font-size: 1.5em;
+      }
+    }
+    .api-header{
+      padding: 10px;
+      background-color: $brand-primary;
+      color:$white;
+      // @include box-shado(0px, -5px, 10px, 0px, rgba(0, 0, 0, 0.75))
+    }
+    .api-body{
+      padding: 10px;
+      border: 1px solid #d3d3d3;
+// -webkit-box-shadow: 0px -1px 10px rgba(0, 0, 0, 0.4);
+// -moz-box-shadow:    0px -1px 10px rgba(0, 0, 0, 0.4);
+// box-shadow:         0px -1px 10px rgba(0, 0, 0, 0.4);
+    }
+  }
+}
 /* Blog styles */
 /* ----------------------------------------------------------*/
 #blog-posts{
