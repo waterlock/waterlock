@@ -3,11 +3,11 @@
 [![Build Status](http://img.shields.io/travis/davidrivera/waterlock.svg?style=flat)](https://travis-ci.org/davidrivera/waterlock) [![NPM version](http://img.shields.io/npm/v/waterlock.svg?style=flat)](http://badge.fury.io/js/waterlock) [![Dependency Status](http://img.shields.io/gemnasium/davidrivera/waterlock.svg?style=flat)](https://gemnasium.com/davidrivera/waterlock) [![Coverage Status](http://img.shields.io/coveralls/davidrivera/waterlock/master.svg?style=flat)](https://coveralls.io/r/davidrivera/waterlock?branch=master) [![Gittip](http://img.shields.io/gittip/davidrivera.svg?style=flat)](https://www.gittip.com/davidrivera/)
 
 
-Waterlock is an all encompassing user authentication/json web token management tool for [Sailsjs](http://sailsjs.com) `version 0.10`
+Waterlock is an all encompassing user authentication/json web token management tool for [Sails](http://sailsjs.com) `version 0.10`
 
 # What does it provide
-Waterlock provides predefined routes and models for user authentication and json web token management. Password resets are also handeled but we'll cover that below.
-Authentication is handeled via methods. The current supported methods are:
+Waterlock provides predefined routes and models for user authentication and json web token management. Password resets are also handled but we'll cover that below.
+Authentication is handled via methods. The current supported methods are:
 
 | Method | Library |
 | ------------- | ------------- |
@@ -31,7 +31,7 @@ then run
 ```bash
 ./node_modules/bin/waterlock generate all
 ```
-this will generate all the necessary components, however you do not have strict access yet! The custom policies are generated via the command above but not yet applied. To apply policies crack open your `config/policies.js` file and add someting like the following:
+this will generate all the necessary components, however you do not have strict access yet! The custom policies are generated via the command above but not yet applied. To apply policies crack open your `config/policies.js` file and add something like the following:
 
 ```js
 MyController:{
