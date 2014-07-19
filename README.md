@@ -1,4 +1,4 @@
-[![Waterlock](https://lh3.googleusercontent.com/-aThk1tYLSh0/U5fAM6NyB5I/AAAAAAAAH84/FKmmmQ80XWY/w611-h144-no/waterlock-header.png)](http://davidrivera.github.io/waterlock/)
+[![Waterlock](https://lh3.googleusercontent.com/-aThk1tYLSh0/U5fAM6NyB5I/AAAAAAAAH84/FKmmmQ80XWY/w611-h144-no/waterlock-header.png)](http://waterlock.ninja/)
 -----------------------------------------------
 [![Build Status](http://img.shields.io/travis/davidrivera/waterlock.svg?style=flat)](https://travis-ci.org/davidrivera/waterlock) [![NPM version](http://img.shields.io/npm/v/waterlock.svg?style=flat)](http://badge.fury.io/js/waterlock) [![Dependency Status](http://img.shields.io/gemnasium/davidrivera/waterlock.svg?style=flat)](https://gemnasium.com/davidrivera/waterlock) [![Coverage Status](http://img.shields.io/coveralls/davidrivera/waterlock/master.svg?style=flat)](https://coveralls.io/r/davidrivera/waterlock?branch=master) [![Gittip](http://img.shields.io/gittip/davidrivera.svg?style=flat)](https://www.gittip.com/davidrivera/)
 
@@ -80,21 +80,27 @@ Waterlock generates a config located at `config/waterlock.json` this file is use
 		* `length` - length of time
 	* `audience` - the jwt [aud claim](http://tools.ietf.org/html/draft-ietf-oauth-json-web-token-23#section-4.1.3) a good choice is the name of your app
 	* `subject` - the jwt [sub claim](http://tools.ietf.org/html/draft-ietf-oauth-json-web-token-23#section-4.1.2)
+* `postActions` - lets waterlock know how to handle various login/logout events, you can read more about this in the [docs](http://waterlock.ninja/documentation/)
 
 # The Future
+
 We would hope to turn this project into a well oiled jwt management tool for users.
 
 ## Tests
 
 Tests are run through the wonderful mocha so just clone the library run `npm install` then `npm test`
 
+## Feature Requests
+I love to hear all of your feature requests, so if you have any please open an [issue here](https://github.com/davidrivera/waterlock/issues)! I'll be more than happy to work it into the roadmap if feasible.
+
 ## Contributing
 
 1. Fork it ( http://github.com/davidrivera/waterlock/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create new Pull Request
+3. Write test cases!
+4. Commit your changes (`git commit -am 'Add some feature'`)
+5. Push to the branch (`git push origin my-new-feature`)
+6. Create new Pull Request
 
 # Legal Stuff
 MIT (see License)

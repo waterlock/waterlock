@@ -1,4 +1,4 @@
-# v0.1.0
+# v0.0.10
 * [BUG] [#6](https://github.com/davidrivera/waterlock/issues/6) fixed remote address on socket
 * [REFACTORING] added in a debug logger
 * [FEATURE] now tracking port on attempt

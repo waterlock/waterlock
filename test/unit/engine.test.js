@@ -133,7 +133,7 @@ describe('engine', function(){
           update: function(){
             return {
               exec: function(cb){
-                cb(null, {})
+                cb(null, [{}])
               }
             }
           }
@@ -353,7 +353,7 @@ describe('engine', function(){
           update:function(){
             return {
               exec: function(cb){
-                cb(null, {});
+                cb(null, [{}]);
               }
             }
           }
