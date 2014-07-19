@@ -2,7 +2,7 @@
   "name": "waterlock",
   "version": "0.0.10",
   "author": "David Rivera <david.r.rivera193@gmail.com>",
-  "description": "User authentication and Json Web Tokens for sails.js",
+  "description": "User authentication and Json Web Tokens for Sails",
   "homepage": "http://waterlock.ninja/",
   "contributors": [ 
     {
