@@ -304,7 +304,7 @@ describe('engine', function(){
       }]);
     });
 
-    it('should return any errors in updating the Auth', function(done){
+    it('should return any errors in finding the Auth', function(done){
       var scope = {
         User:{
           findOne: function(){
@@ -316,7 +316,7 @@ describe('engine', function(){
           }
         },
         Auth:{
-          update: function(){
+          findOne: function(){
             return {
               exec: function(cb){
                 cb("nope");
@@ -338,6 +338,84 @@ describe('engine', function(){
       }]);
     });
 
+    it('should return any errors in saving the Auth', function(done){
+      var scope = {
+        User:{
+          findOne: function(){
+            return {
+              exec: function(cb){
+                cb(null, {auth: 1});
+              }
+            };
+          }
+        },
+        Auth:{
+          findOne: function(){
+            return {
+              exec: function(cb){
+                cb(null, {
+                  save: function(cb){
+                    cb("NOPE");
+                  }
+                });
+              }
+            }
+          }
+        },
+        logger: {debug: function(){}}
+      };
+      var context = {
+        findOrCreateAuth: function(a,b,cb){
+          cb(null, {});
+        },
+        _updateAuth: function(){
+          return true;
+        }
+      };
+      var engine = require('../../lib/engine').apply(scope);
+      engine.attachAuthToUser.apply(context, [{},{id:1},function(err){
+        err.should.be.ok;
+        done();
+      }]);
+    });
+
+    it('should return original auth attached to user if no need to update', function(done){
+      var scope = {
+        User:{
+          findOne: function(){
+            return {
+              exec: function(cb){
+                cb(null, {auth: 1});
+              }
+            };
+          }
+        },
+        Auth:{
+          findOne: function(){
+            return {
+              exec: function(cb){
+                cb(null, {what:"WHAT"});
+              }
+            }
+          }
+        },
+        logger: {debug: function(){}}
+      };
+      var context = {
+        findOrCreateAuth: function(a,b,cb){
+          cb(null, {});
+        },
+        _updateAuth: function(){
+          return false;
+        }
+      };
+      var engine = require('../../lib/engine').apply(scope);
+      engine.attachAuthToUser.apply(context, [{},{id:1},function(err, user){
+        user.auth.should.have.property('what');
+        done();
+      }]);
+    });
+
     it('should run an update if User has an Auth', function(done){
       var scope = {
         User:{
@@ -350,10 +428,14 @@ describe('engine', function(){
           }
         },
         Auth:{
-          update:function(){
+          findOne:function(){
             return {
               exec: function(cb){
-                cb(null, [{}]);
+                cb(null, {
+                  save: function(cb){
+                    cb(null);
+                  }
+                });
               }
             }
           }
@@ -381,6 +463,29 @@ describe('engine', function(){
       var user = engine._invertAuth(auth);
       user.should.have.property('foo');
       done();
+    });
+  });
+  describe('#_updateAuth()', function(){
+    it('should decorate auth', function(){
+      var engine = require('../../lib/engine')();
+      var auth = {};
+      var attr = {foo: 'bar'};
+      var change = engine._updateAuth(auth, attr);
+      auth.should.have.property('foo');
+    });
+    it('should return true if auth and attributes differ', function(){
+      var engine = require('../../lib/engine')();
+      var auth = {};
+      var attr = {foo: 'bar'};
+      var change = engine._updateAuth(auth, attr);
+      change.should.have.be.true;
+    });
+    it('should return false if auth and attributes are the same', function(){
+      var engine = require('../../lib/engine')();
+      var auth = {foo: 'bar'};
+      var attr = {foo: 'bar'};
+      var change = engine._updateAuth(auth, attr);
+      change.should.be.false;
     });
   });
 });
