@@ -13,14 +13,18 @@ test: jshint provision base clean
 endif
 
 base:
-	@echo "running mocha tests..."
+	@echo "+------------------------------------+"
+	@echo "| Running mocha tests                |"
+	@echo "+------------------------------------+"
 	@NODE_ENV=test $(MOCHA) \
 	--colors \
     --reporter $(REPORTER) \
     --recursive \
 	
 coveralls:
-	@echo "running mocha tests with coveralls..."
+	@echo "+------------------------------------+"
+	@echo "| Running mocha tests with coveralls |"
+	@echo "+------------------------------------+"
 	@NODE_ENV=test $(ISTANBUL) \
 	cover ./node_modules/mocha/bin/_mocha \
 	--report lcovonly \
@@ -31,7 +35,9 @@ coveralls:
 	 rm -rf ./coverage
 
 provision:
-	@echo "provisioning..."
+	@echo "+------------------------------------+"
+	@echo "| Provisioning                       |"
+	@echo "+------------------------------------+"
 	$(SAILS) new $(TESTAPP)
 	cd $(TESTAPP) && \
 	npm install ../ && \
@@ -42,11 +48,15 @@ localauth:
 	npm install git@github.com:davidrivera/waterlock-local-auth.git 
 
 jshint:
-	@echo "running lint..."
+	@echo "+------------------------------------+"
+	@echo "| Running linter                     |"
+	@echo "+------------------------------------+"
 	$(JSHINT) lib bin	
 
 clean:
-	@echo "clean..."
+	@echo "+------------------------------------+"
+	@echo "| Cleaning up                        |"
+	@echo "+------------------------------------+"
 	rm -rf $(TESTAPP)
 	rm -rf coverage
 
