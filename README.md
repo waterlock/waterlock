@@ -1,6 +1,6 @@
-[![Waterlock](https://lh3.googleusercontent.com/-aThk1tYLSh0/U5fAM6NyB5I/AAAAAAAAH84/FKmmmQ80XWY/w611-h144-no/waterlock-header.png)](http://waterlock.ninja/)
+[![Waterlock][waterlock-image]][waterlock-url]
 -----------------------------------------------
-[![Build Status](http://img.shields.io/travis/davidrivera/waterlock.svg?style=flat)](https://travis-ci.org/davidrivera/waterlock) [![NPM version](http://img.shields.io/npm/v/waterlock.svg?style=flat)](http://badge.fury.io/js/waterlock) [![Dependency Status](http://img.shields.io/gemnasium/davidrivera/waterlock.svg?style=flat)](https://gemnasium.com/davidrivera/waterlock) [![Coverage Status](http://img.shields.io/coveralls/davidrivera/waterlock/master.svg?style=flat)](https://coveralls.io/r/davidrivera/waterlock?branch=master) [![Gittip](http://img.shields.io/gittip/davidrivera.svg?style=flat)](https://www.gittip.com/davidrivera/)
+[![Build Status][travis-image]][travis-url] [![NPM version][npm-version-image]][npm-url] [![NPM downloads][npm-downloads-image]][npm-url] [![Dependency Status][dependency-image]][dependency-url] [![Coverage Status][coverage-image]][coverage-url] [![Gittip][gittip-image]][gittip-url] [![MIT License][license-image]][license-url]
 
 
 Waterlock is an all encompassing user authentication/json web token management tool for [Sails](http://sailsjs.com) `version 0.10`
@@ -104,3 +104,25 @@ I love to hear all of your feature requests, so if you have any please open an [
 
 # Legal Stuff
 MIT (see License)
+
+[license-image]: http://img.shields.io/badge/license-MIT-blue.svg?style=flat
+[license-url]: LICENSE
+
+[npm-url]: https://npmjs.org/package/waterlock
+[npm-version-image]: http://img.shields.io/npm/v/waterlock.svg?style=flat
+[npm-downloads-image]: http://img.shields.io/npm/dm/waterlock.svg?style=flat
+
+[travis-url]: https://travis-ci.org/davidrivera/waterlock
+[travis-image]: http://img.shields.io/travis/davidrivera/waterlock.svg?style=flat
+
+[dependency-image]: http://img.shields.io/gemnasium/davidrivera/waterlock.svg?style=flat
+[dependency-url]: https://gemnasium.com/davidrivera/waterlock
+
+[coverage-image]: http://img.shields.io/coveralls/davidrivera/waterlock/master.svg?style=flat
+[coverage-url]: https://coveralls.io/r/davidrivera/waterlock?branch=master
+
+[gittip-image]: http://img.shields.io/gittip/davidrivera.svg?style=flat
+[gittip-url]: https://www.gittip.com/davidrivera/
+
+[waterlock-image]: https://lh3.googleusercontent.com/-aThk1tYLSh0/U5fAM6NyB5I/AAAAAAAAH84/FKmmmQ80XWY/w611-h144-no/waterlock-header.png
+[waterlock-url]: http://waterlock.ninja/
