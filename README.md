@@ -14,6 +14,7 @@ Authentication is handled via methods. The current supported methods are:
 | Local Auth | [waterlock-local-auth](https://github.com/davidrivera/waterlock-local-auth) |
 | Twitter Auth | [waterlock-twitter-auth](https://github.com/davidrivera/waterlock-twitter-auth) |
 | Facebook Auth | [waterlock-facebook-auth](https://github.com/davidrivera/waterlock-facebook-auth) |
+| Google Auth | [waterlock-google-auth](https://github.com/davidrivera/waterlock-google-auth) |
 
 it is a great tool if you're looking to grant user access to your api.
 
