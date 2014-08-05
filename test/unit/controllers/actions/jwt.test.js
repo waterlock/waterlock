@@ -1,13 +1,11 @@
 var proxyquire = require('proxyquire');
 var should = require('should');
 var mocha = require('mocha');
-var config = require('../../../fixtures/waterlock.config');
+var config = require('../../../fixtures/waterlock.config').waterlock;
 
 describe('actions', function(){
   describe('jwt', function(){
-    var jwt =  proxyquire.noCallThru().load('../../../../lib/controllers/actions/jwt',{
-      '../../waterlock': {config: config.waterlock}
-    });
+    var jwt =  require('../../../../lib/controllers/actions/jwt');
     it('should return forbidden if session not authenticated', function(done){
       var req = {
         session:{
@@ -49,6 +47,7 @@ describe('actions', function(){
           }
         }
       };
+      global.waterlock = {config: config};
 
       jwt.apply(this, [req, res]);
     });
@@ -76,6 +75,7 @@ describe('actions', function(){
           }
         }
       };
+      global.waterlock = {config: config};
 
       jwt.apply(this, [req, res]);
     });

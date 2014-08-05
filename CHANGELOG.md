@@ -1,3 +1,6 @@
+# v0.0.12
+* [BUG] should be referencing the global waterlock.config within the jwt action, addresses issue [#11](https://github.com/davidrivera/waterlock/issues/11)
+
 # v0.0.11
 * [BUG] only update the attributes which have changed in engine#attachAuthToUser
 

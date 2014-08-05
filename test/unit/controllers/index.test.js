@@ -58,7 +58,7 @@ describe('controllers', function(){
   });
   describe('#user()', function(){
      var Controllers = proxyquire.noCallThru().load('../../../lib/controllers',{
-      './actions/jwt': {foo: 'bar'}
+      './actions/jwt': function(){}
     });
     var waterlock = {
       logger: {verbose: function(){}}
