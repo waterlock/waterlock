@@ -28,10 +28,15 @@ npm install waterlock
 npm install waterlock-local-auth
 ```
 
-then run
+then run on mac/linux
 ```bash
-./node_modules/bin/waterlock generate all
+./node_modules/.bin/waterlock generate all
 ```
+or for windows
+```bash
+node_modules\.bin\waterlock generate all
+```
+
 this will generate all the necessary components, however you do not have strict access yet! The custom policies are generated via the command above but not yet applied. To apply policies crack open your `config/policies.js` file and add something like the following:
 
 ```js
