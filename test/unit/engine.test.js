@@ -142,15 +142,15 @@ describe('engine', function(){
           create: function(){
             return {
               exec: function(cb){
-                cb(null, {});
+                cb(user.id, {});
               }
             }
           }
         }
       };
       var engine = require('../../lib/engine').apply(scope);
-      engine.findOrCreateAuth({},{}, function(err, user.id){
-        user.should.be.type('undefined');
+      engine.findOrCreateAuth({},{}, function(err, user){
+        user.should.not.be.type('object');
         done();
       });
     });
