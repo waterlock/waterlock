@@ -150,7 +150,7 @@ describe('engine', function(){
       };
       var engine = require('../../lib/engine').apply(scope);
       engine.findOrCreateAuth({},{}, function(err, user){
-        user.should.be.type('object');
+        user.should.not.be.type('object');
         done();
       });
     });
