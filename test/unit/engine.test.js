@@ -149,7 +149,7 @@ describe('engine', function(){
         }
       };
       var engine = require('../../lib/engine').apply(scope);
-      engine.findOrCreateAuth({},{}, function(err, user){
+      engine.findOrCreateAuth({},{}, function(err, user.id){
         user.should.be.type('undefined');
         done();
       });
