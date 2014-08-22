@@ -142,7 +142,7 @@ describe('engine', function(){
           create: function(){
             return {
               exec: function(cb){
-                cb(user.id, {});
+                cb(null, {});
               }
             }
           }
@@ -150,7 +150,7 @@ describe('engine', function(){
       };
       var engine = require('../../lib/engine').apply(scope);
       engine.findOrCreateAuth({},{}, function(err, user){
-        user.should.not.be.type('object');
+        user.should.be.type('object');
         done();
       });
     });
