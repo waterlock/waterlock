@@ -1,6 +1,9 @@
 [![Waterlock][waterlock-image]][waterlock-url]
 -----------------------------------------------
-[![Build Status][travis-image]][travis-url] [![NPM version][npm-version-image]][npm-url] [![NPM downloads][npm-downloads-image]][npm-url] [![Dependency Status][dependency-image]][dependency-url] [![Coverage Status][coverage-image]][coverage-url] [![Code Climate][climate-image]][climate-url] [![Gittip][gittip-image]][gittip-url] [![MIT License][license-image]][license-url]
+
+| [![Build Status][travis-image]][travis-url] | [![NPM version][npm-version-image]][npm-url] | [![NPM downloads][npm-downloads-image]][npm-url] | [![Dependency Status][dependency-image]][dependency-url] | 
+| ------- | ------- | ------- | ------- |
+| [![Coverage Status][coverage-image]][coverage-url] | [![Code Climate][climate-image]][climate-url] | [![Gittip][gittip-image]][gittip-url] | [![MIT License][license-image]][license-url]
 
 
 Waterlock is an all encompassing user authentication/json web token management tool for [Sails](http://sailsjs.com) `version 0.10`
