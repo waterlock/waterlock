@@ -1,6 +1,6 @@
 [![Waterlock][waterlock-image]][waterlock-url]
 -----------------------------------------------
-[![Build Status][travis-image]][travis-url] [![NPM version][npm-version-image]][npm-url] [![NPM downloads][npm-downloads-image]][npm-url] [![Dependency Status][dependency-image]][dependency-url] [![Coverage Status][coverage-image]][coverage-url] [![Gittip][gittip-image]][gittip-url] [![MIT License][license-image]][license-url]
+[![Build Status][travis-image]][travis-url] [![NPM version][npm-version-image]][npm-url] [![NPM downloads][npm-downloads-image]][npm-url] [![Dependency Status][dependency-image]][dependency-url] [![Coverage Status][coverage-image]][coverage-url] [![Code Climate][climate-image]][climate-url] [![Gittip][gittip-image]][gittip-url] [![MIT License][license-image]][license-url]
 
 
 Waterlock is an all encompassing user authentication/json web token management tool for [Sails](http://sailsjs.com) `version 0.10`
@@ -100,6 +100,7 @@ Tests are run through the wonderful mocha so just clone the library run `npm ins
 I love to hear all of your feature requests, so if you have any please open an [issue here](https://github.com/davidrivera/waterlock/issues)! I'll be more than happy to work it into the roadmap if feasible.
 
 ## Contributing
+Feel free to contribute as you please, the more the merrier. Just please write test cases for everything you submit, in short you can follow the steps below. Happy coding! :smile:
 
 1. Fork it ( http://github.com/davidrivera/waterlock/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
@@ -132,3 +133,6 @@ MIT (see License)
 
 [waterlock-image]: https://lh3.googleusercontent.com/-aThk1tYLSh0/U5fAM6NyB5I/AAAAAAAAH84/FKmmmQ80XWY/w611-h144-no/waterlock-header.png
 [waterlock-url]: http://waterlock.ninja/
+
+[climate-image]: http://img.shields.io/codeclimate/github/davidrivera/waterlock.svg?style=flat
+[climate-url]: https://codeclimate.com/github/davidrivera/waterlock
