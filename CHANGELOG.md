@@ -1,3 +1,10 @@
+# v0.0.13
+* [BUG] fixed depreciated moment variable positions and readme, [#19](https://github.com/davidrivera/waterlock/pull/19)
+* [BUG] fixed users not being created after initial, [#24](https://github.com/davidrivera/waterlock/pull/24)
+* [BUG] hasJsonWebToken crashes on socket [#35](https://github.com/davidrivera/waterlock/issues/35)
+* [BUG] hasJsonWebToken not logging use [#34](https://github.com/davidrivera/waterlock/issues/34)
+* [FEATURE] users can now choose a stateless mode for jwt's [#23](https://github.com/davidrivera/waterlock/issues/23)
+
 # v0.0.12
 * [BUG] should be referencing the global waterlock.config within the jwt action, addresses issue [#11](https://github.com/davidrivera/waterlock/issues/11)
 
