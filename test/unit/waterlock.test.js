@@ -50,7 +50,15 @@ describe('waterlock', function(){
     it('should have an Attempt', function(done){
       waterlock.Attempt.should.be.ok;
       done();
-    }); 
+    });
+    it('should have a Use', function(done){
+      waterlock.Use.should.be.ok;
+      done();
+    });
+    it('should have an Jwt', function(done){
+      waterlock.Jwt.should.be.ok;
+      done();
+    });
     it('should have waterlocked', function(done){
       waterlock.waterlocked.should.be.ok;
       done();

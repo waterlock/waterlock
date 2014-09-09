@@ -226,7 +226,7 @@ describe('validator', function(){
         _utils: {
           allParams: function(){
             return {
-
+              access_token: "barf"
             };
           }
         },
