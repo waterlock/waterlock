@@ -4,6 +4,8 @@
 * [BUG] hasJsonWebToken crashes on socket [#35](https://github.com/davidrivera/waterlock/issues/35)
 * [BUG] hasJsonWebToken not logging use [#34](https://github.com/davidrivera/waterlock/issues/34)
 * [FEATURE] users can now choose a stateless mode for jwt's [#23](https://github.com/davidrivera/waterlock/issues/23)
+* [BUG] implemented fix for allParams merging with req.query [#25](https://github.com/davidrivera/waterlock/issues/25) [#40](https://github.com/davidrivera/waterlock/issues/40)
+* [BUG] implemented fix for #findOrCreate calling itself [#37](https://github.com/davidrivera/waterlock/issues/37)
 
 # v0.0.12
 * [BUG] should be referencing the global waterlock.config within the jwt action, addresses issue [#11](https://github.com/davidrivera/waterlock/issues/11)
