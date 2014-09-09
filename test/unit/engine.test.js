@@ -25,6 +25,104 @@ describe('engine', function(){
       });
     });
   });
+  describe('#_attachAuthToUser', function(){
+    it('should return any errors while creating a User', function(done){
+      var scope = {
+        User:{
+          create: function(){
+            return {
+              exec: function(cb){
+                cb("nope");
+              }
+            }
+          }
+        },
+        logger: {debug: function(){}}
+      };
+      var engine = require('../../lib/engine').apply(scope);
+      engine._attachAuthToUser({}, function(err, user){
+        err.should.be.ok;
+        done();
+      });
+    });
+    it('should return any errors while updating Auth', function(done){
+      var scope = {
+        Auth:{
+          update: function(){
+            return {
+              exec: function(cb){
+                cb("nope");
+              }
+            }
+          }
+        },
+        User:{
+          create: function(){
+            return {
+              exec: function(cb){
+                cb(null, {id:1});
+              }
+            }
+          }
+        },
+        logger: {debug: function(){}}
+      };
+      var engine = require('../../lib/engine').apply(scope);
+      engine._attachAuthToUser({}, function(err, user){
+        err.should.be.ok;
+        done();
+      });
+    });
+    it('should create a user if auth does not have one', function(done){
+      var scope = {
+        Auth:{
+          update: function(){
+            return {
+              exec: function(cb){
+                cb(null, [{}])
+              }
+            }
+          }
+        },
+        User:{
+          create: function(){
+            return {
+              exec: function(cb){
+                cb(null, {});
+              }
+            }
+          }
+        }
+      };
+      var engine = require('../../lib/engine').apply(scope);
+      engine._attachAuthToUser({}, function(err, user){
+        user.should.be.type('object');
+        done();
+      });
+    });
+    it('should return an existing user auth object', function(done){
+      var engine = require('../../lib/engine').call();
+      engine._attachAuthToUser({user: {auth:{}}}, function(err, user){
+        user.should.be.type('object');
+        done();
+      });
+    });
+    it('should return and update user object', function(done){
+      var scope = {
+        User: {
+          update: function(){
+            return {
+              exec: function(){
+                done();
+              }
+            };
+          }
+        }
+      };
+      var engine = require('../../lib/engine').apply(scope);
+      engine._attachAuthToUser({user: {}}, function(){});
+    });
+  });
   describe('#findOrCreateAuth()', function(){
     it('should return any error while findOrCreating an Auth', function(done){
       var scope = {
@@ -48,38 +146,7 @@ describe('engine', function(){
         done();
       });
     });
-    it('should return any errors while creating a User', function(done){
-      var scope = {
-        Auth:{
-          findOrCreate: function(){
-            return {
-              populate: function(){
-                return this;
-              },
-              exec: function(cb){
-                cb(null, {});
-              }
-            }
-          }
-        },
-        User:{
-          create: function(){
-            return {
-              exec: function(cb){
-                cb("nope");
-              }
-            }
-          }
-        },
-        logger: {debug: function(){}}
-      };
-      var engine = require('../../lib/engine').apply(scope);
-      engine.findOrCreateAuth({},{}, function(err, user){
-        err.should.be.ok;
-        done();
-      });
-    });
-    it('should return any errors while updating Auth', function(done){
+    it('should return any error while trying to find and populate the auth', function(done){
       var scope = {
         Auth:{
           findOrCreate: function(){
@@ -92,19 +159,13 @@ describe('engine', function(){
               }
             }
           },
-          update: function(){
+          findOne: function(){
             return {
+              populate: function(){
+                return this;
+              },
               exec: function(cb){
-                cb("nope");
-              }
-            }
-          }
-        },
-        User:{
-          create: function(){
-            return {
-              exec: function(cb){
-                cb(null, {id:1});
+                cb("NOPE");
               }
             }
           }
@@ -117,7 +178,7 @@ describe('engine', function(){
         done();
       });
     });
-    it('should create a user if auth does not have one', function(done){
+    it('should call #_attachAuthToUser if auth is found', function(done){
       var scope = {
         Auth:{
           findOrCreate: function(){
@@ -130,128 +191,23 @@ describe('engine', function(){
               }
             }
           },
-          update: function(){
+          findOne: function(){
             return {
-              exec: function(cb){
-                cb(null, [{}])
-              }
-            }
-          }
-        },
-        User:{
-          create: function(){
-            return {
+              populate: function(){
+                return this;
+              },
               exec: function(cb){
                 cb(null, {});
               }
             }
           }
-        }
-      };
-      var engine = require('../../lib/engine').apply(scope);
-      engine.findOrCreateAuth({},{}, function(err, user){
-        user.should.be.type('object');
-        done();
-      });
-    });
-    it('should return an existing user auth object', function(done){
-      var scope = {
-        Auth:{
-          findOrCreate: function(){
-            return {
-              populate: function(){
-                return this;
-              },
-              exec: function(cb){
-                cb(null, {user: {auth:{}}});
-              }
-            }
-          }
-        }
-      };
-      var engine = require('../../lib/engine').apply(scope);
-      engine.findOrCreateAuth({},{}, function(err, user){
-        user.should.be.type('object');
-        done();
-      });
-    });
-    it('should return and update user object', function(done){
-      var scope = {
-        Auth:{
-          findOrCreate: function(){
-            return {
-              populate: function(){
-                return this;
-              },
-              exec: function(cb){
-                cb(null, {user: {}});
-              }
-            }
-          }
         },
-        User: {
-          update: function(){
-            return {
-              exec: function(){
-                done();
-              }
-            };
-          }
-        }
+        logger: {debug: function(){}}
       };
       var engine = require('../../lib/engine').apply(scope);
-      engine.findOrCreateAuth({},{}, function(){});
-    });
-
-    it('should run the findOrCreateAuth again if population didnt work', function(done){
-      var called = false;
-      var scope = {
-        Auth:{
-          findOrCreate: function(){
-            return {
-              populate: function(){
-                return this;
-              },
-              exec: function(cb){
-                if(!called){
-                  called = true;
-                  cb(null, {user: 1});
-                }else{ cb(null, {user: {auth:{}}}) }
-              }
-            }
-          }
-        }
-      };
-      var engine = require('../../lib/engine').apply(scope);
-      engine.findOrCreateAuth({},{}, function(err, user){
-        user.should.be.type('object');
+      engine.findOrCreateAuth.apply({_attachAuthToUser: function(){
         done();
-      });
-    });
-    it('should fail if findOrCreateAuth is run more than twice', function(done){
-      var called = false;
-      var scope = {
-        Auth:{
-          findOrCreate: function(){
-            return {
-              populate: function(){
-                return this;
-              },
-              exec: function(cb){
-                if(!called){
-                  called = true;
-                  cb(null, {user: 1});
-                }else{ cb(null, {user: 1}) }
-              }
-            }
-          }
-        }
-      };
-      var engine = require('../../lib/engine').apply(scope);
-      engine.findOrCreateAuth({},{}, function(err, user){
-        err.should.be.type('string');
-        done();
-      });
+      }},[{},{}, function(){}]);
     });
   });
   describe('#attachAuthToUser()', function(){
