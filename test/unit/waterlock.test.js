@@ -34,7 +34,9 @@ describe('waterlock', function(){
       models:{
         auth: {},
         user: {},
-        attempt: {}
+        attempt: {},
+        use: {},
+        jwt: {}
       }
     };
     Waterlock.bind(this);
