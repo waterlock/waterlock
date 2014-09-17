@@ -4,21 +4,21 @@
   "author": "David Rivera <david.r.rivera193@gmail.com>",
   "description": "User authentication and Json Web Tokens for Sails",
   "homepage": "http://waterlock.ninja/",
-  "contributors": [ 
+  "contributors": [
     {
       "name": "David Rivera",
       "email": "david.r.rivera193@gmail.com"
-    } 
+    }
   ],
-  "repository":{
+  "repository": {
     "type": "git",
     "url": "https://github.com/davidrivera/waterlock"
   },
   "bugs": {
     "url": "https://github.com/davidrivera/waterlock/issues"
   },
-  "scripts":{
-    "test":"make test"
+  "scripts": {
+    "test": "make test"
   },
   "bin": {
     "waterlock": "./bin/waterlock.js"
@@ -30,15 +30,15 @@
     "json web tokens",
     "jwt"
   ],
-  "dependencies" : {
-    "moment": "~2.8.1",
+  "dependencies": {
     "commander": "~2.3.0",
-    "lodash": "2.4.1",
     "jwt-simple": "~0.2.0",
+    "lodash": "2.4.1",
+    "moment": "~2.8.1",
     "node-uuid": "~1.4.1",
     "winston": "0.7.3"
-  }, 
-  "devDependencies":{
+  },
+  "devDependencies": {
     "mocha": "*",
     "should": "*",
     "proxyquire": "*",
