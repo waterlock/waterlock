@@ -1,7 +1,8 @@
+'use strict';
+
 var proxyquire = require('proxyquire');
 var should = require('should');
 var mocha = require('mocha');
-
 
 describe('models', function(){
   it('should be a function', function(done){
@@ -50,31 +51,31 @@ describe('models', function(){
       it('should exist', function(done){
         models.should.have.property('user');
         done();
-      })
+      });
     });
     describe('.jwt', function(){
       it('should exist', function(done){
         models.should.have.property('jwt');
         done();
-      })
+      });
     });
     describe('.use', function(){
       it('should exist', function(done){
         models.should.have.property('use');
         done();
-      })
+      });
     });
     describe('.attempt', function(){
       it('should exist', function(done){
         models.should.have.property('attempt');
         done();
-      })
+      });
     });
     describe('.auth', function(){
       it('should exist', function(done){
         models.should.have.property('auth');
         done();
-      })
+      });
     });
   });
 });

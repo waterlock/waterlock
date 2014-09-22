@@ -51,7 +51,7 @@ jshint:
 	@echo "+------------------------------------+"
 	@echo "| Running linter                     |"
 	@echo "+------------------------------------+"
-	$(JSHINT) lib bin	
+	$(JSHINT) lib bin test
 
 clean:
 	@echo "+------------------------------------+"

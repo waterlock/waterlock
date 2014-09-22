@@ -1,3 +1,5 @@
+'use strict';
+
 var proxyquire = require('proxyquire');
 var should = require('should');
 var mocha = require('mocha');
@@ -15,7 +17,7 @@ describe('templates', function(){
         it('should have expected properties', function(done){
           Auth.attributes.should.have.property('user');
           done();
-        })
+        });
       });
       describe('User', function(){
         var User = require('../../_testapp/api/models/User.js');
@@ -27,7 +29,7 @@ describe('templates', function(){
         it('should have expected properties', function(done){
           User.attributes.should.have.property('auth');
           done();
-        })
+        });
       });
       describe('Jwt', function(){
         var Jwt = require('../../_testapp/api/models/Jwt.js');
@@ -39,7 +41,7 @@ describe('templates', function(){
         it('should have expected properties', function(done){
           Jwt.attributes.should.have.property('owner');
           done();
-        })
+        });
       });
       describe('Attempt', function(){
         var Attempt = require('../../_testapp/api/models/Attempt.js');
@@ -51,7 +53,7 @@ describe('templates', function(){
         it('should have expected properties', function(done){
           Attempt.attributes.should.have.property('user');
           done();
-        })
+        });
       });
       describe('Use', function(){
         var Use = require('../../_testapp/api/models/Use.js');
@@ -63,7 +65,7 @@ describe('templates', function(){
         it('should have expected properties', function(done){
           Use.attributes.should.have.property('jsonWebToken');
           done();
-        })
+        });
       });
     });
   });

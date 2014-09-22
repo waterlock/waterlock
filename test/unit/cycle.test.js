@@ -1,3 +1,5 @@
+'use strict';
+
 var proxyquire = require('proxyquire');
 var should = require('should');
 var mocha = require('mocha');
@@ -11,7 +13,7 @@ var wl = {
         exec: function(cb){
           cb(null);
         }
-      }
+      };
     }
   },
   config: config
@@ -27,15 +29,15 @@ describe('cycle', function(){
           create: function(){
             return {
               exec: function(cb){
-                cb("NOPE");
+                cb('NOPE');
               }
-            }
+            };
           }
         },
         config: config,
         logger: {
           debug: function(msg){
-            if(msg === "NOPE"){
+            if(msg === 'NOPE'){
               done();
             }
           }
@@ -108,15 +110,15 @@ describe('cycle', function(){
           create: function(){
             return {
               exec: function(cb){
-                cb("NOPE");
+                cb('NOPE');
               }
-            }
+            };
           }
         },
         config: config,
         logger: {
           debug: function(msg){
-            if(msg === "NOPE"){
+            if(msg === 'NOPE'){
               done();
             }
           }

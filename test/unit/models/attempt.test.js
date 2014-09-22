@@ -1,9 +1,11 @@
+'use strict';
+
 var proxyquire = require('proxyquire');
 var should = require('should');
 var mocha = require('mocha');
 
 describe('Attempt',function(){
-  var Attempt = require('../../../lib/models/attempt')
+  var Attempt = require('../../../lib/models/attempt');
 
   describe('#attributes()', function(){
     var attributes = Attempt.attributes;

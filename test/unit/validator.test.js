@@ -1,8 +1,9 @@
+'use strict';
+
 var proxyquire = require('proxyquire');
 var should = require('should');
 var mocha = require('mocha');
 var jwt = require('jwt-simple');
-
 var Validator = require('../../lib/validator');
 
 describe('validator', function(){
@@ -11,7 +12,7 @@ describe('validator', function(){
       var scope = {
         jwt: {
           decode: function(){
-            throw new Error("butts");
+            throw new Error('butts');
           }
         },
         config: {
@@ -144,7 +145,7 @@ describe('validator', function(){
       var validator = Validator.apply(scope);
 
       validator.validateToken.apply({findUserFromToken: function(token, cb){
-        cb(null, {farts: 'butts'})
+        cb(null, {farts: 'butts'});
       }}, ['butts', function(err, usr){
         usr.should.be.Object;
         done();
@@ -160,7 +161,7 @@ describe('validator', function(){
               exec: function(cb){
                 cb('barf');
               }
-            }
+            };
           }
         },
         logger: {
@@ -183,7 +184,7 @@ describe('validator', function(){
               exec: function(cb){
                 cb(null, {foo:'bar'});
               }
-            }
+            };
           }
         },
         logger: {
@@ -226,7 +227,7 @@ describe('validator', function(){
         _utils: {
           allParams: function(){
             return {
-              access_token: "barf"
+              access_token: 'barf'
             };
           }
         },
@@ -238,7 +239,7 @@ describe('validator', function(){
       };
       var validator = Validator.apply(scope);
       validator.validateTokenRequest.apply({validateToken: function(token, cb){
-        cb('butts')
+        cb('butts');
       }}, [{}, function(err){
         err.should.be.String;
         done();
@@ -269,7 +270,7 @@ describe('validator', function(){
       var bindToSessionCalled = false;
       validator.validateTokenRequest.apply({
         validateToken: function(token, cb){
-          cb(null, {})
+          cb(null, {});
         }, 
         bindToSession: function(){
           bindToSessionCalled = true;
@@ -309,7 +310,7 @@ describe('validator', function(){
       var trackTokenUsageCalled = false;
       validator.validateTokenRequest.apply({
         validateToken: function(token, cb){
-          cb(null, {})
+          cb(null, {});
         }, 
         trackTokenUsage: function(){
           done();
@@ -342,7 +343,7 @@ describe('validator', function(){
       var trackTokenUsageCalled = false;
       validator.validateTokenRequest.apply({
         validateToken: function(token, cb){
-          cb(null, {})
+          cb(null, {});
         }
       }, [{}, function(err, usr){
         usr.should.be.Object;
@@ -352,7 +353,7 @@ describe('validator', function(){
   });
   describe('#bindToSession', function(){
     it('should authenticate and add the user to the session', function(){
-      var validator = Validator();
+      var validator = new Validator();
       var obj = {session: {}};
       var user = {};
       validator.bindToSession(obj, user);
@@ -364,7 +365,7 @@ describe('validator', function(){
       var scope = {
         Jwt: {
           findOne: function(obj, cb){
-            cb("farts");
+            cb('farts');
           }
         },
         logger: {
@@ -374,7 +375,7 @@ describe('validator', function(){
         }
       };
       var validator = Validator.apply(scope);
-      validator.findAndTrackJWT("","", function(err){
+      validator.findAndTrackJWT('','', function(err){
         err.should.be.String;
         done();
       });
@@ -393,7 +394,7 @@ describe('validator', function(){
         }
       };
       var validator = Validator.apply(scope);
-      validator.findAndTrackJWT("","", function(err){
+      validator.findAndTrackJWT('','', function(err){
         err.should.be.String;
         done();
       });
@@ -411,7 +412,7 @@ describe('validator', function(){
               exec: function(cb){
                 done();
               }
-            }
+            };
           }
         },
         logger: {
@@ -421,7 +422,7 @@ describe('validator', function(){
         }
       };
       var validator = Validator.apply(scope);
-      validator.findAndTrackJWT("",{ip: ''}, function(err){
+      validator.findAndTrackJWT('',{ip: ''}, function(err){
       });
     });
   });
@@ -437,7 +438,7 @@ describe('validator', function(){
       var validator = Validator.apply(scope);
       validator.trackTokenUsage.apply({findAndTrackJWT: function(token, address, cb){
         cb('farts');
-      }}, ["",{},{}, function(err){
+      }}, ['',{},{}, function(err){
         err.should.be.String;
         done();
       }]);
@@ -453,7 +454,7 @@ describe('validator', function(){
       var validator = Validator.apply(scope);
       validator.trackTokenUsage.apply({findAndTrackJWT: function(token, address, cb){
         cb(null, {});
-      }}, ["",{},{}, function(err, user){
+      }}, ['',{},{}, function(err, user){
         user.should.be.Object;
         done();
       }]);

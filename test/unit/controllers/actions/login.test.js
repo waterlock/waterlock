@@ -1,3 +1,5 @@
+'use strict';
+
 var proxyquire = require('proxyquire');
 var should = require('should');
 var mocha = require('mocha');
@@ -16,7 +18,7 @@ describe('actions', function(){
           accessObjectLikeArray: function(){
             return {
               authType: 'shake'
-            }
+            };
           }
         },
         methods:{
@@ -47,7 +49,7 @@ describe('actions', function(){
           accessObjectLikeArray: function(){
             return {
               authType: 'NOT FOUND'
-            }
+            };
           }
         },
         methods:{}
@@ -73,7 +75,7 @@ describe('actions', function(){
           },
           accessObjectLikeArray: function(){
             return {
-            }
+            };
           }
         },
         methods:{}
@@ -99,7 +101,7 @@ describe('actions', function(){
           },
           accessObjectLikeArray: function(){
             return {
-            }
+            };
           }
         },
         methods:{
@@ -129,7 +131,7 @@ describe('actions', function(){
           },
           accessObjectLikeArray: function(){
             return {
-            }
+            };
           }
         },
         methods:{}
