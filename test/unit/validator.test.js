@@ -365,7 +365,7 @@ describe('validator', function(){
       var scope = {
         Jwt: {
           findOne: function(obj, cb){
-            cb('farts');
+            cb();
           }
         },
         logger: {
