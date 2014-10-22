@@ -380,6 +380,25 @@ describe('validator', function(){
         done();
       });
     });
+    it('should callback an error if there is a Waterline error', function(done){
+      var scope = {
+        Jwt: {
+          findOne: function(obj, cb){
+            cb('Waterline error');
+          }
+        },
+        logger: {
+          debug: function(){
+
+          }
+        }
+      };
+      var validator = Validator.apply(scope);
+      validator.findAndTrackJWT('','', function(err){
+        err.should.be.String;
+        done();
+      });
+    });
     it('should callback an error if the JWT is revoked', function(done){
       var scope = {
         Jwt: {
