@@ -1,3 +1,5 @@
+'use strict';
+
 var proxyquire = require('proxyquire');
 var should = require('should');
 var mocha = require('mocha');
@@ -13,12 +15,12 @@ describe('engine', function(){
                 return this;
               },
               exec: function(cb){
-                cb(null, {user:""});
+                cb(null, {user:''});
               }
-            }
+            };
           }
         }
-      }
+      };
       var engine = require('../../lib/engine').apply(scope);
       engine.findAuth({}, function(){
         done();
@@ -32,9 +34,9 @@ describe('engine', function(){
           create: function(){
             return {
               exec: function(cb){
-                cb("nope");
+                cb('nope');
               }
-            }
+            };
           }
         },
         logger: {debug: function(){}}
@@ -51,9 +53,9 @@ describe('engine', function(){
           update: function(){
             return {
               exec: function(cb){
-                cb("nope");
+                cb('nope');
               }
-            }
+            };
           }
         },
         User:{
@@ -62,7 +64,7 @@ describe('engine', function(){
               exec: function(cb){
                 cb(null, {id:1});
               }
-            }
+            };
           }
         },
         logger: {debug: function(){}}
@@ -79,9 +81,9 @@ describe('engine', function(){
           update: function(){
             return {
               exec: function(cb){
-                cb(null, [{}])
+                cb(null, [{}]);
               }
-            }
+            };
           }
         },
         User:{
@@ -90,7 +92,7 @@ describe('engine', function(){
               exec: function(cb){
                 cb(null, {});
               }
-            }
+            };
           }
         }
       };
@@ -133,9 +135,9 @@ describe('engine', function(){
                 return this;
               },
               exec: function(cb){
-                cb("what!");
+                cb('what!');
               }
-            }
+            };
           }
         },
         logger: {debug: function(){}}
@@ -157,7 +159,7 @@ describe('engine', function(){
               exec: function(cb){
                 cb(null, {});
               }
-            }
+            };
           },
           findOne: function(){
             return {
@@ -165,9 +167,9 @@ describe('engine', function(){
                 return this;
               },
               exec: function(cb){
-                cb("NOPE");
+                cb('NOPE');
               }
-            }
+            };
           }
         },
         logger: {debug: function(){}}
@@ -189,7 +191,7 @@ describe('engine', function(){
               exec: function(cb){
                 cb(null, {});
               }
-            }
+            };
           },
           findOne: function(){
             return {
@@ -199,7 +201,7 @@ describe('engine', function(){
               exec: function(cb){
                 cb(null, {});
               }
-            }
+            };
           }
         },
         logger: {debug: function(){}}
@@ -241,7 +243,7 @@ describe('engine', function(){
           findOne: function(){
             return {
               exec: function(cb){
-                cb("nope");
+                cb('nope');
               }
             };
           }
@@ -275,9 +277,9 @@ describe('engine', function(){
           findOne: function(){
             return {
               exec: function(cb){
-                cb("nope");
+                cb('nope');
               }
-            }
+            };
           }
         },
         logger: {debug: function(){}}
@@ -311,11 +313,11 @@ describe('engine', function(){
               exec: function(cb){
                 cb(null, {
                   save: function(cb){
-                    cb("NOPE");
+                    cb('NOPE');
                   }
                 });
               }
-            }
+            };
           }
         },
         logger: {debug: function(){}}
@@ -350,9 +352,9 @@ describe('engine', function(){
           findOne: function(){
             return {
               exec: function(cb){
-                cb(null, {what:"WHAT"});
+                cb(null, {what:'WHAT'});
               }
-            }
+            };
           }
         },
         logger: {debug: function(){}}
@@ -393,7 +395,7 @@ describe('engine', function(){
                   }
                 });
               }
-            }
+            };
           }
         }
       };

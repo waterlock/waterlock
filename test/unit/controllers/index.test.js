@@ -1,3 +1,5 @@
+'use strict';
+
 var proxyquire = require('proxyquire');
 var should = require('should');
 var mocha = require('mocha');
@@ -32,7 +34,7 @@ describe('controllers', function(){
     });
 
     it('should merge given actions', function(done){
-      var results = controllers.waterlocked({foo:'bar'})
+      var results = controllers.waterlocked({foo:'bar'});
       results.should.have.property('foo');
       done();
     });

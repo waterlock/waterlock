@@ -1,10 +1,9 @@
+'use strict';
+
 var proxyquire = require('proxyquire');
 var should = require('should');
 var mocha = require('mocha');
 var config = require('../fixtures/waterlock.config').waterlock;
-
-
-
 
 describe('methods', function(){
   describe('#collect()', function(){
@@ -22,7 +21,7 @@ describe('methods', function(){
         }
       };
 
-      var results = methods.collect.apply(context)
+      var results = methods.collect.apply(context);
       results.should.be.true;
       done();
     });
@@ -40,7 +39,7 @@ describe('methods', function(){
         }
       };
 
-      var results = methods.collect.apply(context)
+      var results = methods.collect.apply(context);
       results.should.be.true;
       done();
     });
@@ -58,7 +57,7 @@ describe('methods', function(){
         }
       };
 
-      var results = methods.collect.apply(context)
+      var results = methods.collect.apply(context);
       results.should.be.true;
       done();
     });
@@ -75,7 +74,7 @@ describe('methods', function(){
 
       var context = {
         _errorHandler: function(){
-          return true;;
+          return true;
         }
       };
 
@@ -112,7 +111,7 @@ describe('methods', function(){
 
       var context = {
         _errorHandler: function(){
-          return true;;
+          return true;
         }
       };
 
@@ -148,7 +147,7 @@ describe('methods', function(){
 
       var context = {
         _errorHandler: function(){
-          return true;;
+          return true;
         }
       };
 
@@ -178,7 +177,7 @@ describe('methods', function(){
       var methods = require('../../lib/methods')();
 
       try{
-        methods._errorHandler("Hello");
+        methods._errorHandler('Hello');
       }catch(e){
         e.should.be.ok;
         done();

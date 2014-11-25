@@ -1,3 +1,5 @@
+'use strict';
+
 var proxyquire = require('proxyquire');
 var should = require('should');
 var mocha = require('mocha');
@@ -16,7 +18,7 @@ describe('actions', function(){
             done();
           }
         }
-      }
+      };
 
       var req = {};
       var res = {};
@@ -45,7 +47,7 @@ describe('actions', function(){
             }
           }
         }
-      }
+      };
 
       var req = {};
       var res = {};
@@ -74,7 +76,7 @@ describe('actions', function(){
             }
           }
         }
-      }
+      };
 
       var req = {};
       var res = {};

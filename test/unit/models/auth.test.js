@@ -1,3 +1,5 @@
+'use strict';
+
 var proxyquire = require('proxyquire');
 var should = require('should');
 var mocha = require('mocha');
@@ -13,7 +15,7 @@ describe('Auth', function(){
     });
 
     it('should bind extra attributes', function(done){
-      global.waterlock = {}
+      global.waterlock = {};
       var a = attributes.apply(this, [{shake:'bake'}]);
       a.should.have.property('shake');
       done();
@@ -42,7 +44,7 @@ describe('Auth', function(){
       global.waterlock = {
         methods:{
         }
-      }
+      };
       var auth = attributes.apply(this, [{}]);
       describe('.user', function(){
         it('should exist', function(done){
@@ -74,7 +76,7 @@ describe('Auth', function(){
       };
       beforeCreate.apply(this, [{}, function(){
         // nothing
-      }])
+      }]);
     });
   });
 
@@ -100,7 +102,7 @@ describe('Auth', function(){
       };
       beforeUpdate.apply(this, [{}, function(){
         // nothing
-      }])
+      }]);
     });
   });
 });

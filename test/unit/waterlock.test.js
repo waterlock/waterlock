@@ -1,3 +1,5 @@
+'use strict';
+
 var proxyquire = require('proxyquire');
 var should = require('should');
 var mocha = require('mocha');
@@ -6,8 +8,8 @@ var config = require('./waterlock.config');
 var Waterlock =  proxyquire.noCallThru().load('../../lib/waterlock',{
   './engine': function(){},
   './config': function(){},
-  './methods': function(){return {collect: function(){}}},
-  './controllers': function(){return{waterlocked:{}}},
+  './methods': function(){return {collect: function(){}};},
+  './controllers': function(){return{waterlocked:{}};},
   './utils': {},
   './logger': {},
   './cycle': function(){}

@@ -1,7 +1,8 @@
+'use strict';
+
 var proxyquire = require('proxyquire');
 var should = require('should');
 var mocha = require('mocha');
-
 var utils = require('../../lib/utils');
 
 describe('utils', function(){
@@ -50,7 +51,7 @@ describe('utils', function(){
       var count = utils.countTopLevel(shake);
       count.should.eql(-1);
       done();
-    })
+    });
   });
 
   describe('#accessObjectLikeArray()', function(){
@@ -66,7 +67,7 @@ describe('utils', function(){
       result.should.eql('bake');
       done();
     });
-    it("should return 2nd object in object", function(done){
+    it('should return 2nd object in object', function(done){
       var shake = {shake:'bake',magic:'man'};
       var result = utils.accessObjectLikeArray(1, shake);
       result.should.eql('man');

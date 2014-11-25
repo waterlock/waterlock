@@ -1,3 +1,5 @@
+'use strict';
+
 var proxyquire = require('proxyquire');
 var should = require('should');
 var mocha = require('mocha');
@@ -42,9 +44,9 @@ describe('actions', function(){
         create: function(){
           return {
             exec: function(cb){
-              cb(null)
+              cb(null);
             }
-          }
+          };
         }
       };
       global.waterlock = {config: config};
@@ -70,9 +72,9 @@ describe('actions', function(){
         create: function(){
           return {
             exec: function(cb){
-              cb("agh")
+              cb('agh');
             }
-          }
+          };
         }
       };
       global.waterlock = {config: config};
