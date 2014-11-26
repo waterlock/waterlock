@@ -4,6 +4,7 @@ var proxyquire = require('proxyquire');
 var should = require('should');
 var mocha = require('mocha');
 var config = require('../../../fixtures/waterlock.config').waterlock;
+var createJwt = require('../../../../lib/utils').createJwt;
 
 describe('actions', function(){
   describe('jwt', function(){
@@ -49,7 +50,12 @@ describe('actions', function(){
           };
         }
       };
-      global.waterlock = {config: config};
+      global.waterlock = {
+        config: config,
+        _utils: {
+          createJwt: createJwt
+        }
+      };
 
       jwt.apply(this, [req, res]);
     });
@@ -77,7 +83,12 @@ describe('actions', function(){
           };
         }
       };
-      global.waterlock = {config: config};
+      global.waterlock = {
+        config: config,
+        _utils: {
+          createJwt: createJwt
+        }
+      };
 
       jwt.apply(this, [req, res]);
     });
