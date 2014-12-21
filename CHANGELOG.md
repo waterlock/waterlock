@@ -1,3 +1,7 @@
+# v0.014
+* [BUG] Fix in `findOrCreateAuth`. [#52](https://github.com/davidrivera/waterlock/pull/52)
+* [BUG] fixed jwt model - data too long for column token in mysql. [#48](https://github.com/davidrivera/waterlock/pull/48)
+
 # v0.0.13
 * [BUG] fixed depreciated moment variable positions and readme, [#19](https://github.com/davidrivera/waterlock/pull/19)
 * [BUG] fixed users not being created after initial, [#24](https://github.com/davidrivera/waterlock/pull/24)

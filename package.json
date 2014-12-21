@@ -32,11 +32,11 @@
   ],
   "dependencies" : {
     "moment": "~2.8.1",
-    "commander": "~2.3.0",
+    "commander": "~2.5.1",
     "lodash": "2.4.1",
     "jwt-simple": "~0.2.0",
     "node-uuid": "~1.4.1",
-    "winston": "0.7.3"
+    "winston": "~0.8.3"
   }, 
   "devDependencies":{
     "mocha": "*",
@@ -44,7 +44,7 @@
     "proxyquire": "*",
     "coveralls": "*",
     "istanbul": "*",
-    "sails": "beta",
+    "sails": "*",
     "jshint": "*"
   },
   "preferGlobal": false,
