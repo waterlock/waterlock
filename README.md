@@ -127,11 +127,11 @@ MIT (see License)
 [travis-url]: https://travis-ci.org/waterlock/waterlock
 [travis-image]: http://img.shields.io/travis/waterlock/waterlock.svg?style=flat
 
-[dependency-image]: http://img.shields.io/gemnasium/davidrivera/waterlock.svg?style=flat
-[dependency-url]: https://gemnasium.com/davidrivera/waterlock
+[dependency-image]: http://img.shields.io/gemnasium/waterlock/waterlock.svg?style=flat
+[dependency-url]: https://gemnasium.com/waterlock/waterlock
 
-[coverage-image]: http://img.shields.io/coveralls/davidrivera/waterlock/master.svg?style=flat
-[coverage-url]: https://coveralls.io/r/davidrivera/waterlock?branch=master
+[coverage-image]: http://img.shields.io/coveralls/waterlock/waterlock/master.svg?style=flat
+[coverage-url]: https://coveralls.io/r/waterlock/waterlock?branch=master
 
 [gittip-image]: http://img.shields.io/gittip/davidrivera.svg?style=flat
 [gittip-url]: https://www.gittip.com/davidrivera/
@@ -139,8 +139,8 @@ MIT (see License)
 [waterlock-image]: https://lh3.googleusercontent.com/-aThk1tYLSh0/U5fAM6NyB5I/AAAAAAAAH84/FKmmmQ80XWY/w611-h144-no/waterlock-header.png
 [waterlock-url]: http://waterlock.ninja/
 
-[climate-image]: http://img.shields.io/codeclimate/github/davidrivera/waterlock.svg?style=flat
-[climate-url]: https://codeclimate.com/github/davidrivera/waterlock
+[climate-image]: http://img.shields.io/codeclimate/github/waterlock/waterlock.svg?style=flat
+[climate-url]: https://codeclimate.com/github/waterlock/waterlock
 
 [gitter-image]: https://badges.gitter.im/Join%20Chat.svg
 [gitter-url]: https://gitter.im/waterlock/waterlock?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge
