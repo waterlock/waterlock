@@ -41,11 +41,11 @@ provision:
 	$(SAILS) new $(TESTAPP)
 	cd $(TESTAPP) && \
 	npm install ../ && \
-	npm install git+https://git@github.com/davidrivera/waterlock-local-auth.git  && \
+	npm install git+https://git@github.com/waterlock/waterlock-local-auth.git  && \
 	$(WATERLOCK) generate all
 
 localauth:
-	npm install git@github.com:davidrivera/waterlock-local-auth.git 
+	npm install git@github.com:waterlock/waterlock-local-auth.git 
 
 jshint:
 	@echo "+------------------------------------+"
