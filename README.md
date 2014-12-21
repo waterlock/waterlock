@@ -1,6 +1,7 @@
 [![Waterlock][waterlock-image]][waterlock-url]
 -----------------------------------------------
-[![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/davidrivera/waterlock?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
+[![Gitter][gitter-image]][gitter-url]
 
 | [![Build Status][travis-image]][travis-url] | [![NPM version][npm-version-image]][npm-url] | [![NPM downloads][npm-downloads-image]][npm-url] | [![Dependency Status][dependency-image]][dependency-url] | 
 | ------- | ------- | ------- | ------- |
@@ -140,3 +141,6 @@ MIT (see License)
 
 [climate-image]: http://img.shields.io/codeclimate/github/davidrivera/waterlock.svg?style=flat
 [climate-url]: https://codeclimate.com/github/davidrivera/waterlock
+
+[gitter-image]: https://badges.gitter.im/Join%20Chat.svg
+[gitter-url]: https://gitter.im/davidrivera/waterlock?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge
