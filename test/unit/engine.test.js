@@ -28,7 +28,7 @@ describe('engine', function(){
     });
   });
   describe('#_attachAuthToUser', function(){
-    it('shouldn\'t return any errors while creating a User', function(done){
+    it('should return any errors while creating a User', function(done){
       var scope = {
         User:{
           create: function(){
@@ -47,7 +47,7 @@ describe('engine', function(){
         done();
       });
     });
-    it('shouldn\'t return any errors while updating Auth', function(done){
+    it('should return any errors while updating Auth', function(done){
       var scope = {
         Auth:{
           update: function(){
