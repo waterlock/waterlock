@@ -109,6 +109,10 @@ describe('cycle', function() {
       cycle.loginSuccess(req, res, user);
     });
   });
+
+
+
+
   describe('#registerSuccess()', function() {
 
     it('should log error if any while creating Attempt', function(done) {
@@ -195,86 +199,15 @@ describe('cycle', function() {
       cycle.registerSuccess(req, res, user);
     });
   });
-  describe('#registerFailure()', function() {
-    it('should log error if any while creating Attempt', function(done) {
-      var wl = {
-        Attempt: {
-          create: function() {
-            return {
-              exec: function(cb) {
-                cb('NOPE');
-              }
-            };
-          }
-        },
-        config: config,
-        logger: {
-          debug: function(msg) {
-            if (msg === 'NOPE') {
-              done();
-            }
-          }
-        }
-      };
-      var cycle = require('../../lib/cycle').apply(wl);
 
-      var req = {
-        connection: {
-          remoteAddress: '0.0.0.0',
-          port: '80'
-        },
-        session: {
-          authenticated: true
-        }
-      };
-      var res = {
-        forbidden: function() {}
-      };
-      var user = {};
 
-      cycle.registerFailure(req, res, user);
-    });
-    it('should unauthenticate the session', function(done) {
-      var req = {
-        connection: {
-          remoteAddress: '0.0.0.0',
-          port: '80'
-        },
-        session: {
-          authenticated: true
-        }
-      };
-      var res = {
-        forbidden: function() {
-          req.session.authenticated.should.be.false;
-          done();
-        }
-      };
-      var user = {};
 
-      cycle.registerFailure(req, res, null);
-    });
 
-    it('should preform a redirect if given a postResponse uri', function(done) {
-      wl.config.postActions.register.failure = 'http://google.com';
-      var cycle = require('../../lib/cycle').apply(wl);
-      var req = {
-        connection: {
-          remoteAddress: '0.0.0.0',
-          port: '80'
-        },
-        session: {}
-      };
-      var res = {
-        redirect: function() {
-          done();
-        }
-      };
-      var user = {};
 
-      cycle.registerFailure(req, res, user);
-    });
-  });
+
+
+
+
   describe('#loginFailure()', function() {
     it('should log error if any while creating Attempt', function(done) {
       var wl = {
