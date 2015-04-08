@@ -3,12 +3,12 @@
 
 [![Gitter][gitter-image]][gitter-url]
 
-| [![Build Status][travis-image]][travis-url] | [![NPM version][npm-version-image]][npm-url] | [![NPM downloads][npm-downloads-image]][npm-url] | [![Dependency Status][dependency-image]][dependency-url] | 
+| [![Build Status][travis-image]][travis-url] | [![NPM version][npm-version-image]][npm-url] | [![NPM downloads][npm-downloads-image]][npm-url] | [![Dependency Status][dependency-image]][dependency-url] |
 | ------- | ------- | ------- | ------- |
 | [![Coverage Status][coverage-image]][coverage-url] | [![Code Climate][climate-image]][climate-url] | [![Gittip][gittip-image]][gittip-url] | [![MIT License][license-image]][license-url]
 
 
-Waterlock is an all encompassing user authentication/json web token management tool for [Sails](http://sailsjs.com) `version 0.10`
+Waterlock is an all encompassing user authentication/json web token management tool for [Sails](http://sailsjs.com) `>= 0.10`
 
 # What does it provide
 Waterlock provides predefined routes and models for user authentication and json web token management. Password resets are also handled but we'll cover that below.
@@ -58,11 +58,11 @@ now with your policies applied to your custom controller you're good to go! (giv
 Waterlock wraps around models and controllers so you can override any of the actions and definition that are predefined. After running `waterlock generate all` open up the `User.js` file you'll see this:
 ```js
   attributes: require('waterlock').models.user.attributes({
-    
+
     /* e.g.
     nickname: 'string'
     */
-    
+
   }),
 ```
 you can add any custom attributes you wish to your user model by just dropping them in like normal.
