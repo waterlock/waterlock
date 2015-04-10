@@ -34,6 +34,7 @@ describe('actions', function(){
       };
       var res = {
         json:function(obj){
+          console.log(obj);
           obj.should.be.type('object');
           obj.should.have.property('token');
           obj.should.have.property('expires');

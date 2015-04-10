@@ -62,7 +62,10 @@ module.exports.waterlock = {
       length: '7'
     },
     audience: 'app name',
-    subject: 'subject'
+    subject: 'subject',
+    tokenProperty: 'token',
+    expiresProperty: 'expires',
+    includeUserInJwtResponse: false
   },
 
   // Lets waterlock know how to handle different login/logout
