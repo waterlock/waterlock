@@ -9,6 +9,13 @@ var wl = {
   logger: {
     debug: function() {}
   },
+  _utils: {
+    createJwt: function(){
+      return {
+        token: '123123qweqwewe234234'
+      };
+    }
+  },
   Attempt: {
     create: function() {
       return {
@@ -88,6 +95,37 @@ describe('cycle', function() {
       cycle.loginSuccess(req, res, user);
     });
 
+    it('should respond with jwt', function(done) {
+      config.postActions.login.success = 'jwt';
+      global.Jwt = {
+        create: function(){
+          return {
+            exec: function(cb){
+              cb();
+            }
+          };
+        }
+      };
+      var req = {
+        connection: {
+          remoteAddress: '0.0.0.0',
+          port: '80'
+        },
+        session: {}
+      };
+      var res = {
+        json: function() {
+          req.session.user.should.be.ok;
+          done();
+        }
+      };
+      var user = {
+        id: 1
+      };
+
+      cycle.loginSuccess(req, res, user);
+    });
+
     it('should preform a redirect if given a postResponse uri', function(done) {
       wl.config.postActions.login.success = 'http://google.com';
       var cycle = require('../../lib/cycle').apply(wl);
@@ -156,6 +194,26 @@ describe('cycle', function() {
     });
 
     it('should set the session user', function(done) {
+      var req = {
+        connection: {
+          remoteAddress: '0.0.0.0',
+          port: '80'
+        },
+        session: {}
+      };
+      var res = {
+        ok: function() {
+          req.session.user.should.be.ok;
+          done();
+        }
+      };
+      var user = {};
+
+      cycle.registerSuccess(req, res, user);
+    });
+
+    it('should respond with jwt', function(done) {
+      config.postActions.login.success = 'jwt';
       var req = {
         connection: {
           remoteAddress: '0.0.0.0',
