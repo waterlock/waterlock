@@ -90,6 +90,9 @@ Waterlock generates a config located at `config/waterlock.json` this file is use
 		* `unit` - [y,M,w,d,h,m,s,ms](http://momentjs.com/docs/#/manipulating/add/)
 		* `length` - length of time
 	* `audience` - the jwt [aud claim](http://tools.ietf.org/html/draft-ietf-oauth-json-web-token-23#section-4.1.3) a good choice is the name of your app
+	* `tokenProperty` - customize the name of the property returning the token value
+	* `expiresProperty` - customize the name of the property returning the expires value
+	* `includeUserInJwtResponse` - when JWT is the default response for succesfull log-in you can return the user along with the token by setting this to true - cuts down round tripsg
 	* `subject` - the jwt [sub claim](http://tools.ietf.org/html/draft-ietf-oauth-json-web-token-23#section-4.1.2)
 * `postActions` - lets waterlock know how to handle various login/logout events, you can read more about this in the [docs](http://waterlock.ninja/documentation/)
 

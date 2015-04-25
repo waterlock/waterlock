@@ -1,6 +1,6 @@
 {
   "name": "waterlock",
-  "version": "0.0.16",
+  "version": "0.0.14",
   "author": "David Rivera <david.r.rivera193@gmail.com>",
   "description": "User authentication and Json Web Tokens for Sails",
   "homepage": "http://waterlock.ninja/",
@@ -30,6 +30,17 @@
     "json web tokens",
     "jwt"
   ],
+<<<<<<< HEAD
+  "dependencies" : {
+    "moment": "~2.9.0",
+    "commander": "~2.7.1",
+    "lodash": "2.4.1",
+    "jwt-simple": "~0.2.0",
+    "node-uuid": "~1.4.3",
+    "winston": "~0.9.0"
+  },
+  "devDependencies":{
+=======
   "dependencies": {
     "commander": "~2.3.0",
     "jwt-simple": "~0.2.0",
@@ -39,6 +50,7 @@
     "winston": "0.7.3"
   },
   "devDependencies": {
+>>>>>>> Added a jwt flag for loginsuccess to return the token without the need of a redirect.
     "mocha": "*",
     "should": "*",
     "proxyquire": "*",

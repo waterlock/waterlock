@@ -4,6 +4,7 @@ var proxyquire = require('proxyquire');
 var should = require('should');
 var mocha = require('mocha');
 var utils = require('../../lib/utils');
+var config = require('../fixtures/waterlock.config').waterlock;
 
 describe('utils', function(){
   describe('#allParams()', function(){
@@ -71,6 +72,33 @@ describe('utils', function(){
       var shake = {shake:'bake',magic:'man'};
       var result = utils.accessObjectLikeArray(1, shake);
       result.should.eql('man');
+      done();
+    });
+  });
+
+  describe('#createJwt()', function(){
+    it('should create Jwt token including expires and token property', function(done){
+      var req = {
+        session:{
+          authenticated: true,
+          user:{
+            id: 1
+          }
+        }
+      };
+      var res = {
+        json:function(obj){
+          obj.should.be.type('object');
+          obj.should.have.property('token');
+          obj.should.have.property('expires');
+          obj.token.should.be.type('string');
+          done();
+        }
+      };
+      global.waterlock = { config: config };
+      var result = utils.createJwt(req, res);
+      result.should.have.property('expires');
+      result.should.have.property('token');
       done();
     });
   });
