@@ -95,13 +95,13 @@ describe('cycle', function() {
       cycle.loginSuccess(req, res, user);
     });
 
-    it('should respond with jwt', function(done) {
+    it('should respond error', function(done) {
       config.postActions.login.success = 'jwt';
       global.Jwt = {
         create: function(){
           return {
             exec: function(cb){
-              cb();
+              cb('error');
             }
           };
         }
@@ -116,6 +116,9 @@ describe('cycle', function() {
       var res = {
         json: function() {
           req.session.user.should.be.ok;
+          done();
+        },
+        serverError: function() {
           done();
         }
       };
@@ -143,6 +146,37 @@ describe('cycle', function() {
         }
       };
       var user = {};
+
+      cycle.loginSuccess(req, res, user);
+    });
+
+    it('should respond with jwt', function(done) {
+      config.postActions.login.success = 'jwt';
+      global.Jwt = {
+        create: function(){
+          return {
+            exec: function(cb){
+              cb();
+            }
+          };
+        }
+      };
+      var req = {
+        connection: {
+          remoteAddress: '0.0.0.0',
+          port: '80'
+        },
+        session: {}
+      };
+      var res = {
+        json: function() {
+          req.session.user.should.be.ok;
+          done();
+        }
+      };
+      var user = {
+        id: 1
+      };
 
       cycle.loginSuccess(req, res, user);
     });
@@ -249,6 +283,71 @@ describe('cycle', function() {
         }
       };
       var user = {};
+
+      cycle.registerSuccess(req, res, user);
+    });
+
+    it('should respond with jwt', function(done) {
+      config.postActions.register.success = 'jwt';
+      global.Jwt = {
+        create: function(){
+          return {
+            exec: function(cb){
+              cb();
+            }
+          };
+        }
+      };
+      var req = {
+        connection: {
+          remoteAddress: '0.0.0.0',
+          port: '80'
+        },
+        session: {}
+      };
+      var res = {
+        json: function() {
+          req.session.user.should.be.ok;
+          done();
+        }
+      };
+      var user = {
+        id: 1
+      };
+
+      cycle.registerSuccess(req, res, user);
+    });
+
+    it('should respond with error', function(done) {
+      config.postActions.register.success = 'jwt';
+      global.Jwt = {
+        create: function(){
+          return {
+            exec: function(cb){
+              cb('error');
+            }
+          };
+        }
+      };
+      var req = {
+        connection: {
+          remoteAddress: '0.0.0.0',
+          port: '80'
+        },
+        session: {}
+      };
+      var res = {
+        json: function() {
+          req.session.user.should.be.ok;
+          done();
+        },
+        serverError: function() {
+          done();
+        }
+      };
+      var user = {
+        id: 1
+      };
 
       cycle.registerSuccess(req, res, user);
     });
