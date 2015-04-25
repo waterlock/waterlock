@@ -3,6 +3,8 @@
 
 [![Gitter][gitter-image]][gitter-url]
 
+[![Inline docs][inch-image]][inch-url]
+
 | [![Build Status][travis-image]][travis-url] | [![NPM version][npm-version-image]][npm-url] | [![NPM downloads][npm-downloads-image]][npm-url] | [![Dependency Status][dependency-image]][dependency-url] |
 | ------- | ------- | ------- | ------- |
 | [![Coverage Status][coverage-image]][coverage-url] | [![Code Climate][climate-image]][climate-url] | [![Gittip][gittip-image]][gittip-url] | [![MIT License][license-image]][license-url]
@@ -147,3 +149,6 @@ MIT (see License)
 
 [gitter-image]: https://badges.gitter.im/Join%20Chat.svg
 [gitter-url]: https://gitter.im/waterlock/waterlock?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge
+
+[inch-image]: http://inch-ci.org/github/waterlock/waterlock.svg?branch=master
+[inch-url]: http://inch-ci.org/github/waterlock/waterlock
