@@ -102,4 +102,35 @@ describe('utils', function(){
       done();
     });
   });
+
+  describe('#getAccessToken()', function(){
+    it('should return token from params', function(done){
+      var req = {
+        params: {
+          all: function(){
+            return {
+                access_token: 'bar'
+            };
+          }
+        }
+      };
+
+      var results = utils.getAccessToken(req);
+
+      results.should.be.exactly('bar');
+      done();
+    });
+    it('should return token from headers(Authorization)', function(done){
+      var req = {
+          headers:{
+              authorization: 'Bearer baz'
+          }
+      };
+
+      var results = utils.getAccessToken(req);
+
+      results.should.be.exactly('baz');
+      done();
+    });
+  });
 });
