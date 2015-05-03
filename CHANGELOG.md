@@ -1,8 +1,8 @@
-# v0.015
+# v0.1.0
 * [FEATURE] Added a jwt flag for loginsuccess to return the token. [#41](https://github.com/waterlock/waterlock/pull/41)
 * [FEATURE] updated dependencies
 
-# v0.014
+# v0.0.14
 * [BUG] Fix in `findOrCreateAuth`. [#52](https://github.com/davidrivera/waterlock/pull/52)
 * [BUG] fixed jwt model - data too long for column token in mysql. [#48](https://github.com/davidrivera/waterlock/pull/48)
 * [BUG] Check if token exists. [#49](https://github.com/davidrivera/waterlock/pull/49)
