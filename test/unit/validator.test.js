@@ -204,10 +204,8 @@ describe('validator', function(){
     it('should callback error if no token is present', function(done){
       var scope = {
         _utils: {
-          allParams: function(){
-            return {
-
-            };
+          getAccessToken: function(){
+            return null;
           }
         },
         logger: {
@@ -225,10 +223,8 @@ describe('validator', function(){
     it('should callback error if there was an issue while validating token', function(done){
       var scope = {
         _utils: {
-          allParams: function(){
-            return {
-              access_token: 'barf'
-            };
+          getAccessToken: function(){
+            return 'barf';
           }
         },
         logger: {
@@ -248,10 +244,8 @@ describe('validator', function(){
     it('should call #bindToSession if the user has selected that option', function(done){
       var scope = {
         _utils: {
-          allParams: function(){
-            return {
-              access_token: 'butts'
-            };
+          getAccessToken: function(){
+            return 'butts';
           }
         },
         logger: {
@@ -261,7 +255,7 @@ describe('validator', function(){
         },
         config:{
           jsonWebTokens:{
-            stateless: false,  
+            stateless: false,
             trackUsage: false
           }
         }
@@ -271,7 +265,7 @@ describe('validator', function(){
       validator.validateTokenRequest.apply({
         validateToken: function(token, cb){
           cb(null, {});
-        }, 
+        },
         bindToSession: function(){
           bindToSessionCalled = true;
         }
@@ -283,10 +277,8 @@ describe('validator', function(){
     it('should call #trackTokenUsage if the user has selected that option', function(done){
       var scope = {
         _utils: {
-          allParams: function(){
-            return {
-              access_token: 'butts'
-            };
+          getAccessToken: function(){
+            return 'butts';
           }
         },
         logger: {
@@ -296,7 +288,7 @@ describe('validator', function(){
         },
         config:{
           jsonWebTokens:{
-            stateless: true,  
+            stateless: true,
             trackUsage: true
           }
         },
@@ -311,7 +303,7 @@ describe('validator', function(){
       validator.validateTokenRequest.apply({
         validateToken: function(token, cb){
           cb(null, {});
-        }, 
+        },
         trackTokenUsage: function(){
           done();
         }
@@ -321,10 +313,8 @@ describe('validator', function(){
     it('should validate a token from a valid request', function(done){
       var scope = {
         _utils: {
-          allParams: function(){
-            return {
-              access_token: 'butts'
-            };
+          getAccessToken: function(){
+            return 'butts';
           }
         },
         logger: {
@@ -334,7 +324,7 @@ describe('validator', function(){
         },
         config:{
           jsonWebTokens:{
-            stateless: true,  
+            stateless: true,
             trackUsage: false
           }
         }
@@ -346,6 +336,41 @@ describe('validator', function(){
           cb(null, {});
         }
       }, [{}, function(err, usr){
+        usr.should.be.Object;
+        done();
+      }]);
+    });
+    it('should validate a token from a valid request for HTTP Bearer authorization', function(done){
+      var req = {
+        headers: {
+          authorization: 'Bearer butts'
+        }
+      };
+      var scope = {
+        _utils: {
+          getAccessToken: function(){
+            return 'butts';
+          }
+        },
+        logger: {
+          debug: function(){
+
+          }
+        },
+        config:{
+          jsonWebTokens:{
+            stateless: true,
+            trackUsage: false
+          }
+        }
+      };
+      var validator = Validator.apply(scope);
+      var trackTokenUsageCalled = false;
+      validator.validateTokenRequest.apply({
+        validateToken: function(token, cb){
+          cb(null, {});
+        }
+      }, [req, function(err, usr){
         usr.should.be.Object;
         done();
       }]);
@@ -408,7 +433,7 @@ describe('validator', function(){
         },
         logger: {
           debug: function(){
-            
+
           }
         }
       };
@@ -436,7 +461,7 @@ describe('validator', function(){
         },
         logger: {
           debug: function(){
-            
+
           }
         }
       };
@@ -450,7 +475,7 @@ describe('validator', function(){
       var scope = {
         logger: {
           debug: function(){
-            
+
           }
         }
       };
@@ -466,7 +491,7 @@ describe('validator', function(){
       var scope = {
         logger: {
           debug: function(){
-            
+
           }
         }
       };
