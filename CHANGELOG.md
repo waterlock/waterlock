@@ -1,4 +1,4 @@
-# v1.0.0
+# v0.1.0
 * [FEATURE] Added a jwt flag for loginsuccess to return the token. [#41](https://github.com/waterlock/waterlock/pull/41)
 * [FEATURE] updated dependencies
 
