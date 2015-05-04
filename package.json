@@ -1,6 +1,6 @@
 {
   "name": "waterlock",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "David Rivera <david.r.rivera193@gmail.com>",
   "description": "User authentication and Json Web Tokens for Sails",
   "homepage": "http://waterlock.ninja/",
@@ -50,6 +50,6 @@
   "preferGlobal": false,
   "license": "MIT",
   "engines": {
-    "node": ">=0.6"
+    "node": ">=0.10"
   }
 }
