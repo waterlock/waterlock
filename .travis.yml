@@ -3,14 +3,20 @@ language: node_js
 node_js:
   - "0.10"
   - "0.12"
-  - "iojs-v1"
-  - "iojs-v2"  
+  - "4.0"
 
 env:
-  - COVERAGE=true
+  - CXX=g++-4.8 COVERAGE=true
 
 script:
   - "make test"
+
+addons:
+  apt:
+    sources:
+    - ubuntu-toolchain-r-test
+    packages:
+    - g++-4.8
 
 branches:
   only:
