@@ -1,5 +1,5 @@
-#v0.1.2
-* [REFACTORING][#95](https://github.com/waterlock/waterlock/pull/95) 
+#v0.1.2-rc1
+* [REFACTORING][#95](https://github.com/waterlock/waterlock/pull/95) Replace all 'for(..in..)' on lodash alternative
 * Adds support for Node 4.0 to travis.yml
 
 # v0.1.1
