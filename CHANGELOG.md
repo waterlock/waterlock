@@ -1,3 +1,7 @@
+#v0.1.2
+* [REFACTORING][#95](https://github.com/waterlock/waterlock/pull/95) 
+* Adds support for Node 4.0 to travis.yml
+
 # v0.1.1
 * [FEATURE] Added Bearer Token Authentication
 [#81](https://github.com/waterlock/waterlock/pull/81)
