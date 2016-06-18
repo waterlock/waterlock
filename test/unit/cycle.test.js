@@ -151,7 +151,7 @@ describe('cycle', function() {
     });
     
     it('should respond with result if given a postResponse function', function(done) {
-      wl.config.postActions.login.success = function() { return {test:true} };
+      wl.config.postActions.login.success = function() { return {test:true}; };
       var cycle = require('../../lib/cycle').apply(wl);
       var req = {
         connection: {
@@ -163,8 +163,9 @@ describe('cycle', function() {
       var res = {
         ok: function(response) {
           req.session.user.should.be.ok;
-          if(response.test === true)
+          if(response.test === true) {
             done();
+          }
         }
       };
       var user = {};
@@ -310,7 +311,7 @@ describe('cycle', function() {
     });
     
     it('should respond with result if given a postResponse function', function(done) {
-      wl.config.postActions.register.success = function() { return {test:true} };
+      wl.config.postActions.register.success = function() { return {test:true}; };
       var cycle = require('../../lib/cycle').apply(wl);
       var req = {
         connection: {
@@ -322,8 +323,9 @@ describe('cycle', function() {
       var res = {
         ok: function(response) {
           req.session.user.should.be.ok;
-          if(response.test === true)
+          if(response.test === true) {
             done();
+          }
         }
       };
       var user = {};
@@ -477,7 +479,7 @@ describe('cycle', function() {
     });
     
     it('should respond with result if given a postResponse function', function(done) {
-      wl.config.postActions.register.failure = function() { return {test:true} };
+      wl.config.postActions.register.failure = function() { return {test:true}; };
       var cycle = require('../../lib/cycle').apply(wl);
       var req = {
         connection: {
@@ -489,8 +491,9 @@ describe('cycle', function() {
       var res = {
         ok: function(response) {
           req.session.user.should.be.ok;
-          if(response.test === true)
+          if(response.test === true) {
             done();
+          }
         }
       };
       var user = {};
@@ -579,7 +582,7 @@ describe('cycle', function() {
     });
     
     it('should respond with result if given a postResponse function', function(done) {
-      wl.config.postActions.login.failure = function() { return {test:true} };
+      wl.config.postActions.login.failure = function() { return {test:true}; };
       var cycle = require('../../lib/cycle').apply(wl);
       var req = {
         connection: {
@@ -591,8 +594,9 @@ describe('cycle', function() {
       var res = {
         ok: function(response) {
           req.session.user.should.be.ok;
-          if(response.test === true)
+          if(response.test === true) {
             done();
+          }
         }
       };
       var user = {};
@@ -850,7 +854,7 @@ describe('cycle', function() {
       done();
     });
     it('should return result if function given', function(done) {
-      var results = cycle._resolvePostAction(function() {return {test:true}});
+      var results = cycle._resolvePostAction(function() {return {test:true}; });
       results.should.eql({test:true});
       done();
     });
