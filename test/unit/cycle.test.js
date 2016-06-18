@@ -490,7 +490,6 @@ describe('cycle', function() {
       };
       var res = {
         forbidden: function(response) {
-          req.session.user.should.be.ok;
           if(response.test === true) {
             done();
           }
@@ -593,7 +592,6 @@ describe('cycle', function() {
       };
       var res = {
         forbidden: function(response) {
-          req.session.user.should.be.ok;
           if(response.test === true) {
             done();
           }
