@@ -149,6 +149,29 @@ describe('cycle', function() {
 
       cycle.loginSuccess(req, res, user);
     });
+    
+    it('should respond with result if given a postResponse func', function(done) {
+      wl.config.postActions.login.success = function() { return {test:true}; };
+      var cycle = require('../../lib/cycle').apply(wl);
+      var req = {
+        connection: {
+          remoteAddress: '0.0.0.0',
+          port: '80'
+        },
+        session: {}
+      };
+      var res = {
+        ok: function(response) {
+          req.session.user.should.be.ok;
+          if(response.test === true) {
+            done();
+          }
+        }
+      };
+      var user = {};
+
+      cycle.loginSuccess(req, res, user);
+    });
 
     it('should respond with jwt', function(done) {
       config.postActions.login.success = 'jwt';
@@ -280,6 +303,30 @@ describe('cycle', function() {
         redirect: function(){
           req.session.user.should.be.ok;
           done();
+        }
+      };
+      var user = {};
+
+      cycle.registerSuccess(req, res, user);
+    });
+    
+    it('should respond with result if given a postResponse func', function(done) {
+      var prFunc = function() { return {test:true}; };
+      wl.config.postActions.register.success = prFunc;
+      var cycle = require('../../lib/cycle').apply(wl);
+      var req = {
+        connection: {
+          remoteAddress: '0.0.0.0',
+          port: '80'
+        },
+        session: {}
+      };
+      var res = {
+        ok: function(response) {
+          req.session.user.should.be.ok;
+          if(response.test === true) {
+            done();
+          }
         }
       };
       var user = {};
@@ -431,6 +478,29 @@ describe('cycle', function() {
 
       cycle.registerFailure(req, res, user);
     });
+    
+    it('should respond with result if given a postResponse func', function(done) {
+      var prFunc = function() { return {test:true}; };
+      wl.config.postActions.register.failure = prFunc;
+      var cycle = require('../../lib/cycle').apply(wl);
+      var req = {
+        connection: {
+          remoteAddress: '0.0.0.0',
+          port: '80'
+        },
+        session: {}
+      };
+      var res = {
+        forbidden: function(response) {
+          if(response.test === true) {
+            done();
+          }
+        }
+      };
+      var user = {};
+
+      cycle.registerFailure(req, res, user);
+    });
   });
   describe('#loginFailure()', function() {
     it('should log error if any while creating Attempt', function(done) {
@@ -505,6 +575,28 @@ describe('cycle', function() {
       var res = {
         redirect: function() {
           done();
+        }
+      };
+      var user = {};
+
+      cycle.loginFailure(req, res, user);
+    });
+    
+    it('should respond with result if given a postResponse func', function(done) {
+      wl.config.postActions.login.failure = function() { return {test:true}; };
+      var cycle = require('../../lib/cycle').apply(wl);
+      var req = {
+        connection: {
+          remoteAddress: '0.0.0.0',
+          port: '80'
+        },
+        session: {}
+      };
+      var res = {
+        forbidden: function(response) {
+          if(response.test === true) {
+            done();
+          }
         }
       };
       var user = {};
@@ -759,6 +851,11 @@ describe('cycle', function() {
     it('should return mix', function(done) {
       var results = cycle._resolvePostAction('butts');
       results.should.eql('butts');
+      done();
+    });
+    it('should return result if function given', function(done) {
+      var results = cycle._resolvePostAction(function() {return {test:true}; });
+      results.should.eql({test:true});
       done();
     });
   });
