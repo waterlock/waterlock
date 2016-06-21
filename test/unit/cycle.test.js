@@ -145,12 +145,12 @@ describe('cycle', function() {
           done();
         }
       };
-      var user = {};
+      var user = {};require
 
       cycle.loginSuccess(req, res, user);
     });
     
-    it('should respond with result if given a postResponse function', function(done) {
+    it('should respond with result if given a postResponse func', function(done) {
       wl.config.postActions.login.success = function() { return {test:true}; };
       var cycle = require('../../lib/cycle').apply(wl);
       var req = {
@@ -310,8 +310,9 @@ describe('cycle', function() {
       cycle.registerSuccess(req, res, user);
     });
     
-    it('should respond with result if given a postResponse function', function(done) {
-      wl.config.postActions.register.success = function() { return {test:true}; };
+    it('should respond with result if given a postResponse func', function(done) {
+      var prFunc = function() { return {test:true}; };
+      wl.config.postActions.register.success = prFunc;
       var cycle = require('../../lib/cycle').apply(wl);
       var req = {
         connection: {
@@ -478,8 +479,9 @@ describe('cycle', function() {
       cycle.registerFailure(req, res, user);
     });
     
-    it('should respond with result if given a postResponse function', function(done) {
-      wl.config.postActions.register.failure = function() { return {test:true}; };
+    it('should respond with result if given a postResponse func', function(done) {
+      var prFunc = function() { return {test:true}; };
+      wl.config.postActions.register.failure = prFunc;
       var cycle = require('../../lib/cycle').apply(wl);
       var req = {
         connection: {
@@ -580,7 +582,7 @@ describe('cycle', function() {
       cycle.loginFailure(req, res, user);
     });
     
-    it('should respond with result if given a postResponse function', function(done) {
+    it('should respond with result if given a postResponse func', function(done) {
       wl.config.postActions.login.failure = function() { return {test:true}; };
       var cycle = require('../../lib/cycle').apply(wl);
       var req = {
