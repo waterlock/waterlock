@@ -145,7 +145,7 @@ describe('cycle', function() {
           done();
         }
       };
-      var user = {};require
+      var user = {};
 
       cycle.loginSuccess(req, res, user);
     });
