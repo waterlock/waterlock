@@ -35,7 +35,7 @@
     "jwt-simple": "~0.3.0",
     "lodash": "~3.8.0",
     "moment": "~2.10.3",
-    "node-uuid": "~1.4.3",
+    "uuid": "^3.0.0",
     "winston": "~1.0.0"
   },
   "devDependencies": {
