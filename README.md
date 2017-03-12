@@ -22,6 +22,7 @@ Authentication is handled via methods. The current supported methods are:
 | Twitter Auth | [waterlock-twitter-auth](https://github.com/waterlock/waterlock-twitter-auth) |
 | Facebook Auth | [waterlock-facebook-auth](https://github.com/waterlock/waterlock-facebook-auth) |
 | Google Auth | [waterlock-google-auth](https://github.com/waterlock/waterlock-google-auth) |
+| LDAP Auth | [waterlock-ldap-auth](https://github.com/waterlock/waterlock-ldap-auth) |
 
 it is a great tool if you're looking to grant user access to your api.
 
