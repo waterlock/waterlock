@@ -32,7 +32,7 @@
   ],
   "dependencies": {
     "commander": "~2.8.1",
-    "jwt-simple": "~0.3.0",
+    "jwt-simple": "~0.5.0",
     "lodash": "~3.8.0",
     "moment": "~2.10.3",
     "node-uuid": "~1.4.3",
