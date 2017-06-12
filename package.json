@@ -1,55 +1,53 @@
 {
-  "name": "waterlock",
-  "version": "v0.1.2-rc1",
-  "author": "David Rivera <david.r.rivera193@gmail.com>",
-  "description": "User authentication and Json Web Tokens for Sails",
-  "homepage": "http://waterlock.ninja/",
-  "contributors": [
-    {
-      "name": "David Rivera",
-      "email": "david.r.rivera193@gmail.com"
+    "name": "waterlock-reply",
+    "version": "v0.1.2-rc1",
+    "author": "David Rivera <david.r.rivera193@gmail.com>",
+    "description": "User authentication and Json Web Tokens for Sails",
+    "homepage": "http://waterlock.ninja/",
+    "contributors": [{
+        "name": "David Rivera",
+        "email": "david.r.rivera193@gmail.com"
+    }],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/waterlock/waterlock"
+    },
+    "bugs": {
+        "url": "https://github.com/waterlock/waterlock/issues"
+    },
+    "scripts": {
+        "test": "make test"
+    },
+    "bin": {
+        "waterlock": "./bin/waterlock.js"
+    },
+    "keywords": [
+        "waterlock",
+        "sails",
+        "authentication",
+        "json web tokens",
+        "jwt"
+    ],
+    "dependencies": {
+        "commander": "~2.8.1",
+        "jwt-simple": "~0.3.0",
+        "lodash": "~3.8.0",
+        "moment": "~2.10.3",
+        "node-uuid": "~1.4.3",
+        "winston": "~1.0.0"
+    },
+    "devDependencies": {
+        "mocha": "*",
+        "should": "*",
+        "proxyquire": "*",
+        "coveralls": "*",
+        "istanbul": "*",
+        "sails": "*",
+        "jshint": "*"
+    },
+    "preferGlobal": false,
+    "license": "MIT",
+    "engines": {
+        "node": ">=0.10"
     }
-  ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/waterlock/waterlock"
-  },
-  "bugs": {
-    "url": "https://github.com/waterlock/waterlock/issues"
-  },
-  "scripts": {
-    "test": "make test"
-  },
-  "bin": {
-    "waterlock": "./bin/waterlock.js"
-  },
-  "keywords": [
-    "waterlock",
-    "sails",
-    "authentication",
-    "json web tokens",
-    "jwt"
-  ],
-  "dependencies": {
-    "commander": "~2.8.1",
-    "jwt-simple": "~0.3.0",
-    "lodash": "~3.8.0",
-    "moment": "~2.10.3",
-    "node-uuid": "~1.4.3",
-    "winston": "~1.0.0"
-  },
-  "devDependencies": {
-    "mocha": "*",
-    "should": "*",
-    "proxyquire": "*",
-    "coveralls": "*",
-    "istanbul": "*",
-    "sails": "*",
-    "jshint": "*"
-  },
-  "preferGlobal": false,
-  "license": "MIT",
-  "engines": {
-    "node": ">=0.10"
-  }
 }
