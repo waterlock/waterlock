@@ -85,7 +85,7 @@ this will keep the user association to the Jwt model and still allow for managem
 Waterlock generates a config located at `config/waterlock.json` this file is used to set various options
 
 * `baseUrl` - this is the URL your app resides at, used in password reset urls
-* `autheMethod` - the npm package name for the chosen authentication method or array of methods
+* `authMethod` - the npm package name for the chosen authentication method or array of methods
 * `jsonWebTokens` - object containing information on how the jwt's should be constructed
 	* `secret` - the secret used to encrypt the token, CHANGE THIS VALUE!
 	* `expiry` - object containing information on expiry these are passed to moment.js [add](http://momentjs.com/docs/#/manipulating/add/) function
