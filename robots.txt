@@ -1,2 +1,2 @@
 User-agent: *
-Sitemap: http://waterlock.ninja/sitemap.xml
+Sitemap: https://waterlock.ninja/sitemap.xml

@@ -6,37 +6,37 @@
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 
 <url>
-  <loc>http://waterlock.ninja/</loc>
+  <loc>https://waterlock.ninja/</loc>
   <lastmod>2014-07-19T22:19:40+00:00</lastmod>
   <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>http://waterlock.ninja/documentation/</loc>
+  <loc>https://waterlock.ninja/documentation/</loc>
   <lastmod>2014-07-19T22:19:40+00:00</lastmod>
   <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>http://waterlock.ninja/api/</loc>
+  <loc>https://waterlock.ninja/api/</loc>
   <lastmod>2014-07-19T22:19:40+00:00</lastmod>
   <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>http://waterlock.ninja/blog/</loc>
+  <loc>https://waterlock.ninja/blog/</loc>
   <lastmod>2014-07-19T22:19:40+00:00</lastmod>
   <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>http://waterlock.ninja/waterlock/update/2014/07/16/waterlock_v0.0.10/</loc>
+  <loc>https://waterlock.ninja/waterlock/update/2014/07/16/waterlock_v0.0.10/</loc>
   <lastmod>2014-07-19T22:19:40+00:00</lastmod>
   <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>http://waterlock.ninja/waterlock/update/2014/07/04/waterlock_update/</loc>
+  <loc>https://waterlock.ninja/waterlock/update/2014/07/04/waterlock_update/</loc>
   <lastmod>2014-07-19T22:19:40+00:00</lastmod>
   <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>http://waterlock.ninja/waterlock/update/2014/06/22/waterlock-json-web-tokens/</loc>
+  <loc>https://waterlock.ninja/waterlock/update/2014/06/22/waterlock-json-web-tokens/</loc>
   <lastmod>2014-07-19T22:19:40+00:00</lastmod>
   <changefreq>weekly</changefreq>
 </url>

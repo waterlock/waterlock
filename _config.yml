@@ -3,8 +3,8 @@ title: Waterlock
 author: "David Rivera"
 email: david.r.rivera193@gmail.com
 description: "Waterlock documentation"
-baseurl: "http://waterlock.ninja"
-url: "http://waterlock.ninja"
+baseurl: "https://waterlock.ninja"
+url: "https://waterlock.ninja"
 
 # Build settings
 markdown: kramdown
